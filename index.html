@@ -454,6 +454,8 @@ main .card + .card{margin-top:1rem;}
   .mast .brand{font-size:1.3rem;}
 }
 /* ===== LUX design pass ===== */
+header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
+#tabbar{background:transparent;}
 .card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 18px 38px -28px rgba(0,0,0,.8);}
 .dchip{border-radius:16px;}
 button,.tab,.navitem,.dchip,.fl-row2,.iconbtn,.go,.opt{transition:transform .12s var(--ease),background .2s,border-color .2s;}
@@ -870,10 +872,10 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
   function buildTimeline(){
     var host=document.getElementById('timeline');if(!host)return;
     var tlReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var n=TL.length,per=Math.ceil(n/2),W=320,px=40,topY=22,rowGap=50;
+    var n=TL.length,per=Math.ceil(n/2),W=320,px=40,topY=24,rowGap=50;
     function xf(idx,count){return px+(count>1?idx/(count-1):0)*(W-2*px);}
     function pos(i){var row=i<per?0:1;var x=(row===0)?xf(i,per):(W-xf(i-per,n-per));return {x:x,y:topY+row*rowGap,row:row};}
-    var H=topY+rowGap+30;
+    var H=topY+rowGap+38;
     function pathFor(a,b){var d='';for(var i=a;i<=b;i++){var p=pos(i);if(i===a){d='M'+p.x.toFixed(1)+' '+p.y;continue;}var pr=pos(i-1);if(p.row===pr.row){d+=' L'+p.x.toFixed(1)+' '+p.y;}else{var r=((p.y-pr.y)/2).toFixed(1),sw=(pr.x>W/2)?1:0;d+=' A '+r+' '+r+' 0 0 '+sw+' '+p.x.toFixed(1)+' '+p.y;}}return d;}
     var s='<svg class="tl" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 11 to 19">';
     s+='<path class="tl-track bcn" pathLength="1" d="'+pathFor(0,per-1)+'"/>';
@@ -1330,7 +1332,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderFlights();
   var _fscr=document.getElementById('fl-scrim');if(_fscr)_fscr.onclick=closeFlSheet;
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 3';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 4';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
