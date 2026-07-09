@@ -71,7 +71,7 @@
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;height:100%;background:var(--bg);}
 body{
-  margin:0;background:radial-gradient(120% 85% at 85% -10%,rgba(240,69,76,.10),transparent 60%),radial-gradient(90% 60% at -12% 6%,rgba(90,120,255,.05),transparent 55%),var(--bg);color:var(--ink);
+  margin:0;background:var(--bg);color:var(--ink);
   font-family:var(--font-body);font-weight:400;line-height:1.6;
   -webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
@@ -435,8 +435,8 @@ main .card + .card{margin-top:1rem;}
 }
 /* ===== LUX design pass ===== */
 html{background:var(--bg);height:100%;}
-header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
-#tabbar{background:transparent;}
+header.top{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none;}
+#tabbar{background:var(--bg);}
 .card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);}
 /* unified press feedback: one transition rule + one :active scale for every interactive element */
 button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row{transition:transform .12s var(--ease),background .2s,border-color .2s,color .18s;}
@@ -458,6 +458,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 .lx-row{display:flex;align-items:center;gap:11px;width:100%;padding:8px 4px;border:none;border-top:1px solid var(--line-soft);background:none;color:var(--ink);text-align:left;cursor:pointer;border-radius:10px;font-family:inherit;}
 .lx-row:first-of-type{border-top:none;}
 .lx-main{flex:1;min-width:0;}
+.lx-row .lx-lbl{overflow-wrap:anywhere;}
+.lx-row .lx-met{max-width:100%;}
 .lx-lbl{font-weight:600;font-size:.95rem;}
 .lx-met{color:var(--muted);font-size:.75rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .lx-tag{flex:0 0 auto;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--line);padding:4px 7px;border-radius:8px;}
@@ -526,7 +528,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <summary><span class="num">1</span><span class="lt">Madrid</span><span class="ld">Aug 15&ndash;18<br>4 nights &middot; match 1</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
         <p class="why">Land, pick up the car, and settle into the capital. This is the football heart of the trip: the Real Madrid home opener, the Bernabéu tour, and a day trip out to Segovia or Toledo.</p>
-        <div class="day"><div class="when">Fri 14<small>overnight</small></div><div><p>Evening Air Canada flight from Montréal (YUL).</p></div></div>
+        <div class="day"><div class="when">Fri 14<small>overnight</small></div><div><p>Evening Air Transat flight from Montréal (YUL).</p></div></div>
         <div class="day"><div class="when">Sat 15</div><div><p>Arrive Madrid around midday. Pick up the Alamo rental car at the airport, drop bags at the hotel. Easy first evening at Plaza Mayor and the San Miguel market. Jet-lag day, keep it light.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
         <div class="day"><div class="when">Sun 16</div><div><p><span class="tag sport">Sport</span><strong>Match 1: Real Madrid vs Real Sociedad</strong> at the Santiago Bernabéu, you and your son. La Liga matchday 1, the home opener. Buy the moment tickets open.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Santiago+Bernabeu+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
         <div class="day"><div class="when">Mon 17</div><div><p><span class="tag kids">Kids</span><strong>Day trip to Segovia</strong> (~1 h drive): the Roman aqueduct and the Alcázar castle. Or swap in Toledo (~45 min). Leave early, siesta through the heat, rooftop dinner.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Madrid&daddr=Segovia&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
@@ -581,7 +583,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     <div class="lgroup rv">
       <h3>Getting there</h3>
       <p class="gsub">Round-trip flights into and out of Madrid. No open-jaw, no Barcelona airport.</p>
-      <a class="litem" href="https://www.aircanada.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Air Canada · round trip</span><span class="ld2">YUL to Madrid (dep Aug 14 pm, arr Aug 15) · Madrid to YUL Aug 25 · conf A014813813</span></span><span class="lg2">Open →</span></a>
+      <a class="litem" href="https://www.airtransat.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Air Transat · round trip</span><span class="ld2">YUL to Madrid (dep Aug 14 pm, arr Aug 15) · Madrid to YUL Aug 25 · conf A014813813</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid-Barajas (MAD)</span><span class="ld2">Arrival and departure airport · metro L8 or Cercanías to the centre</span></span><span class="lg2">Map →</span></a>
     </div>
 
@@ -1012,7 +1014,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     {w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 17.'},
     {w:'later',t:'Park Güell timed entry',n:'The monumental zone requires a reservation.'},
     {w:'later',t:'Set up the phone eSIMs',n:'Airalo/Holafly: activate before you leave.'},
-    {w:'later',t:'Flights booked (Air Canada, conf A014813813)',n:'Done: round-trip YUL to Madrid, out Aug 14 evening, home from Madrid Aug 25. Reconfirm seats and do online check-in 24h before.'},
+    {w:'later',t:'Flights booked (Air Transat, conf A014813813)',n:'Done: round-trip YUL to Madrid, out Aug 14 evening, home from Madrid Aug 25. Reconfirm seats and do online check-in 24h before.'},
     {w:'later',t:'Rental car booked (Alamo, Madrid)',n:'Done: picked up and returned in Madrid for the Toledo and Segovia day trips. No car needed between cities, the AVE covers Madrid to Barcelona.'},
     {w:'later',t:'Travel insurance in place',n:'Done: confirm it covers all four of you for the full Aug 14-25 window.'}
   ];
@@ -1093,7 +1095,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 
   /* budget */
   var BUDGET=[
-    {id:'flights',item:'Flights',note:'Air Canada x4, round-trip YUL to Madrid (booked, conf A014813813)',est:'$4,000-5,200',lo:4000,hi:5200},
+    {id:'flights',item:'Flights',note:'Air Transat x4, round-trip YUL to Madrid (booked, conf A014813813)',est:'$4,000-5,200',lo:4000,hi:5200},
     {id:'lodging',item:'Lodging',note:'10 nights, family rooms in Madrid and Barcelona',est:'$1,900-2,600',lo:1900,hi:2600},
     {id:'car',item:'Car rental',note:'Alamo, round-trip Madrid, ~4 days for the day trips, plus fuel and parking',est:'$350-500',lo:350,hi:500},
     {id:'train',item:'AVE high-speed train',note:'Madrid to Barcelona and back, family of four, 2 legs',est:'$420-620',lo:420,hi:620},
@@ -1330,7 +1332,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 11';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 12';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
