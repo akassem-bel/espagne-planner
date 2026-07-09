@@ -739,6 +739,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
 (function(){
   "use strict";
@@ -1373,7 +1374,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 19';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 20';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1382,7 +1383,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       firebase.initializeApp(FB);
       db=firebase.database();
       fbReady=true;
-      var first=true;
+      var first=true,started=false;
+      function start(){ if(started)return; started=true;
       db.ref(ROOM).on('value',function(snap){
         var d=snap.val();
         if(d==null){Object.keys(SYNC).forEach(function(k){var v=get(k,null);if(v!=null){try{db.ref(ROOM+'/'+SYNC[k]).set(v);}catch(e){}}});return;}
@@ -1399,6 +1401,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
         window.__bookings=d.bookings||null;window.__matchTickets=d.matchTickets||null;renderBookings();
         if(first){var s=document.getElementById('synced');if(s)s.textContent=' · live sync';toast('Live sync on');first=false;}
       });
+      }
+      if(firebase.auth){try{firebase.auth().signInAnonymously().then(start).catch(function(){start();});}catch(e){start();}}else{start();}
     }catch(e){}
   }
   initSync();
