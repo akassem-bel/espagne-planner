@@ -481,6 +481,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 .lx-main{flex:1;min-width:0;}
 .lx-lbl{font-weight:600;font-size:.95rem;}
 .lx-met{color:var(--muted);font-size:.75rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lx-tag{flex:0 0 auto;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--line);padding:4px 7px;border-radius:8px;}
 .lx-spark{width:54px;height:24px;flex:0 0 auto;}
 .lx-spark path{fill:none;stroke:var(--dim);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .lx-pr{text-align:right;flex:0 0 auto;}
@@ -1311,6 +1312,25 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     document.getElementById('fl-sheet').classList.add('on');
   }
   function closeFlSheet(){document.getElementById('fl-scrim').classList.remove('on');document.getElementById('fl-sheet').classList.remove('on');}
+  function renderBookings(){
+    var box=document.getElementById('home-flights');if(!box)return;
+    var B=window.__bookings;
+    if(!B||!B.items||!B.items.length){
+      box.innerHTML='<div class="fl-card lx-fcard"><div class="fl-head"><span>Réservations</span></div><div class="fl-note">Se remplit depuis Gmail une fois le script d\'import lancé.</div></div>';
+      return;
+    }
+    var order={flight:0,hotel:1,car:2,tickets:3};
+    var items=B.items.slice().sort(function(a,b){return (order[a.type]==null?9:order[a.type])-(order[b.type]==null?9:order[b.type]);});
+    var h='<div class="fl-card lx-fcard"><div class="fl-head"><span>Réservations</span><span class="fl-when">'+(B.updated?flAgo(B.updated):'')+'</span></div>';
+    items.forEach(function(x){
+      var meta=[x.dates,x.confirmation].filter(Boolean).join(' · ');
+      h+='<a class="lx-row" href="'+flEsc(x.link||'#')+'" target="_blank" rel="noopener">'
+        +'<span class="lx-tag">'+flEsc(x.label||'')+'</span>'
+        +'<span class="lx-main"><span class="lx-lbl">'+flEsc(x.title||'')+'</span>'+(meta?'<span class="lx-met">'+flEsc(meta)+'</span>':'')+'</span>'
+        +'<span class="fl-arr">&rsaquo;</span></a>';
+    });
+    h+='</div>';box.innerHTML=h;
+  }
   function setPhaseTab(days){
     var b=document.getElementById('tabCtx');if(!b)return;
     var view=(days>0)?'alist':'expenses',label=(days>0)?'Book':'Spend';
@@ -1332,9 +1352,9 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     else{num.textContent='¡Olé!';lab.textContent='trip complete';}
     setPhaseTab(days);
   }
-  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderFlights();
+  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   var _fscr=document.getElementById('fl-scrim');if(_fscr)_fscr.onclick=closeFlSheet;
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 6';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 7';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1357,8 +1377,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
           if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();}
           else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();},{once:true});}
         }
-        window.__flights=d.flights||null;window.__ftargets=d.flightTargets||{};
-        var _fa=document.activeElement;if(!(_fa&&_fa.classList&&_fa.classList.contains('fl-tgt')))renderFlights();
+        window.__bookings=d.bookings||null;renderBookings();
         if(first){var s=document.getElementById('synced');if(s)s.textContent=' · live sync';toast('Live sync on');first=false;}
       });
     }catch(e){}
