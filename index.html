@@ -44,6 +44,8 @@
   --font-head:'Instrument Serif',Georgia,serif;
   --font-body:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
+  --r-sm:8px;--r-md:14px;--r-lg:18px;--r-pill:999px;
+  --fs-1:2.9rem;--fs-2:2.2rem;--fs-3:1.9rem;--fs-4:1.5rem;--fs-5:1.3rem;
 }
 :root[data-theme="light"]{
   --bg:#F4F3EF;
@@ -93,7 +95,7 @@ header.top{flex:0 0 auto;position:relative;z-index:50;background:var(--bg);borde
 .icons{display:flex;gap:.5rem;}
 .iconbtn{font-family:var(--font-body);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
   cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink);
-  padding:.5rem .85rem;border-radius:2px;transition:border-color .18s,color .18s,background .18s;}
+  padding:.5rem .85rem;border-radius:var(--r-sm);transition:border-color .18s,color .18s,background .18s;}
 .iconbtn:hover{border-color:var(--accent);color:var(--accent);}
 .iconbtn.solid{background:var(--accent);border-color:var(--accent);color:#fff;}
 .iconbtn.solid:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;}
@@ -134,9 +136,9 @@ body.drawer-open #drawer{transform:none;}
 
 /* expenses */
 .exp-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.3rem;}
-.exp-form input,.exp-form select{font-family:var(--font-body);font-size:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:.65rem .6rem;color:var(--ink);width:100%;}
+.exp-form input,.exp-form select{font-family:var(--font-body);font-size:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:.65rem .6rem;color:var(--ink);width:100%;}
 .exp-form .full{grid-column:1 / -1;}
-.exp-form button{grid-column:1 / -1;font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:.8rem;cursor:pointer;}
+.exp-form button{grid-column:1 / -1;font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;background:var(--accent);color:#fff;border:none;border-radius:var(--r-sm);padding:.8rem;cursor:pointer;}
 .exp-form button:active{background:var(--accent-deep);}
 .exp-tot{display:flex;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-bottom:1.2rem;flex-wrap:wrap;}
 .exp-tot .et{flex:1;min-width:100px;background:var(--panel);padding:.85rem 1rem;}
@@ -180,13 +182,12 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 #tabbar .tab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
 #tabbar .tab .tl{font-size:.62rem;letter-spacing:.02em;font-weight:600;}
 #tabbar .tab.active{color:var(--accent);}
-#tabbar .tab:active{opacity:.6;}
 .view{display:none;}
 .view.active{display:block;}
 @keyframes slideBack{from{opacity:.5;transform:translateX(-55%);}to{opacity:1;transform:translateX(0);}}
 .view.slide-back{animation:slideBack .3s var(--ease);}
 @media (prefers-reduced-motion:reduce){.view.slide-back{animation:none;}}
-.fl-card{border:1px solid var(--line-soft);border-radius:12px;background:var(--panel);padding:.9rem 1rem;margin-top:1.1rem;}
+.fl-card{border:1px solid var(--line-soft);background:var(--panel);padding:.9rem 1rem;margin-top:1.1rem;}
 .fl-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-head);font-size:1.2rem;margin-bottom:.4rem;}
 .fl-when{font-family:var(--font-body);font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
 .fl-note{color:var(--dim);font-size:.72rem;margin:-.15rem 0 .5rem;}
@@ -198,17 +199,10 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .fl-sub{color:var(--muted);font-size:.8rem;margin-top:.12rem;}
 .fl-ctl{display:flex;justify-content:space-between;align-items:center;margin-top:.45rem;gap:.6rem;}
 .fl-ctl label{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
-.fl-tgt{width:5.4rem;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:.34rem .5rem;font-size:.9rem;font-variant-numeric:tabular-nums;}
-.fl-open{color:var(--accent);text-decoration:none;font-weight:600;font-size:.82rem;padding:.34rem .6rem;border:1px solid var(--line-soft);border-radius:7px;white-space:nowrap;}
+.fl-tgt{width:5.4rem;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:var(--r-sm);padding:.34rem .5rem;font-size:.9rem;font-variant-numeric:tabular-nums;}
+.fl-open{color:var(--accent);text-decoration:none;font-weight:600;font-size:.82rem;padding:.34rem .6rem;border:1px solid var(--line-soft);border-radius:var(--r-sm);white-space:nowrap;}
 .fl-deal .fl-price{color:#3ddc84;}
 .fl-near .fl-price{color:#f0a03b;}
-.dash-cd{display:flex;align-items:baseline;gap:.5rem;margin:.1rem 0 .5rem;}
-.dash-num{font-family:var(--font-head);font-size:2.6rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
-.dash-lab{font-size:.92rem;color:var(--muted);}
-.dash-chips{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:.45rem;}
-.dchip{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:.5rem .75rem;cursor:pointer;text-align:left;font-family:inherit;}
-.dchip .dc-k{font-size:.68rem;text-transform:uppercase;letter-spacing:.11em;color:var(--dim);}
-.dchip .dc-v{font-family:var(--font-head);font-size:1.3rem;line-height:1;color:var(--ink);}
 .fl-card{margin-top:0;padding:.6rem .85rem;}
 .fl-row2{padding:.42rem 0;}
 .fl-tgtlab{font-family:var(--font-body);font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;text-transform:none;letter-spacing:0;}
@@ -224,13 +218,13 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 @keyframes rise{to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none;}}
 
-h1.title{font-family:var(--font-head);font-weight:400;font-size:2.9rem;line-height:1.16;margin:.5rem 0 0;letter-spacing:.004em;padding-bottom:.08em;}
-h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-height:1.18;margin:.35rem 0 0;padding-bottom:.08em;}
+h1.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-1);line-height:1.16;margin:.5rem 0 0;letter-spacing:.004em;padding-bottom:.08em;}
+h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line-height:1.18;margin:.35rem 0 0;padding-bottom:.08em;}
 .rule{width:52px;height:2px;background:var(--accent);margin:1.1rem 0 1.4rem;}
 .lead{color:var(--muted);max-width:60ch;font-size:1.02rem;margin:0 0 1.6rem;}
 
 .route{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1.4rem 0;}
-.route .stop{font-size:.82rem;letter-spacing:.02em;padding:.32rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);}
+.route .stop{font-size:.82rem;letter-spacing:.02em;padding:.32rem .7rem;border:1px solid var(--line);border-radius:var(--r-pill);color:var(--muted);}
 .route .stop.city{color:var(--ink);border-color:var(--accent);}
 .route .arrow{color:var(--accent);}
 
@@ -238,27 +232,6 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-heig
 .fact{background:var(--panel);padding:1rem 1.05rem;}
 .fact .k{text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--dim);}
 .fact .v{font-family:var(--font-head);font-size:1.5rem;margin-top:.2rem;font-variant-numeric:tabular-nums;}
-.countdown{border:1px solid var(--line-soft);border-radius:12px;background:linear-gradient(160deg,var(--wash),var(--panel));padding:1.5rem;text-align:center;margin:1.5rem 0;}
-.countdown .cd-n{font-family:var(--font-head);font-size:3.8rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
-.countdown .cd-l{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--muted);margin-top:.4rem;font-weight:600;}
-.countdown .cd-sub{color:var(--muted);font-size:.82rem;margin-top:.75rem;}
-.hstats{display:flex;gap:.6rem;margin:1.4rem 0 .2rem;}
-.hstat{flex:1;border:1px solid var(--line-soft);border-radius:10px;background:var(--panel);padding:.9rem 1rem;cursor:pointer;transition:border-color .18s,transform .09s var(--ease);}
-.hstat:hover{border-color:var(--accent);}
-.hstat:active{transform:scale(.985);}
-.hstat .hk{text-transform:uppercase;letter-spacing:.12em;font-size:.6rem;color:var(--muted);}
-.hstat .hv{font-family:var(--font-head);font-size:1.7rem;margin:.15rem 0 .55rem;font-variant-numeric:tabular-nums;line-height:1;}
-.hstat .hv small{font-size:1rem;color:var(--dim);}
-.hstat .hbar{height:3px;background:var(--line);border-radius:999px;overflow:hidden;}
-.hstat .hbar>span{display:block;height:100%;background:var(--accent);width:0;transition:width .5s var(--ease);}
-.hnext{border:1px solid var(--line-soft);border-radius:10px;background:var(--panel);margin:1rem 0;overflow:hidden;}
-.hn-h{font-size:.62rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;padding:.85rem 1rem .5rem;}
-.hn-i{display:flex;gap:.7rem;align-items:center;padding:.8rem 1rem;border-top:1px solid var(--line-soft);cursor:pointer;font-size:.93rem;}
-.hn-i:active{background:var(--panel-2);}
-.hn-w{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);flex-shrink:0;}
-.hn-t{flex:1;min-width:0;}
-.hn-arr{margin-left:auto;color:var(--dim);font-size:1.15rem;}
-.hn-done{padding:.95rem 1rem;color:var(--muted);font-size:.9rem;}
 .exp-grand{text-align:center;border:1px solid var(--line-soft);border-radius:10px;background:linear-gradient(160deg,var(--wash),var(--panel));padding:.85rem;margin:0 0 .6rem;}
 .exp-grand .k{text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;color:var(--muted);}
 .exp-grand .v{font-family:var(--font-head);font-size:2.2rem;line-height:1;color:var(--accent);margin-top:.15rem;font-variant-numeric:tabular-nums;}
@@ -284,32 +257,36 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-heig
 @media (prefers-reduced-motion:reduce){.tl-seg{stroke-dashoffset:0;animation:none;}.tl-node{opacity:1;animation:none;}}
 
 /* each-day options */
-.daysel{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:1.2rem;scrollbar-width:none;}
+.daysel{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:1.2rem;scrollbar-width:none;scroll-behavior:smooth;}
 .daysel::-webkit-scrollbar{display:none;}
-.daychip{flex:0 0 auto;border:1px solid var(--line);border-radius:12px;padding:.55rem .9rem;cursor:pointer;text-align:center;background:var(--panel);transition:border-color .15s,background .15s;}
+.daychip{flex:0 0 auto;border:1px solid var(--line);border-radius:12px;padding:.55rem .9rem;min-height:44px;cursor:pointer;text-align:center;background:var(--panel);transition:border-color .15s,background .15s;font-family:inherit;color:inherit;-webkit-appearance:none;appearance:none;}
 .daychip .dn{font-family:var(--font-head);font-size:1.25rem;line-height:1;}
 .daychip .dl{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:.2rem;}
 .daychip.active{border-color:var(--accent);background:linear-gradient(160deg,var(--wash),var(--panel));}
 .daychip.active .dl{color:var(--accent);}
-.dayhead{font-family:var(--font-head);font-size:1.5rem;margin:.2rem 0 1rem;}
+.dayhead{font-family:var(--font-head);font-size:var(--fs-4);margin:.2rem 0 1rem;}
 .opt-row{display:flex;gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line-soft);}
 .opt-row:last-child{border-bottom:none;}
-.opt-ty{flex:0 0 4.4rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);padding-top:.2rem;}
-.opt-ty.gem{color:var(--accent);}
+.opt-ty{flex:0 0 4.4rem;align-self:flex-start;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);text-align:center;padding:.24rem .35rem;border-radius:8px;background:var(--line-soft);line-height:1.2;}
+.opt-ty.ty-see{color:#5AA9E6;background:rgba(90,169,230,.16);}
+.opt-ty.ty-eat{color:#F2B33D;background:rgba(242,179,61,.16);}
+.opt-ty.ty-do{color:#3AD6A0;background:rgba(58,214,160,.16);}
+.opt-ty.ty-tip{color:var(--muted);background:var(--line-soft);}
+.opt-ty.gem{color:var(--accent-tx);background:var(--wash);}
 .opt-b{flex:1;display:flex;flex-direction:column;gap:.25rem;}
 .opt-b .ol{font-weight:600;font-size:.95rem;}
 .opt-b .od{font-size:.86rem;color:var(--dim);line-height:1.5;}
 
 .match{border:1px solid var(--line);border-left:2px solid var(--accent);background:linear-gradient(105deg,var(--wash),var(--panel));padding:1.5rem 1.6rem;margin:1.9rem 0;}
 .match .mk{text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;font-weight:600;color:var(--accent);}
-.match h3{font-family:var(--font-head);font-weight:400;font-size:1.9rem;line-height:1.04;margin:.4rem 0 0;}
+.match h3{font-family:var(--font-head);font-weight:400;font-size:var(--fs-3);line-height:1.04;margin:.4rem 0 0;}
 .match p{color:var(--muted);margin:.8rem 0 0;font-size:.96rem;}
 .match p strong{color:var(--ink);font-weight:600;}
 .match .go{display:inline-block;margin-top:1.1rem;color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:2px;letter-spacing:.02em;}
 .match .go:hover{color:var(--accent);}
 
 .card{background:var(--panel);border:1px solid var(--line-soft);padding:1.3rem 1.4rem;}
-.card h3{font-family:var(--font-head);font-weight:400;font-size:1.5rem;margin:0 0 .5rem;}
+.card h3{font-family:var(--font-head);font-weight:400;font-size:var(--fs-4);margin:0 0 .5rem;}
 .card p{color:var(--muted);margin:0;font-size:.96rem;}
 .card p strong{color:var(--ink);font-weight:600;}
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:1rem;}
@@ -344,7 +321,7 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-heig
 
 /* map pills */
 .maps{display:inline-flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap;}
-.maps a{font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--accent);border:1px solid var(--line);padding:.16rem .5rem;border-radius:999px;}
+.maps a{font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--accent);border:1px solid var(--line);padding:.16rem .5rem;border-radius:var(--r-pill);}
 .maps a:hover{border-color:var(--accent);text-decoration:none;}
 .maps a::before{content:"◍ ";}
 
@@ -352,7 +329,7 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-heig
 .opt{background:var(--panel);padding:1.3rem 1.25rem;position:relative;}
 .opt.pick{background:linear-gradient(160deg,var(--wash),var(--panel));}
 .opt .flag{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;font-weight:700;color:var(--accent);margin-bottom:.5rem;}
-.opt h4{font-family:var(--font-head);font-weight:400;font-size:1.5rem;margin:0 0 .1rem;}
+.opt h4{font-family:var(--font-head);font-weight:400;font-size:var(--fs-4);margin:0 0 .1rem;}
 .opt .m{text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;color:var(--dim);margin-bottom:.6rem;}
 .opt p{margin:0;color:var(--muted);font-size:.9rem;}
 
@@ -378,7 +355,7 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-heig
 .wchip.urgent{background:var(--accent);color:#fff;}
 .wchip.soon{border:1px solid var(--accent);color:var(--accent);}
 .wchip.later{border:1px solid var(--line);color:var(--muted);}
-.pgroup{font-family:var(--font-head);font-weight:400;font-size:1.3rem;margin:1.6rem 0 .7rem;padding-left:.7rem;border-left:2px solid var(--accent);}
+.pgroup{font-family:var(--font-head);font-weight:400;font-size:var(--fs-5);margin:1.6rem 0 .7rem;padding-left:.7rem;border-left:2px solid var(--accent);}
 .needchip{flex-shrink:0;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.18rem .5rem;white-space:nowrap;margin-top:.1rem;border:1px solid var(--accent);color:var(--accent);}
 .citem.chosen{border-color:var(--accent);}
 .citem.from-act{border-left:2px solid var(--accent);}
@@ -413,7 +390,7 @@ th,td{text-align:left;padding:.72rem .85rem;border-bottom:1px solid var(--line-s
 thead th{text-transform:uppercase;letter-spacing:.08em;font-size:.66rem;font-weight:600;color:var(--dim);background:var(--panel-2);}
 td.num,th.num{text-align:right;}
 tbody td strong{font-weight:600;}
-.actual{font-family:var(--font-body);font-size:16px;width:5.5rem;text-align:right;background:var(--panel-2);border:1px solid var(--line);padding:.3rem .4rem;color:var(--ink);border-radius:2px;font-variant-numeric:tabular-nums;}
+.actual{font-family:var(--font-body);font-size:16px;width:5.5rem;text-align:right;background:var(--panel-2);border:1px solid var(--line);padding:.3rem .4rem;color:var(--ink);border-radius:var(--r-sm);font-variant-numeric:tabular-nums;}
 .actual:focus{outline:1px solid var(--accent);border-color:var(--accent);}
 tfoot td{font-weight:600;border-top:2px solid var(--accent);border-bottom:none;font-size:1rem;}
 .hint{font-size:.85rem;color:var(--muted);border-left:2px solid var(--accent);padding:.75rem .95rem;margin:1.1rem 0;background:var(--panel);}
@@ -429,8 +406,7 @@ footer{border-top:1px solid var(--line-soft);margin-top:1rem;}
 
 /* --- polish pass (award bar) --- */
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px;}
-.iconbtn:active,.navitem:active,.daychip:active,.citem:active,.litem:active{transform:scale(.985);}
-.citem,.litem,.daychip,.iconbtn{transition:transform .09s var(--ease),border-color .18s,background .18s,color .18s;}
+
 #tabbar .tab.active svg{animation:tabpop .3s var(--ease);}
 @keyframes tabpop{45%{transform:scale(1.18);}100%{transform:scale(1);}}
 .ct{position:relative;}
@@ -440,21 +416,20 @@ footer{border-top:1px solid var(--line-soft);margin-top:1rem;}
 details[open]>.ac-body,details[open]>.body{animation:accIn .26s var(--ease);}
 @keyframes accIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
 .exp-item .ei-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;}
-.maps a{min-height:30px;display:inline-flex;align-items:center;}
+.maps a{min-height:38px;display:inline-flex;align-items:center;}
+/* a11y: raise primary tap targets toward 44px */
+.iconbtn{min-height:44px;}
+.iconbtn.ico{min-width:44px;display:inline-flex;align-items:center;justify-content:center;}
+.navbtn{min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 main .card + .card{margin-top:1rem;}
-.actual,.iconbtn{border-radius:8px;}
-.countdown{border-radius:10px;}
-.daychip{border-radius:10px;}
+
 @media (prefers-reduced-motion:reduce){.ct::after{transition:none;}#tabbar .tab.active svg,details[open]>.ac-body,details[open]>.body{animation:none;}}
 
-/* rounded corners for coherence */
-.card,.match,.litem,.citem,.acc,.hint,.leg{border-radius:10px;}
+/* clip grouped containers; their radius comes from the --r-lg / --r-md rules */
 .acc,.leg,.tablebox,.facts,.tips,.bmeta,.exp-tot,.compare{overflow:hidden;}
-.facts,.tips,.bmeta,.exp-tot,.compare,.tablebox{border-radius:10px;}
 
 @media (max-width:520px){
-  h1.title{font-size:2.3rem;}
-  h2.title{font-size:1.85rem;}
+  :root{--fs-1:2.3rem;--fs-2:1.85rem;}
   .day{grid-template-columns:4.2rem 1fr;gap:.8rem;}
   .mast .brand{font-size:1.3rem;}
 }
@@ -462,10 +437,10 @@ main .card + .card{margin-top:1rem;}
 html{background:var(--bg);height:100%;}
 header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
 #tabbar{background:transparent;}
-.card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--shadow-card);}
-.dchip{border-radius:16px;}
-button,.tab,.navitem,.dchip,.fl-row2,.iconbtn,.go,.opt{transition:transform .12s var(--ease),background .2s,border-color .2s;}
-button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active{transform:scale(.975);}
+.card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);}
+/* unified press feedback: one transition rule + one :active scale for every interactive element */
+button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row{transition:transform .12s var(--ease),background .2s,border-color .2s,color .18s;}
+button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active{transform:scale(.97);}
 /* ===== LUX home concept ===== */
 .lx-hero{padding:0;}
 .lx-kick{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-tx);font-weight:600;}
@@ -474,7 +449,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 .lx-lab{font-size:.95rem;color:var(--muted);}
 .lx-meta{font-size:.76rem;color:var(--dim);margin-top:2px;}
 .lx-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 10px;}
-.lx-chip{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line-soft);border-radius:15px;padding:8px 12px;cursor:pointer;text-align:left;font-family:inherit;color:var(--ink);}
+.lx-chip{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-md);padding:8px 12px;cursor:pointer;text-align:left;font-family:inherit;color:var(--ink);}
 .lx-ring{--p:0;width:36px;height:36px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0);}
 .lx-ring i{width:29px;height:29px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:.6rem;font-weight:700;font-style:normal;color:var(--ink);font-variant-numeric:tabular-nums;}
 .lx-ck{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);display:block;}
@@ -491,12 +466,10 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 .lx-pr{text-align:right;flex:0 0 auto;}
 .lx-p{font-family:var(--font-head);font-size:1.18rem;line-height:1;font-variant-numeric:tabular-nums;display:block;}
 /* lux cohesion across screens */
-.day,.opt,.litem,.citem,.hint,.lgroup{border-radius:15px;}
+.day,.opt,.litem,.citem,.hint,.lgroup{border-radius:var(--r-md);}
 .day,.opt,.hint{background:var(--panel);border:1px solid var(--line-soft);box-shadow:0 14px 34px -28px rgba(0,0,0,.75);}
-.litem,.citem,.day,.opt{transition:transform .12s var(--ease);}
-.day:active,.opt:active,.litem:active,.citem:active{transform:scale(.985);}
 .lx-p.deal{color:#3AD6A0;} .lx-p.near{color:#F2B33D;}
-.lx-pill{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 7px;border-radius:999px;margin-top:5px;}
+.lx-pill{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 7px;border-radius:var(--r-pill);margin-top:5px;}
 .lx-pill.over{background:var(--line);color:var(--muted);}
 .lx-pill.near{background:rgba(242,179,61,.16);color:#F2B33D;}
 .lx-pill.deal{background:rgba(58,214,160,.16);color:#3AD6A0;}
@@ -512,7 +485,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 .fs-cta{display:block;margin-top:16px;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:14px;}
 </style>
 
-<canvas id="dotsbg"></canvas>
+<canvas id="dotsbg" aria-hidden="true"></canvas>
 
 <header class="top">
   <div class="mast">
@@ -550,33 +523,42 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     <p class="lead rv">Tap a leg to expand it. <span class="tag sport">Sport</span> and <span class="tag kids">Kids</span> mark the highlights; the map pills open turn-by-turn navigation.</p>
 
     <details class="leg rv" open>
-      <summary><span class="num">1</span><span class="lt">Barcelona</span><span class="ld">Aug 12&ndash;15<br>3 nights &middot; car parked</span><span class="chev">&rsaquo;</span></summary>
+      <summary><span class="num">1</span><span class="lt">Madrid</span><span class="ld">Aug 15&ndash;18<br>4 nights &middot; match 1</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
-        <p class="why">Land, grab the car at the airport, and let the city do the work. You won't need it day-to-day in Barcelona (park at the hotel), but it's ready for the drive to Madrid.</p>
-        <div class="day"><div class="when">Tue 11<small>overnight</small></div><div><p>Evening Air Canada flight from Montréal (YUL).</p></div></div>
-        <div class="day"><div class="when">Wed 12</div><div><p>Arrive Barcelona in the morning. Pick up the rental car at the airport, drop bags at the hotel. Easy afternoon in the Gothic Quarter, gelato, early dinner. Jet-lag day, keep it light.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barcelona+El+Prat+Airport" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barcelona+El+Prat+Airport" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Thu 13</div><div><p><span class="tag kids">Kids</span><strong>Sagrada Família</strong> in the morning (timed tickets, book early), then Park Güell in the late afternoon when the heat drops. Tapas in Gràcia.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Fri 14</div><div><p><span class="tag kids">Kids</span>Beach morning at Barceloneta, lunch at La Boqueria market, Montjuïc cable car for the view, Magic Fountain show after dark. Optional <span class="tag sport">Sport</span> Camp Nou tour.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-      </div>
-    </details>
-
-    <details class="leg rv">
-      <summary><span class="num">2</span><span class="lt">Drive to Madrid</span><span class="ld">Aug 15<br>via Zaragoza</span><span class="chev">&rsaquo;</span></summary>
-      <div class="body">
-        <p class="why">About 6 h on the AP-2/A-2, Zaragoza at the midpoint. Leave Barcelona early so you're settled in Madrid in good time for the match weekend.</p>
-        <div class="day"><div class="when">Sat 15</div><div><p>Check out, drive ~3 h to <strong>Zaragoza</strong>: lunch by the Plaza del Pilar, a look inside the basilica. Then ~3 h to Madrid. Book hotel parking ahead (central Madrid is a low-emission zone).<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+El+Prat+Airport&destination=Madrid+Spain&waypoints=Zaragoza+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Barcelona&daddr=Zaragoza+to+Madrid&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
-      </div>
-    </details>
-
-    <details class="leg rv">
-      <summary><span class="num">3</span><span class="lt">Madrid</span><span class="ld">Aug 15&ndash;19<br>4 nights</span><span class="chev">&rsaquo;</span></summary>
-      <div class="body">
-        <p class="why">The heart of the trip: the Real Madrid opener, the Bernabéu tour, and a day trip to Segovia.</p>
-        <div class="day"><div class="when">Sat 15</div><div><p>Arrive from the drive, settle in. Evening at Plaza Mayor and the San Miguel market.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Sun 16</div><div><p><span class="tag sport">Sport</span><strong>Match day (weekend 15&ndash;16): Real Madrid vs Real Sociedad</strong> at the Bernabéu, you and your son. Buy the moment tickets open and watch for the confirmed kickoff.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Santiago+Bernabeu+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Mon 17</div><div><p><span class="tag kids">Kids</span><strong>Day trip to Segovia</strong> (~1 h drive): the Roman aqueduct and the Alcázar castle. Leave early, siesta through the heat, rooftop dinner.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Madrid&daddr=Segovia&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
+        <p class="why">Land, pick up the car, and settle into the capital. This is the football heart of the trip: the Real Madrid home opener, the Bernabéu tour, and a day trip out to Segovia or Toledo.</p>
+        <div class="day"><div class="when">Fri 14<small>overnight</small></div><div><p>Evening Air Canada flight from Montréal (YUL).</p></div></div>
+        <div class="day"><div class="when">Sat 15</div><div><p>Arrive Madrid around midday. Pick up the Alamo rental car at the airport, drop bags at the hotel. Easy first evening at Plaza Mayor and the San Miguel market. Jet-lag day, keep it light.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Sun 16</div><div><p><span class="tag sport">Sport</span><strong>Match 1: Real Madrid vs Real Sociedad</strong> at the Santiago Bernabéu, you and your son. La Liga matchday 1, the home opener. Buy the moment tickets open.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Santiago+Bernabeu+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Mon 17</div><div><p><span class="tag kids">Kids</span><strong>Day trip to Segovia</strong> (~1 h drive): the Roman aqueduct and the Alcázar castle. Or swap in Toledo (~45 min). Leave early, siesta through the heat, rooftop dinner.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Madrid&daddr=Segovia&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
         <div class="day"><div class="when">Tue 18</div><div><p><strong>Bernabéu stadium tour + museum</strong> in the morning; then Retiro Park rowboats, the Prado (free under 18), churros at San Ginés.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Parque+del+Retiro+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Parque+del+Retiro+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Wed 19</div><div><p>Drop the car at Madrid-Barajas airport, fly home to Montréal.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Adolfo+Suarez+Madrid+Barajas+Airport&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Madrid&daddr=Madrid+Barajas+Airport&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
+      </div>
+    </details>
+
+    <details class="leg rv">
+      <summary><span class="num">2</span><span class="lt">Madrid to Barcelona</span><span class="ld">Aug 19<br>AVE high-speed train</span><span class="chev">&rsaquo;</span></summary>
+      <div class="body">
+        <p class="why">No long drive: the AVE covers Madrid to Barcelona in about 2 h 30. Return the car first, then relax in the seat and watch the country slide by.</p>
+        <div class="day"><div class="when">Wed 19</div><div><p>Return the Alamo car in Madrid, then board the <strong>AVE from Atocha to Barcelona Sants</strong> (~2 h 30). Check in, then an easy evening in the Gothic Quarter with gelato and an early dinner.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barcelona+Sants+Station" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barcelona+Sants+Station" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+      </div>
+    </details>
+
+    <details class="leg rv">
+      <summary><span class="num">3</span><span class="lt">Barcelona</span><span class="ld">Aug 19&ndash;23<br>5 nights &middot; match 2</span><span class="chev">&rsaquo;</span></summary>
+      <div class="body">
+        <p class="why">Gaudí, the beach, and a second match: Real Madrid away at Espanyol. Getting around is all metro and train here, so the car stays behind in Madrid.</p>
+        <div class="day"><div class="when">Thu 20</div><div><p><span class="tag kids">Kids</span><strong>Sagrada Família</strong> in the morning (timed tickets, book early), then Park Güell in the late afternoon when the heat drops. Tapas in Gràcia.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Fri 21</div><div><p><span class="tag kids">Kids</span>Beach morning at Barceloneta, lunch at La Boqueria market, Montjuïc cable car for the view, Magic Fountain show after dark.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Sat 22</div><div><p><span class="tag kids">Kids</span><strong>Montserrat by train</strong> (R5 line from Plaça Espanya, ~1 h plus the cable car): the mountaintop monastery and easy walks with big views. Back for a relaxed evening.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Montserrat+Monastery+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Montserrat+Monastery+Spain" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Sun 23</div><div><p><span class="tag sport">Sport</span><strong>Match 2: Espanyol vs Real Madrid</strong> at RCDE Stadium in Cornellà, Real Madrid away. La Liga matchday 2. Visitor allocation is limited, so grab away tickets the moment they are released. Reachable by train and tram.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=RCDE+Stadium+Cornella" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=RCDE+Stadium+Cornella" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+      </div>
+    </details>
+
+    <details class="leg rv">
+      <summary><span class="num">4</span><span class="lt">Madrid &amp; home</span><span class="ld">Aug 24&ndash;25<br>AVE back, fly home</span><span class="chev">&rsaquo;</span></summary>
+      <div class="body">
+        <p class="why">Loop back to Madrid on the AVE for one last night, then the flight home to Montréal.</p>
+        <div class="day"><div class="when">Mon 24</div><div><p>Morning <strong>AVE from Barcelona Sants back to Madrid</strong> (~2 h 30). A last relaxed afternoon: souvenirs, a final churros run at San Ginés, an early dinner near the hotel.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Madrid+Atocha+Station" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Madrid+Atocha+Station" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Tue 25</div><div><p>Fly home to Montréal from Madrid-Barajas.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener">Apple</a></span></p></div></div>
       </div>
     </details>
   </section>
@@ -597,25 +579,33 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     <p class="lead rv">The moving parts, with one-tap navigation. Map links open in Google or Apple Maps.</p>
 
     <div class="lgroup rv">
-      <h3>The drive</h3>
-      <p class="gsub">Barcelona airport → Zaragoza (lunch) → Madrid, ~6 h total on the AP-2/A-2.</p>
-      <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+El+Prat+Airport&destination=Adolfo+Suarez+Madrid+Barajas+Airport&waypoints=Zaragoza+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Full route in Google Maps</span><span class="ld2">BCN airport · Zaragoza · Madrid, one tap</span></span><span class="lg2">Open →</span></a>
-      <a class="litem" href="https://maps.apple.com/?saddr=Barcelona+El+Prat+Airport&daddr=Zaragoza+to+Madrid&dirflg=d" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Full route in Apple Maps</span><span class="ld2">Same route, Apple Maps</span></span><span class="lg2">Open →</span></a>
+      <h3>Getting there</h3>
+      <p class="gsub">Round-trip flights into and out of Madrid. No open-jaw, no Barcelona airport.</p>
+      <a class="litem" href="https://www.aircanada.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Air Canada · round trip</span><span class="ld2">YUL to Madrid (dep Aug 14 pm, arr Aug 15) · Madrid to YUL Aug 25 · conf A014813813</span></span><span class="lg2">Open →</span></a>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid-Barajas (MAD)</span><span class="ld2">Arrival and departure airport · metro L8 or Cercanías to the centre</span></span><span class="lg2">Map →</span></a>
     </div>
 
     <div class="lgroup rv">
-      <h3>Flights &amp; car</h3>
-      <a class="litem" href="https://www.aircanada.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Air Canada</span><span class="ld2">YUL → Barcelona (Aug 11), Madrid → YUL (Aug 19). Open-jaw.</span></span><span class="lg2">Open →</span></a>
-      <a class="litem" href="https://www.hertz.ca/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Hertz Canada</span><span class="ld2">One-way, your 25% discount · pick up Barcelona airport Aug 12, drop Madrid airport Aug 19</span></span><span class="lg2">Open →</span></a>
-      <a class="litem" href="https://www.caaquebec.com/en/on-the-road/services/international-driving-permit/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">CAA · International Driving Permit</span><span class="ld2">Required to drive in Spain · ~$35 each, both drivers</span></span><span class="lg2">Open →</span></a>
+      <h3>AVE train between cities</h3>
+      <p class="gsub">High-speed rail joins Madrid and Barcelona in about 2 h 30, city centre to city centre. Book ahead for the best fares.</p>
+      <a class="litem" href="https://www.renfe.com/es/en" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Renfe · book AVE seats</span><span class="ld2">Madrid to Barcelona Aug 19 · Barcelona to Madrid Aug 24 · reserve early</span></span><span class="lg2">Open →</span></a>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Madrid+Puerta+de+Atocha+station" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid Puerta de Atocha</span><span class="ld2">Madrid AVE terminal · arrive ~30 min early for bag screening</span></span><span class="lg2">Map →</span></a>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Barcelona+Sants+station" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Barcelona Sants</span><span class="ld2">Barcelona AVE terminal · metro L3/L5 into the city</span></span><span class="lg2">Map →</span></a>
     </div>
 
     <div class="lgroup rv">
-      <h3>Key transfers</h3>
-      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Barcelona+El+Prat+Airport" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Barcelona airport → your hotel</span><span class="ld2">Car pickup on arrival, Aug 12</span></span><span class="lg2">Map →</span></a>
-      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Santiago Bernabéu</span><span class="ld2">Match + stadium tour · metro L10 Santiago Bernabéu</span></span><span class="lg2">Map →</span></a>
+      <h3>The car (Madrid only)</h3>
+      <p class="gsub">Alamo, picked up and returned at Madrid-Barajas. It is for the Madrid-area day trips only; there is no driving between Madrid and Barcelona.</p>
+      <a class="litem" href="https://www.alamo.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Alamo · round trip in Madrid</span><span class="ld2">Pick up Aug 15 at Barajas · return same airport Aug 25</span></span><span class="lg2">Open →</span></a>
+      <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Toledo+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Toledo</span><span class="ld2">Day trip, ~45 min drive</span></span><span class="lg2">Route →</span></a>
       <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Segovia</span><span class="ld2">Day trip, ~1 h drive</span></span><span class="lg2">Route →</span></a>
-      <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Adolfo+Suarez+Madrid+Barajas+Airport&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Barajas airport</span><span class="ld2">Car drop + fly home, Aug 19</span></span><span class="lg2">Route →</span></a>
+      <a class="litem" href="https://www.caaquebec.com/en/on-the-road/services/international-driving-permit/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">CAA · International Driving Permit</span><span class="ld2">Carry with your licence to drive in Spain · ~$35 each, both drivers</span></span><span class="lg2">Open →</span></a>
+    </div>
+
+    <div class="lgroup rv">
+      <h3>Match-day transport</h3>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Santiago Bernabéu (Madrid)</span><span class="ld2">Real Madrid vs Real Sociedad · metro L10 to Santiago Bernabéu</span></span><span class="lg2">Map →</span></a>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=RCDE+Stadium+Cornella" target="_blank" rel="noopener"><span class="lm"><span class="lt2">RCDE Stadium (Cornellà)</span><span class="ld2">Espanyol vs Real Madrid · FGC from Plaça Espanya to Cornellà-Riera, ~20 min, then a short walk</span></span><span class="lg2">Map →</span></a>
     </div>
 
     <div class="lgroup rv">
@@ -632,7 +622,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
       <a class="litem" href="tel:112"><span class="lm"><span class="lt2">Emergencies: 112</span><span class="ld2">One number for police, ambulance and fire. Tap to call.</span></span><span class="lg2">Call →</span></a>
       <div class="litem"><span class="lm"><span class="lt2">Meals run late</span><span class="ld2">Lunch around 2pm, dinner around 9pm. Many shops shut 2–5pm for siesta.</span></span></div>
       <div class="litem"><span class="lm"><span class="lt2">Watch for pickpockets</span><span class="ld2">Barcelona metro and La Rambla mainly. Bag in front, one card kept separate.</span></span></div>
-      <div class="litem"><span class="lm"><span class="lt2">Low-emission zones</span><span class="ld2">Don’t drive central Barcelona or Madrid. Park at the hotel; walk or take the metro.</span></span></div>
+      <div class="litem"><span class="lm"><span class="lt2">Low-emission zones</span><span class="ld2">Madrid has a central low-emission zone (ZBE). Keep the car for day trips; park at the hotel and ride metro L10.</span></span></div>
       <div class="litem"><span class="lm"><span class="lt2">Money &amp; water</span><span class="ld2">Tap water is safe. Tipping is modest: round up, 5–10% for good service.</span></span></div>
     </div>
   </section>
@@ -651,6 +641,15 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
       <div class="opt"><h4>Toledo</h4><div class="m">~45 min drive</div><p>The closest and most dramatic: a whole medieval city on a hill, huge cathedral, sword and armour shops, marzipan. Steeper to walk.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Toledo+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Toledo+Spain" target="_blank" rel="noopener">Apple</a></span></div>
       <div class="opt"><h4>El Escorial</h4><div class="m">~50 min drive</div><p>A colossal royal monastery-palace in the cooler hills northwest of Madrid. Grand and shady on a scorching day. Least fun of the four for kids.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=El+Escorial+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=El+Escorial+Spain" target="_blank" rel="noopener">Apple</a></span></div>
       <div class="opt"><h4>Ávila</h4><div class="m">~1 h 15 drive</div><p>The most complete medieval walls in Europe: walk the whole way around on the ramparts. Great for kids who like to climb. A bit farther.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Avila+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Avila+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+    </div>
+    <h2 class="title rv" style="font-size:1.5rem;margin-top:2.4rem">Day trips from Barcelona</h2>
+    <div class="rule rv"></div>
+    <p class="lead rv">All reachable car-free by train. Chosen: <strong style="color:var(--ink)">Montserrat</strong> on the R5 line. The rest are easy swaps.</p>
+    <div class="compare rv">
+      <div class="opt pick"><div class="flag">Chosen</div><h4>Montserrat</h4><div class="m">~1 h · R5 train</div><p>A jagged holy mountain: the Benedictine abbey, the Black Madonna, and a rack railway or cable car up. Take the R5 from Plaça Espanya, no car needed.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Montserrat+Monastery" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Montserrat+Monastery" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Sitges</h4><div class="m">~40 min · Rodalies</div><p>A pretty beach town down the coast with calm swimming and a seafront promenade. Easy half day when everyone wants sand and gelato.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sitges+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sitges+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Girona</h4><div class="m">~40 min · high-speed</div><p>Medieval walls you can walk, a colourful riverfront, and the cathedral steps from Game of Thrones. Fast train from Sants.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Girona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Girona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Tarragona</h4><div class="m">~1 h · Rodalies</div><p>A Roman amphitheatre right by the sea, plus ruins scattered through town. History with a beach payoff for the kids.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Tarragona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Tarragona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
     </div>
   </section>
 
@@ -726,7 +725,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
   <button class="tab" id="tabMore" aria-label="More"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="tl">More</span></button>
 </nav>
 
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -757,7 +756,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     'Casa Batllo Barcelona':'https://www.casabatllo.es/en/','Spotify Camp Nou Barcelona':'https://www.fcbarcelona.com/en/tickets','Tibidabo Barcelona':'https://www.tibidabo.cat/en','CosmoCaixa Barcelona':'https://cosmocaixa.org/en/',
     'Parque Warner Madrid':'https://www.parquewarner.com/en','Palacio Real de Madrid':'https://www.patrimonionacional.es/en/real-sitio/palacio-real-de-madrid','Teleferico de Madrid':'https://teleferico.emtmadrid.es/','Faunia Madrid':'https://www.faunia.es/en',
     'Barcelona Cathedral':'https://catedralbcn.org/','MUHBA Placa del Rei Barcelona':'https://www.barcelona.cat/museuhistoria/en','Sagrada Familia Barcelona':'https://sagradafamilia.org/en/','Park Güell Barcelona':'https://parkguell.barcelona/en','Hospital de Sant Pau Barcelona':'https://www.santpaubarcelona.org/en',
-    'Mercat de la Boqueria Barcelona':'https://www.boqueria.barcelona/','Montjuïc Cable Car Barcelona':'https://www.telefericdemontjuic.cat/en/','Refugi 307 Barcelona':'https://www.barcelona.cat/museuhistoria/en/muhba-refugi-307','Basílica del Pilar Zaragoza':'https://www.basilicadelpilar.es/',
+    'Mercat de la Boqueria Barcelona':'https://www.boqueria.barcelona/','Montjuïc Cable Car Barcelona':'https://www.telefericdemontjuic.cat/en/','Refugi 307 Barcelona':'https://www.barcelona.cat/museuhistoria/en/muhba-refugi-307','Montserrat Monastery':'https://www.montserratvisita.com/en/',
     'Santiago Bernabeu Madrid':'https://www.realmadrid.com/en-US/tickets','Círculo de Bellas Artes Madrid':'https://www.circulobellasartes.com/','Aqueduct of Segovia':'https://turismodesegovia.com/en/','Alcázar of Segovia':'https://www.alcazardesegovia.com/en/',
     'Palacio Real de La Granja de San Ildefonso':'https://www.patrimonionacional.es/en/real-sitio/palacio-real-de-la-granja-de-san-ildefonso','Mesón de Cándido Segovia':'https://www.mesondecandido.es/en/','Museo del Prado Madrid':'https://www.museodelprado.es/en','Chocolatería San Ginés Madrid':'https://chocolateriasangines.com/'
   };
@@ -809,6 +808,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     document.querySelectorAll('#tabbar .tab[data-view]').forEach(function(b){var m=b.getAttribute('data-view')===name;b.classList.toggle('active',m);b.setAttribute('aria-current',m?'page':'false');});
     var mt=document.getElementById('tabMore');if(mt)mt.classList.toggle('active',PRIMARY.indexOf(name)<0);
     views.forEach(function(v){v.classList.toggle('active',v.id===name);});
+    if(name==='byday'){centerDayChip();}
     var t=document.getElementById('secTitle');if(t)t.textContent=(name==='apercu'?'Spain Vacation Planner':(NAVMAP[name]||''));
     set('spain_tab',name);closeDrawer();
     var mn=document.querySelector('main');if(mn)mn.scrollTop=0;
@@ -965,14 +965,26 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
   ];
   var curDay=parseInt(get('spain_day',15),10);
   function selectDay(d){curDay=d;set('spain_day',d);renderDaySel();renderDay(d);show('byday');}
+  function centerDayChip(){
+    var box=document.getElementById('daysel');if(!box)return;
+    var act=box.querySelector('.daychip.active');if(!act)return;
+    requestAnimationFrame(function(){
+      var br=box.getBoundingClientRect(),ar=act.getBoundingClientRect();
+      box.scrollLeft+=(ar.left-br.left)-(box.clientWidth-ar.width)/2;
+    });
+  }
   function renderDaySel(){
     var box=document.getElementById('daysel');if(!box)return;box.innerHTML='';
     DAYS.forEach(function(x){
-      var el=document.createElement('div');el.className='daychip'+(x.d===curDay?' active':'');
+      var sel=x.d===curDay;
+      var el=document.createElement('button');el.type='button';el.className='daychip'+(sel?' active':'');
+      el.setAttribute('aria-pressed',sel?'true':'false');
+      el.setAttribute('aria-label','August '+x.d+', '+x.lab);
       el.innerHTML='<div class="dn">'+x.d+'</div><div class="dl">'+x.lab+'</div>';
       el.addEventListener('click',function(){curDay=x.d;set('spain_day',x.d);renderDaySel();renderDay(x.d);});
       box.appendChild(el);
     });
+    centerDayChip();
   }
   function renderDay(d){
     var box=document.getElementById('day-detail');if(!box)return;
@@ -982,7 +994,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     day.opts.forEach(function(o){
       var row=document.createElement('div');row.className='opt-row';
       var maps=pills(o.q,o.w);
-      row.innerHTML='<span class="opt-ty'+(o.ty==='Gem'?' gem':'')+'">'+(o.ty==='Gem'?'Hidden gem':o.ty)+'</span><span class="opt-b"><span class="ol"></span><span class="od"></span>'+maps+'</span>';
+      row.innerHTML='<span class="opt-ty ty-'+o.ty.toLowerCase()+(o.ty==='Gem'?' gem':'')+'">'+(o.ty==='Gem'?'Hidden gem':o.ty)+'</span><span class="opt-b"><span class="ol"></span><span class="od"></span>'+maps+'</span>';
       row.querySelector('.ol').textContent=o.label;row.querySelector('.od').textContent=o.desc;
       box.appendChild(row);
     });
@@ -990,34 +1002,37 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 
   /* checklist */
   var CHECK=[
-    {w:'urgent',t:'Book the Air Canada flights',n:'Open-jaw: into Barcelona (Aug 11), out of Madrid (Aug 19). Mid-August fares are high, lock it in.'},
-    {w:'urgent',t:'Create your realmadrid.com account',n:'Needed for the opener (Matchday 1) ticket sale; two seats, you and your son. Decide on Madridista membership.'},
-    {w:'urgent',t:'Book hotels on refundable rates',n:'Madrid opening weekend first (high demand), then Barcelona.'},
-    {w:'soon',t:'Hertz one-way booking with 25% discount',n:'Pick up Barcelona airport Aug 12, drop Madrid airport Aug 19. Confirm the one-way fee.'},
-    {w:'soon',t:'Sagrada Família timed tickets (Aug 13)',n:'They genuinely sell out in August.'},
-    {w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, ~$35 each: required with your licence in Spain.'},
-    {w:'soon',t:'Book hotel parking in Madrid',n:'Central Madrid is a camera-enforced low-emission zone.'},
-    {w:'later',t:'Bernabéu stadium tour (Aug 18)',n:'The tour is separate from the match; book the non-match day.'},
+    {w:'urgent',t:'Buy Real Madrid vs Real Sociedad tickets',n:'Matchday 1 at the Bernabéu, home game around Aug 16. Create your realmadrid.com account and grab seats for the family the moment sales open; La Liga confirms the exact Sat 16 vs Sun 17 kickoff in early August.'},
+    {w:'urgent',t:'Chase Espanyol vs Real Madrid away tickets',n:'Matchday 2 at RCDE Stadium in Cornellà near Barcelona, around Aug 23. Real Madrid are the visitors, so seats come from a limited away allocation that may not open to the public. Uncertain: line up a backup plan.'},
+    {w:'urgent',t:'Book both hotels on refundable rates',n:'Madrid for Aug 15-18 and again Aug 24-25, plus Barcelona for Aug 19-23. Lock the Madrid opening weekend first, it is the tightest.'},
+    {w:'urgent',t:'Book both AVE train tickets',n:'Madrid to Barcelona on Aug 19 and Barcelona back to Madrid on Aug 24. Renfe releases seats about 60 days out; reserve early for the best fares and seats together.'},
+    {w:'soon',t:'Sagrada Família timed tickets',n:'Pick a slot during the Barcelona stay (Aug 19-23). They genuinely sell out in August.'},
+    {w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, about $35 each. Required alongside your licence for the Alamo rental in Spain.'},
+    {w:'soon',t:'Book hotel parking in Madrid',n:'For the Alamo car on your Madrid days. Central Madrid is a camera-enforced low-emission zone.'},
+    {w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 17.'},
     {w:'later',t:'Park Güell timed entry',n:'The monumental zone requires a reservation.'},
     {w:'later',t:'Set up the phone eSIMs',n:'Airalo/Holafly: activate before you leave.'},
-    {w:'later',t:'Watch for the confirmed kickoff (~Aug 1)',n:'La Liga sets Sat 15 vs Sun 16; buy opener tickets the moment sales open.'}
+    {w:'later',t:'Flights booked (Air Canada, conf A014813813)',n:'Done: round-trip YUL to Madrid, out Aug 14 evening, home from Madrid Aug 25. Reconfirm seats and do online check-in 24h before.'},
+    {w:'later',t:'Rental car booked (Alamo, Madrid)',n:'Done: picked up and returned in Madrid for the Toledo and Segovia day trips. No car needed between cities, the AVE covers Madrid to Barcelona.'},
+    {w:'later',t:'Travel insurance in place',n:'Done: confirm it covers all four of you for the full Aug 14-25 window.'}
   ];
   var wOrder={urgent:0,soon:1,later:2},wLabel={urgent:'This week',soon:'Soon',later:'Closer'};
   CHECK.sort(function(a,b){return wOrder[a.w]-wOrder[b.w];});
 
   var ACTIVITIES=[
+    {city:'Madrid',items:[
+      {id:'mad-warner',label:'Parque Warner Madrid',desc:'Big theme park, great for ages 9 to 12, about 30 min from the city by car.',q:'Parque Warner Madrid',book:{t:'Parque Warner Madrid tickets',n:'Cheaper online ahead; plan a full day.',w:'later'}},
+      {id:'mad-palais',label:'Royal Palace of Madrid',desc:'The largest palace in Western Europe, state rooms and armoury.',q:'Palacio Real de Madrid',book:{t:'Royal Palace of Madrid tickets',n:'Early slot to skip the line.',w:'later'}},
+      {id:'mad-teleferico',label:'Madrid cable car',desc:'Over the Casa de Campo, nice view. Walk-in.',q:'Teleferico de Madrid',book:null},
+      {id:'mad-faunia',label:'Faunia (wildlife park)',desc:'Zoo by ecosystems, partly covered. Walk-in.',q:'Faunia Madrid',book:null}
+    ]},
     {city:'Barcelona',items:[
       {id:'bcn-batllo',label:'Casa Batlló or La Pedrera',desc:'Gaudí houses, immersive audio-guided visit.',q:'Casa Batllo Barcelona',book:{t:'Casa Batlló / La Pedrera tickets',n:'Timed, book online ahead.',w:'later'}},
-      {id:'bcn-campnou',label:'Camp Nou tour (FC Barcelona)',desc:'The stadium and museum, the Catalan rival’s side.',q:'Spotify Camp Nou Barcelona',book:{t:'Camp Nou tour tickets',n:'Book online, time slots.',w:'later'}},
+      {id:'bcn-montserrat',label:'Montserrat day trip (rack railway)',desc:'Serrated mountain an hour out: the Benedictine abbey and the Cremallera rack train up. Car-free on the R5 line from Plaça Espanya.',q:'Montserrat Monastery',book:{t:'Montserrat combined rail + rack railway ticket',n:'Buy the TransMontserrat / TotMontserrat combo online; start early.',w:'later'}},
+      {id:'bcn-campnou',label:'Camp Nou tour (FC Barcelona)',desc:'The stadium and museum, the Catalan rivals’ side.',q:'Spotify Camp Nou Barcelona',book:{t:'Camp Nou tour tickets',n:'Book online, time slots.',w:'later'}},
       {id:'bcn-tibidabo',label:'Tibidabo amusement park',desc:'Old amusement park atop the mountain, city view. Walk-in.',q:'Tibidabo Barcelona',book:null},
       {id:'bcn-cosmo',label:'CosmoCaixa (science museum)',desc:'Big interactive museum with an indoor rainforest. Great in the heat. Walk-in.',q:'CosmoCaixa Barcelona',book:null},
       {id:'bcn-catamaran',label:'Catamaran outing',desc:'A few hours on the Mediterranean from Port Vell.',q:'Port Vell Barcelona',book:{t:'Book the catamaran outing (Barcelona)',n:'Tickets online; aim for late afternoon.',w:'later'}}
-    ]},
-    {city:'Madrid',items:[
-      {id:'mad-warner',label:'Parque Warner Madrid',desc:'Big theme park, great for ages 9 to 12, 30 min from the city.',q:'Parque Warner Madrid',book:{t:'Parque Warner Madrid tickets',n:'Cheaper online ahead; plan a full day.',w:'later'}},
-      {id:'mad-palais',label:'Royal Palace of Madrid',desc:'The largest palace in Western Europe, state rooms.',q:'Palacio Real de Madrid',book:{t:'Royal Palace of Madrid tickets',n:'Early slot to skip the line.',w:'later'}},
-      {id:'mad-teleferico',label:'Madrid cable car',desc:'Over the Casa de Campo, nice view. Walk-in.',q:'Teleferico de Madrid',book:null},
-      {id:'mad-faunia',label:'Faunia (wildlife park)',desc:'Zoo by ecosystems, partly covered. Walk-in.',q:'Faunia Madrid',book:null}
     ]}
   ];
 
@@ -1078,12 +1093,13 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 
   /* budget */
   var BUDGET=[
-    {id:'flights',item:'Flights',note:'Air Canada x4, YUL-BCN in / MAD-YUL out (open-jaw)',est:'$4,000-5,200',lo:4000,hi:5200},
-    {id:'lodging',item:'Lodging',note:'7 nights, family rooms/apartments',est:'$1,300-1,700',lo:1300,hi:1700},
-    {id:'car',item:'Car rental',note:'Hertz one-way BCN→MAD ~8 days, 25% off, fuel, tolls, one-way fee',est:'$800-1,050',lo:800,hi:1050},
-    {id:'tickets',item:'Match tickets',note:'2 seats, the opener (you and your son)',est:'$220-360',lo:220,hi:360},
-    {id:'food',item:'Food',note:'~€120-140 per day',est:'$1,400-1,600',lo:1400,hi:1600},
-    {id:'attractions',item:'Attractions and transit',note:'Sagrada, Bernabéu tour, Segovia, metro, parking',est:'$600-850',lo:600,hi:850},
+    {id:'flights',item:'Flights',note:'Air Canada x4, round-trip YUL to Madrid (booked, conf A014813813)',est:'$4,000-5,200',lo:4000,hi:5200},
+    {id:'lodging',item:'Lodging',note:'10 nights, family rooms in Madrid and Barcelona',est:'$1,900-2,600',lo:1900,hi:2600},
+    {id:'car',item:'Car rental',note:'Alamo, round-trip Madrid, ~4 days for the day trips, plus fuel and parking',est:'$350-500',lo:350,hi:500},
+    {id:'train',item:'AVE high-speed train',note:'Madrid to Barcelona and back, family of four, 2 legs',est:'$420-620',lo:420,hi:620},
+    {id:'tickets',item:'Match tickets',note:'2 matches, 2 seats each: Bernabéu opener + Espanyol away (limited allocation)',est:'$500-900',lo:500,hi:900},
+    {id:'food',item:'Food',note:'~€120-150 per day for four',est:'$1,900-2,300',lo:1900,hi:2300},
+    {id:'attractions',item:'Attractions and transit',note:'Sagrada Família, Bernabéu tour, Segovia/Toledo, Montserrat, metro and parking',est:'$600-850',lo:600,hi:850},
     {id:'buffer',item:'Buffer',note:'Souvenirs, surprises, one special dinner',est:'$500',lo:500,hi:500}
   ];
   function money(n){return '$'+Math.round(n).toLocaleString('en-CA');}
@@ -1314,7 +1330,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 10';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 11';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1357,7 +1373,12 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
   addEventListener('resize',function(){size();seed();if(reduce)staticDots();});
   function moveFocus(e){var p=e.touches?e.touches[0]:e;tfx=p.clientX;tfy=p.clientY;}
   addEventListener('mousemove',moveFocus);addEventListener('touchmove',moveFocus,{passive:true});
+  var _lastFrame=0,FRAME_MS=1000/30,_ticking=false;
   function frame(t){
+    if(document.hidden){_ticking=false;return;}
+    requestAnimationFrame(frame);
+    if(t-_lastFrame<FRAME_MS)return;
+    _lastFrame=t;
     fx+=(tfx-fx)*0.05;fy+=(tfy-fy)*0.05;
     tfx+=Math.sin(t*0.0002)*0.6;tfy+=Math.cos(t*0.00017)*0.5;
     cx.clearRect(0,0,innerWidth,innerHeight);
@@ -1378,9 +1399,10 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
       if(em.life<=0||em.y<-10){embers[i]=ember();embers[i].y=innerHeight+10;continue;}
       var ga=Math.min(1,em.life)*(0.6+0.4*Math.sin(t*0.006+em.x));
       cx.beginPath();cx.arc(em.x,em.y,em.r+ga*1.1,0,6.2832);cx.fillStyle='rgba('+COL+','+(0.14+ga*0.36).toFixed(3)+')';cx.fill();}
-    requestAnimationFrame(frame);
   }
-  if(reduce)staticDots();else requestAnimationFrame(frame);
+  function startFrame(){if(!_ticking&&!reduce&&!document.hidden){_ticking=true;_lastFrame=0;requestAnimationFrame(frame);}}
+  document.addEventListener('visibilitychange',startFrame);
+  if(reduce)staticDots();else{_ticking=true;requestAnimationFrame(frame);}
 })();
 </script>
 
