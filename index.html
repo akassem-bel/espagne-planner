@@ -27,6 +27,8 @@
   --panel-2:rgba(237,236,231,0.06);
   --ink:#EDECE7;
   --accent:#F0454C;
+  --accent-tx:#FF5C62;
+  --shadow-card:0 1px 0 rgba(255,255,255,.03) inset,0 18px 38px -28px rgba(0,0,0,.8);
   --accent-deep:#C41E1E;
   --gray:#8A8F86;
   --line:rgba(237,236,231,0.18);
@@ -49,6 +51,8 @@
   --panel-2:rgba(28,28,26,0.055);
   --ink:#1C1C1A;
   --accent:#D0242B;
+  --accent-tx:#D0242B;
+  --shadow-card:0 1px 2px rgba(28,28,26,.06),0 10px 26px -22px rgba(28,28,26,.3);
   --accent-deep:#A81E1E;
   --gray:#6B6F68;
   --line:rgba(28,28,26,0.22);
@@ -458,15 +462,15 @@ main .card + .card{margin-top:1rem;}
 html{background:var(--bg);height:100%;}
 header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
 #tabbar{background:transparent;}
-.card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 18px 38px -28px rgba(0,0,0,.8);}
+.card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--shadow-card);}
 .dchip{border-radius:16px;}
 button,.tab,.navitem,.dchip,.fl-row2,.iconbtn,.go,.opt{transition:transform .12s var(--ease),background .2s,border-color .2s;}
 button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active{transform:scale(.975);}
 /* ===== LUX home concept ===== */
 .lx-hero{padding:0;}
-.lx-kick{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
+.lx-kick{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-tx);font-weight:600;}
 .lx-cd{display:flex;align-items:baseline;gap:9px;margin-top:1px;}
-.lx-num{font-family:var(--font-head);font-size:3rem;line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums;}
+.lx-num{font-family:var(--font-head);font-size:clamp(3.4rem,15vw,4.4rem);line-height:.9;letter-spacing:-.01em;color:var(--accent);font-variant-numeric:tabular-nums;}
 .lx-lab{font-size:.95rem;color:var(--muted);}
 .lx-meta{font-size:.76rem;color:var(--dim);margin-top:2px;}
 .lx-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 10px;}
@@ -520,16 +524,6 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
 </header>
 <div id="scrim"></div>
 <div id="backover"><div class="bo-inner"></div></div>
-<div id="fl-scrim"></div>
-<div id="fl-sheet">
-  <div class="fs-grip"></div>
-  <h4 id="fs-title">Route</h4>
-  <div class="fs-sub" id="fs-sub"></div>
-  <div class="fs-stat"><span>Cheapest now</span><b class="lx-p" id="fs-price"></b></div>
-  <div class="fs-stat"><span>Your target</span><b id="fs-tgt"></b></div>
-  <div class="fs-stat"><span>Airline</span><b id="fs-air"></b></div>
-  <a class="fs-cta" id="fs-cta" href="#" target="_blank" rel="noopener">Open flight search</a>
-</div>
 <aside id="drawer" aria-label="Navigation">
   <div class="draw-head"><div class="dh-b">Spain Vacation Planner</div><div class="dh-m">Aug 11&ndash;19, 2026<span id="synced"></span></div></div>
   <nav id="nav"></nav>
@@ -1259,69 +1253,23 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     var pk=get('spain_pack',{}),pkeys=pKeys(),packTot=pkeys.length,packDone=pkeys.reduce(function(a,k){return a+(pk[k]?1:0);},0);
     var box=document.getElementById('home-chips');if(!box)return;
     function chip(k,done,tot,view){var pct=tot?Math.round(done/tot*100):0;
-      return '<button class="lx-chip" data-v="'+view+'"><span class="lx-ring" style="--p:'+pct+'"><i>'+done+'/'+tot+'</i></span><span class="lx-ct"><span class="lx-ck">'+k+'</span><span class="lx-cv">'+(tot&&pct===100?'Done':pct+'%')+'</span></span></button>';}
+      return '<button class="lx-chip" data-v="'+view+'"><span class="lx-ring" style="--p:'+pct+'"><i>'+done+'/'+tot+'</i></span><span class="lx-ct"><span class="lx-ck">'+k+'</span><span class="lx-cv">'+(!tot?'—':done>=tot?'All set':(tot-done)+' left')+'</span></span></button>';}
     box.innerHTML=chip('To book',bookDone,bookTot,'alist')+chip('Packing',packDone,packTot,'bagages');
     box.querySelectorAll('.lx-chip').forEach(function(c){c.onclick=function(){show(c.getAttribute('data-v'));};});
   }
   function flEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function flMoney(n){return '$'+Number(Math.round(n)).toLocaleString('en-CA');}
   function flAgo(iso){var t=Date.parse(iso);if(isNaN(t))return '';var m=Math.max(0,Math.round((Date.now()-t)/60000));if(m<60)return m+'m ago';var h=Math.round(m/60);if(h<24)return h+'h ago';return Math.round(h/24)+'d ago';}
-  function shortLabel(l){if(/BCN-in MAD/.test(l))return 'Open-jaw BCN → MAD';if(/Barcelona/.test(l))return 'Barcelona return';if(/Madrid/.test(l))return 'Madrid return';return l;}
-  var LXF=null;
-  function flSpark(a){if(!a||a.length<2)return '';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),sp=(mx-mn)||1,w=54,hh=24,pd=3;var d=a.map(function(v,i){var x=pd+i*(w-2*pd)/(a.length-1),y=hh-pd-(v-mn)/sp*(hh-2*pd);return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}).join(' ');return '<svg class="lx-spark" viewBox="0 0 '+w+' '+hh+'"><path d="'+d+'"/></svg>';}
-  function renderFlights(){
-    var box=document.getElementById('home-flights');if(!box)return;
-    var F=window.__flights,T=window.__ftargets||{};
-    if(!F||!F.routes){box.innerHTML='';return;}
-    LXF=F;var keys=Object.keys(F.routes);
-    var gt=0;for(var i=0;i<keys.length;i++){var tk=T[keys[i]];if(tk&&Number(tk.target)){gt=Number(tk.target);break;}}
-    if(!gt)gt=Number(F.routes[keys[0]].target)||2600;
-    var h='<div class="fl-card lx-fcard"><div class="fl-head"><span>Flight watch</span>'
-      +'<label class="fl-tgtlab">Target $<input id="flTarget" type="number" class="fl-tgt" value="'+gt+'" inputmode="numeric"></label></div>'
-      +'<div class="fl-note">Alerts only within $500 of target'+(F.updated?(' &middot; '+flAgo(F.updated)):'')+'</div>';
-    keys.forEach(function(k){
-      var r=F.routes[k];
-      var st=r.price<=gt?'deal':(r.price<=gt+500?'near':'over');
-      var pill=st==='deal'?'at target':st==='near'?'within $500':(flMoney(r.price-gt)+' over');
-      var stops=r.stops?(r.stops+' stop'+(r.stops>1?'s':'')):'nonstop';
-      h+='<button class="lx-row" data-k="'+flEsc(k)+'">'
-        +'<span class="lx-main"><span class="lx-lbl">'+flEsc(shortLabel(r.label))+'</span><span class="lx-met">'+flEsc(r.airline||'')+' &middot; '+stops+'</span></span>'
-        +flSpark(r.hist)
-        +'<span class="lx-pr"><span class="lx-p '+st+'">'+flMoney(r.price)+'</span><span class="lx-pill '+st+'">'+pill+'</span></span>'
-        +'</button>';
-    });
-    h+='</div>';box.innerHTML=h;
-    var inp=document.getElementById('flTarget');
-    if(inp)inp.addEventListener('change',function(){
-      var v=Math.round(parseFloat(inp.value)||0);if(!v)return;
-      if(fbReady&&db){try{keys.forEach(function(k){db.ref(ROOM+'/flightTargets/'+k).set({target:v,notifyWithinAmt:500});});}catch(e){}toast('Target set: '+flMoney(v));setTimeout(renderFlights,120);}
-      else{toast('Open the live app to save');}
-    });
-    box.querySelectorAll('.lx-row').forEach(function(rw){rw.onclick=function(){openFlSheet(rw.getAttribute('data-k'),gt);};});
-  }
-  function openFlSheet(k,gt){
-    if(!LXF||!LXF.routes||!LXF.routes[k])return;var r=LXF.routes[k];
-    var st=r.price<=gt?'deal':(r.price<=gt+500?'near':'over');
-    document.getElementById('fs-title').textContent=shortLabel(r.label);
-    document.getElementById('fs-sub').textContent=(r.dateOut||'')+' → '+(r.dateBack||'');
-    var fp=document.getElementById('fs-price');fp.textContent=flMoney(r.price);fp.className='lx-p '+st;
-    document.getElementById('fs-tgt').textContent=flMoney(gt);
-    document.getElementById('fs-air').textContent=(r.airline||'')+' · '+(r.stops?r.stops+' stop'+(r.stops>1?'s':''):'nonstop');
-    document.getElementById('fs-cta').href=r.link||'#';
-    document.getElementById('fl-scrim').classList.add('on');
-    document.getElementById('fl-sheet').classList.add('on');
-  }
-  function closeFlSheet(){document.getElementById('fl-scrim').classList.remove('on');document.getElementById('fl-sheet').classList.remove('on');}
   function renderBookings(){
     var box=document.getElementById('home-flights');if(!box)return;
     var B=window.__bookings;
     if(!B||!B.items||!B.items.length){
-      box.innerHTML='<div class="fl-card lx-fcard"><div class="fl-head"><span>Réservations</span></div><div class="fl-note">Se remplit depuis Gmail une fois le script d\'import lancé.</div></div>';
+      box.innerHTML='<div class="fl-card lx-fcard"><div class="fl-head"><span>Bookings</span></div><div class="fl-note">Flights, hotels, car and match tickets appear here automatically once the Gmail import runs.</div></div>';
       return;
     }
     var order={flight:0,hotel:1,car:2,tickets:3};
     var items=B.items.slice().sort(function(a,b){return (order[a.type]==null?9:order[a.type])-(order[b.type]==null?9:order[b.type]);});
-    var h='<div class="fl-card lx-fcard"><div class="fl-head"><span>Réservations</span><span class="fl-when">'+(B.updated?flAgo(B.updated):'')+'</span></div>';
+    var h='<div class="fl-card lx-fcard"><div class="fl-head"><span>Bookings</span><span class="fl-when">'+(B.updated?flAgo(B.updated):'')+'</span></div>';
     items.forEach(function(x){
       var meta=[x.dates,x.confirmation].filter(Boolean).join(' · ');
       h+='<a class="lx-row" href="'+flEsc(x.link||'#')+'" target="_blank" rel="noopener">'
@@ -1353,8 +1301,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _fscr=document.getElementById('fl-scrim');if(_fscr)_fscr.onclick=closeFlSheet;
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 7';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 8';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
