@@ -198,6 +198,13 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .mt-v{font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .mt-line.hot .mt-dot{background:#3ddc84;box-shadow:0 0 0 3px rgba(61,220,132,.18);}
 .mt-line.hot .mt-v{color:#3ddc84;}
+.docwarn{background:rgba(240,69,76,.12);border:1px solid rgba(240,69,76,.5);border-radius:14px;padding:12px 14px;margin:0 0 14px;}
+.dw-h{display:flex;align-items:center;gap:8px;font-family:var(--font-head);font-size:1.05rem;color:#ff5b62;}
+.dw-ico{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#f0454c;color:#fff;font-weight:700;font-size:.8rem;flex:0 0 auto;}
+.docwarn p{font-size:.82rem;color:var(--ink);margin:.45rem 0 .65rem;line-height:1.38;}
+.dw-act{display:flex;gap:8px;flex-wrap:wrap;}
+.dw-call{background:#f0454c;color:#fff;text-decoration:none;font-weight:600;font-size:.82rem;padding:.5rem .85rem;border-radius:10px;}
+.dw-ok{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:.82rem;padding:.5rem .85rem;border-radius:10px;cursor:pointer;}
 .fl-row{padding:.65rem 0;border-top:1px solid var(--line-soft);}
 .fl-row:first-of-type{border-top:none;}
 .fl-top{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;}
@@ -515,6 +522,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 <main>
   <!-- OVERVIEW -->
   <section class="view active" id="apercu">
+    <div id="doc-banner"></div>
     <div class="lx-hero rv">
       <div class="lx-kick">Madrid &amp; Barcelona</div>
       <div class="lx-cd"><span class="lx-num" id="cdNum">&mdash;</span><span class="lx-lab" id="cdLabel">days to go</span></div>
@@ -754,7 +762,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     appId:"1:116248732051:web:96c0a381140fe585280866"
   };
   var ROOM='trip/aug2026';
-  var SYNC={spain_check:'check',spain_budget:'budget',spain_act:'act',spain_pack:'pack',spain_expenses:'expenses'};
+  var SYNC={spain_check:'check',spain_budget:'budget',spain_act:'act',spain_pack:'pack',spain_expenses:'expenses',spain_docs:'docs'};
   var db=null,fbReady=false,applyingRemote=false;
   function get(k,d){try{var v=LS.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}}
   function set(k,v){try{LS.setItem(k,JSON.stringify(v));}catch(e){}
@@ -1037,6 +1045,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     {w:'urgent',t:'Book both hotels on refundable rates',n:'Madrid for Aug 18-21 and again Aug 25-29, plus Barcelona for Aug 21-25. Lock the two match nights (around Aug 23 and 26) first, they are the tightest.'},
     {w:'soon',t:'Plan the Madrid to Barcelona drives',n:'About 6 h each way in the Enterprise car, on Aug 21 out and Aug 25 back, with an optional lunch stop in Zaragoza. Save the route offline and note the AP-2 tolls.'},
     {w:'soon',t:'Sagrada Família timed tickets',n:'Pick a slot during the Barcelona stay (Aug 21-25). They genuinely sell out in August.'},
+    {w:'soon',t:'Prepay checked bags (Jana, Youssef, Julia)',n:'On D9XRSM only Alaa has a checked bag; Eco Budget is carry-on + 1 personal item for everyone else. Decide who needs a checked bag and prepay online via Air Transat Manage Booking (cheaper than at the airport).'},
     {w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, about $35 each. Required alongside your licence for the Enterprise rental in Spain.'},
     {w:'soon',t:'Book hotel parking, both cities',n:'For the Enterprise car in Madrid and Barcelona. Central Madrid is a camera-enforced low-emission zone, so park at the hotel and ride the metro.'},
     {w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 20.'},
@@ -1319,6 +1328,15 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   function flEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function flMoney(n){return '$'+Number(Math.round(n)).toLocaleString('en-CA');}
   function flAgo(iso){var t=Date.parse(iso);if(isNaN(t))return '';var m=Math.max(0,Math.round((Date.now()-t)/60000));if(m<60)return m+'m ago';var h=Math.round(m/60);if(h<24)return h+'h ago';return Math.round(h/24)+'d ago';}
+  function renderDocBanner(){
+    var box=document.getElementById('doc-banner');if(!box)return;
+    var d=get('spain_docs',{});
+    if(d.childNameOK){box.innerHTML='';return;}
+    box.innerHTML='<div class="docwarn rv"><div class="dw-h"><span class="dw-ico">!</span>Check the child ticket</div>'
+      +'<p>Ticket <b>D9XRSM</b> lists the 9-year-old as <b>&ldquo;Alaa Kassem, 9 yrs&rdquo;</b>. If the traveller is <b>Julia Kassem</b>, the name is wrong and can stop boarding. Get it corrected with Air Transat.</p>'
+      +'<div class="dw-act"><a class="dw-call" href="tel:+18778726728">Call 1-877-872-6728</a><button class="dw-ok" type="button">Mark resolved</button></div></div>';
+    var ok=box.querySelector('.dw-ok');if(ok)ok.onclick=function(){var x=get('spain_docs',{});x.childNameOK=true;set('spain_docs',x);renderDocBanner();toast('Marked resolved');};
+  }
   function mtFooter(){
     var M=window.__matchTickets;
     var hot=!!(M&&M.onSale&&M.hot&&M.hot.length);
@@ -1373,8 +1391,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     else{num.textContent='¡Olé!';lab.textContent='trip complete';}
     setPhaseTab(days);
   }
-  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 21';
+  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 22';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1395,8 +1413,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
           Object.keys(SYNC).forEach(function(k){if(d[SYNC[k]]!=null)LS.setItem(k,JSON.stringify(d[SYNC[k]]));});
           applyingRemote=false;
           var ae=document.activeElement,typing=!!(ae&&((ae.classList&&ae.classList.contains('actual'))||ae.id==='exp-amt'||ae.id==='exp-note'));
-          if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();}
-          else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();},{once:true});}
+          if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();}
+          else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();},{once:true});}
         }
         window.__bookings=d.bookings||null;window.__matchTickets=d.matchTickets||null;renderBookings();
         if(first){var s=document.getElementById('synced');if(s)s.textContent=' · live sync';toast('Live sync on');first=false;}
