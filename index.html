@@ -246,14 +246,13 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .exp-form{margin-bottom:1.2rem;}
 
 /* timeline */
-.tl-wrap{margin:.35rem 0 0;overflow-x:hidden;}
-.tl-wrap svg.tl{width:100%;height:auto;display:block;max-width:300px;margin:0 auto;overflow:visible;}
-.tl-wrap{margin:.3rem 0 8px;overflow:visible;}
+.tl-wrap{margin:22px 0 8px;overflow:visible;}
+.tl-wrap svg.tl{width:100%;height:auto;display:block;max-width:340px;margin:0 auto;overflow:visible;}
 .tl-track{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:tldraw 1.3s var(--ease) forwards;}
 .tl-track.bcn{stroke:var(--muted);}
 .tl-track.mad{stroke:var(--ink);}
-.tl-day{fill:var(--ink);font-family:var(--font-body);font-weight:700;font-size:12px;}
-.tl-ev{fill:var(--muted);font-family:var(--font-body);font-weight:600;font-size:10px;}
+.tl-day{fill:var(--ink);font-family:var(--font-body);font-weight:700;font-size:11px;}
+.tl-ev{fill:var(--muted);font-family:var(--font-body);font-weight:600;font-size:9.5px;}
 .tl-node{cursor:pointer;opacity:0;animation:rise .5s var(--ease) forwards;}
 .tl-dot{fill:var(--bg);stroke:var(--ink);stroke-width:2.5;transition:stroke .15s,fill .15s;}
 .tl-node:hover .tl-dot,.tl-node:active .tl-dot{stroke:var(--accent);}
@@ -896,10 +895,10 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   function buildTimeline(){
     var host=document.getElementById('timeline');if(!host)return;
     var tlReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var n=TL.length,per=Math.ceil(n/2),W=320,px=40,topY=17,rowGap=35;
+    var n=TL.length,per=Math.ceil(n/2),W=320,px=30,topY=22,rowGap=54;
     function xf(idx,count){return px+(count>1?idx/(count-1):0)*(W-2*px);}
     function pos(i){var row=i<per?0:1;var x=(row===0)?xf(i,per):(W-xf(i-per,n-per));return {x:x,y:topY+row*rowGap,row:row};}
-    var H=topY+rowGap+28;
+    var H=topY+rowGap+30;
     function pathFor(a,b){var d='';for(var i=a;i<=b;i++){var p=pos(i);if(i===a){d='M'+p.x.toFixed(1)+' '+p.y;continue;}var pr=pos(i-1);if(p.row===pr.row){d+=' L'+p.x.toFixed(1)+' '+p.y;}else{var r=((p.y-pr.y)/2).toFixed(1),sw=(pr.x>W/2)?1:0;d+=' A '+r+' '+r+' 0 0 '+sw+' '+p.x.toFixed(1)+' '+p.y;}}return d;}
     var s='<svg class="tl" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 18 to 29">';
     s+='<path class="tl-track bcn" pathLength="1" d="'+pathFor(0,per-1)+'"/>';
@@ -909,8 +908,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       s+='<g class="tl-node'+(m?' match':'')+'" data-d="'+nn.d+'" style="animation-delay:'+(0.2+i*0.05).toFixed(2)+'s">';
       if(m&&!tlReduce){s+='<circle class="tl-halo" cx="'+X+'" cy="'+p.y+'" r="9"><animate attributeName="r" values="9;16;9" dur="2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0;0.55" dur="2.2s" repeatCount="indefinite"/></circle>';}
       s+='<circle class="tl-dot'+(m?' match':'')+'" cx="'+X+'" cy="'+p.y+'" r="'+(m?7:5)+'"/>';
-      s+='<text class="tl-day" x="'+X+'" y="'+(p.y-9)+'" text-anchor="middle">'+nn.d+'</text>';
-      s+='<text class="tl-ev" x="'+X+'" y="'+(p.y+12)+'" text-anchor="middle">'+nn.t+'</text>';
+      s+='<text class="tl-day" x="'+X+'" y="'+(p.y-10)+'" text-anchor="middle">'+nn.d+'</text>';
+      s+='<text class="tl-ev" x="'+X+'" y="'+(p.y+13)+'" text-anchor="middle">'+nn.t+'</text>';
       s+='</g>';
     });
     s+='</svg>';
@@ -1374,7 +1373,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 18';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 19';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
