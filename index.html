@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Spain Planner">
-<meta name="theme-color" content="#0B0B0D">
+<meta name="theme-color" content="#0D0D0F">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -152,7 +152,7 @@ body.drawer-open #drawer{transform:none;}
 .exp-item .ei-x{background:none;border:none;color:var(--dim);cursor:pointer;font-size:1.2rem;line-height:1;padding:.2rem .35rem;}
 .exp-item .ei-x:hover{color:var(--accent);}
 .exp-empty{color:var(--dim);font-size:.9rem;padding:1.2rem 0;}
-.exp-item .ei-nt{display:block;}
+.exp-item .ei-nt{display:block;overflow-wrap:anywhere;}
 .exp-item .ei-pm{display:block;color:var(--dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;}
 #exp-chart{margin:0 0 1.3rem;}
 .exp-leg{display:flex;gap:1.3rem;font-size:.72rem;color:var(--muted);margin-top:.55rem;}
@@ -340,17 +340,17 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .litem:hover{border-color:var(--accent);}
 .litem{gap:1rem;padding:.95rem 1.05rem;}
 .litem .lm{flex:1;min-width:0;display:flex;flex-direction:column;gap:.28rem;}
-.litem .lt2{font-weight:600;font-size:.93rem;line-height:1.35;}
-.litem .ld2{font-size:.8rem;color:var(--dim);line-height:1.5;}
+.litem .lt2{font-weight:600;font-size:.93rem;line-height:1.35;overflow-wrap:anywhere;}
+.litem .ld2{font-size:.8rem;color:var(--dim);line-height:1.5;overflow-wrap:anywhere;}
 .litem .lg2{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);white-space:nowrap;}
 
 .citem{display:flex;gap:.95rem;align-items:flex-start;padding:1.1rem 1.15rem;border:1px solid var(--line-soft);margin-bottom:.65rem;background:var(--panel);cursor:pointer;transition:border-color .18s;}
 .citem:hover{border-color:var(--line);}
 .citem input{margin-top:.25rem;width:1.05rem;height:1.05rem;accent-color:var(--accent);flex-shrink:0;cursor:pointer;}
-.citem .cb{flex:1;display:flex;flex-direction:column;gap:.55rem;}
+.citem .cb{flex:1;min-width:0;display:flex;flex-direction:column;gap:.55rem;}
 .citem.done .ct{text-decoration:line-through;color:var(--dim);}
-.ct{display:block;font-weight:600;font-size:.94rem;line-height:1.4;}
-.cn{display:block;font-size:.83rem;color:var(--dim);line-height:1.5;}
+.ct{display:block;font-weight:600;font-size:.94rem;line-height:1.4;overflow-wrap:anywhere;}
+.cn{display:block;font-size:.83rem;color:var(--dim);line-height:1.5;overflow-wrap:anywhere;}
 .wchip{flex-shrink:0;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.18rem .5rem;white-space:nowrap;margin-top:.1rem;}
 .wchip.urgent{background:var(--accent);color:#fff;}
 .wchip.soon{border:1px solid var(--accent);color:var(--accent);}
@@ -448,16 +448,17 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 .lx-num{font-family:var(--font-head);font-size:clamp(3.4rem,15vw,4.4rem);line-height:.9;letter-spacing:-.01em;color:var(--accent);font-variant-numeric:tabular-nums;}
 .lx-lab{font-size:.95rem;color:var(--muted);}
 .lx-meta{font-size:.76rem;color:var(--dim);margin-top:2px;}
-.lx-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 10px;}
+.lx-chips{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:8px 0 10px;}
 .lx-chip{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-md);padding:8px 12px;cursor:pointer;text-align:left;font-family:inherit;color:var(--ink);}
 .lx-ring{--p:0;width:36px;height:36px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0);}
 .lx-ring i{width:29px;height:29px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:.6rem;font-weight:700;font-style:normal;color:var(--ink);font-variant-numeric:tabular-nums;}
+.lx-ct{min-width:0;overflow:hidden;}
 .lx-ck{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);display:block;}
 .lx-cv{font-family:var(--font-head);font-size:1.1rem;line-height:1;}
 .lx-fcard{padding:11px 14px 4px;}
 .lx-row{display:flex;align-items:center;gap:11px;width:100%;padding:8px 4px;border:none;border-top:1px solid var(--line-soft);background:none;color:var(--ink);text-align:left;cursor:pointer;border-radius:10px;font-family:inherit;}
 .lx-row:first-of-type{border-top:none;}
-.lx-main{flex:1;min-width:0;}
+.lx-main{flex:1;min-width:0;display:flex;flex-direction:column;}
 .lx-row .lx-lbl{overflow-wrap:anywhere;}
 .lx-row .lx-met{max-width:100%;}
 .lx-lbl{font-weight:600;font-size:.95rem;}
@@ -537,29 +538,29 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     </details>
 
     <details class="leg rv">
-      <summary><span class="num">2</span><span class="lt">Madrid to Barcelona</span><span class="ld">Aug 19<br>AVE high-speed train</span><span class="chev">&rsaquo;</span></summary>
+      <summary><span class="num">2</span><span class="lt">Madrid to Barcelona</span><span class="ld">Aug 19<br>drive, ~6 h</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
-        <p class="why">No long drive: the AVE covers Madrid to Barcelona in about 2 h 30. Return the car first, then relax in the seat and watch the country slide by.</p>
-        <div class="day"><div class="when">Wed 19</div><div><p>Return the Alamo car in Madrid, then board the <strong>AVE from Atocha to Barcelona Sants</strong> (~2 h 30). Check in, then an easy evening in the Gothic Quarter with gelato and an early dinner.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barcelona+Sants+Station" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barcelona+Sants+Station" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <p class="why">The one big drive of the trip: about 6 h on the AP-2 with an optional lunch stop in Zaragoza to break it up. Load up the Alamo car and make a road-trip day of it.</p>
+        <div class="day"><div class="when">Wed 19</div><div><p><strong>Drive Madrid to Barcelona</strong> in the Alamo car (~6 h on the AP-2, optional lunch stop in Zaragoza). Check in, then an easy evening in the Gothic Quarter with gelato and an early dinner.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Barcelona+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Madrid&daddr=Barcelona&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
       </div>
     </details>
 
     <details class="leg rv">
       <summary><span class="num">3</span><span class="lt">Barcelona</span><span class="ld">Aug 19&ndash;23<br>5 nights &middot; match 2</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
-        <p class="why">Gaudí, the beach, and a second match: Real Madrid away at Espanyol. Getting around is all metro and train here, so the car stays behind in Madrid.</p>
+        <p class="why">Gaudí, the beach, and a second match: Real Madrid away at Espanyol. The Alamo car comes along for the Montserrat day trip; in the city itself you will mostly walk and ride the metro.</p>
         <div class="day"><div class="when">Thu 20</div><div><p><span class="tag kids">Kids</span><strong>Sagrada Família</strong> in the morning (timed tickets, book early), then Park Güell in the late afternoon when the heat drops. Tapas in Gràcia.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
         <div class="day"><div class="when">Fri 21</div><div><p><span class="tag kids">Kids</span>Beach morning at Barceloneta, lunch at La Boqueria market, Montjuïc cable car for the view, Magic Fountain show after dark.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Barceloneta+Beach+Barcelona" target="_blank" rel="noopener">Apple</a></span></p></div></div>
-        <div class="day"><div class="when">Sat 22</div><div><p><span class="tag kids">Kids</span><strong>Montserrat by train</strong> (R5 line from Plaça Espanya, ~1 h plus the cable car): the mountaintop monastery and easy walks with big views. Back for a relaxed evening.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Montserrat+Monastery+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Montserrat+Monastery+Spain" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <div class="day"><div class="when">Sat 22</div><div><p><span class="tag kids">Kids</span><strong>Montserrat by car</strong> (~1 h 20 drive, then the rack railway or cable car up): the mountaintop monastery and easy walks with big views. Back for a relaxed evening.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+Spain&destination=Montserrat+Monastery&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Barcelona&daddr=Montserrat+Monastery&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
         <div class="day"><div class="when">Sun 23</div><div><p><span class="tag sport">Sport</span><strong>Match 2: Espanyol vs Real Madrid</strong> at RCDE Stadium in Cornellà, Real Madrid away. La Liga matchday 2. Visitor allocation is limited, so grab away tickets the moment they are released. Reachable by train and tram.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=RCDE+Stadium+Cornella" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=RCDE+Stadium+Cornella" target="_blank" rel="noopener">Apple</a></span></p></div></div>
       </div>
     </details>
 
     <details class="leg rv">
-      <summary><span class="num">4</span><span class="lt">Madrid &amp; home</span><span class="ld">Aug 24&ndash;25<br>AVE back, fly home</span><span class="chev">&rsaquo;</span></summary>
+      <summary><span class="num">4</span><span class="lt">Madrid &amp; home</span><span class="ld">Aug 24&ndash;25<br>drive back, fly home</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
-        <p class="why">Loop back to Madrid on the AVE for one last night, then the flight home to Montréal.</p>
-        <div class="day"><div class="when">Mon 24</div><div><p>Morning <strong>AVE from Barcelona Sants back to Madrid</strong> (~2 h 30). A last relaxed afternoon: souvenirs, a final churros run at San Ginés, an early dinner near the hotel.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Madrid+Atocha+Station" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Madrid+Atocha+Station" target="_blank" rel="noopener">Apple</a></span></p></div></div>
+        <p class="why">Drive back to Madrid (~6 h) for one last night, then the flight home to Montréal.</p>
+        <div class="day"><div class="when">Mon 24</div><div><p>Morning <strong>drive from Barcelona back to Madrid</strong> (~6 h, optional Zaragoza stop). A last relaxed afternoon: souvenirs, a final churros run at San Ginés, an early dinner near the hotel.<span class="maps"><a href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+Spain&destination=Madrid+Spain&travelmode=driving" target="_blank" rel="noopener">Google route</a><a href="https://maps.apple.com/?saddr=Barcelona&daddr=Madrid&dirflg=d" target="_blank" rel="noopener">Apple route</a></span></p></div></div>
         <div class="day"><div class="when">Tue 25</div><div><p>Fly home to Montréal from Madrid-Barajas.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener">Apple</a></span></p></div></div>
       </div>
     </details>
@@ -588,16 +589,16 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     </div>
 
     <div class="lgroup rv">
-      <h3>AVE train between cities</h3>
-      <p class="gsub">High-speed rail joins Madrid and Barcelona in about 2 h 30, city centre to city centre. Book ahead for the best fares.</p>
-      <a class="litem" href="https://www.renfe.com/es/en" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Renfe · book AVE seats</span><span class="ld2">Madrid to Barcelona Aug 19 · Barcelona to Madrid Aug 24 · reserve early</span></span><span class="lg2">Open →</span></a>
-      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Madrid+Puerta+de+Atocha+station" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid Puerta de Atocha</span><span class="ld2">Madrid AVE terminal · arrive ~30 min early for bag screening</span></span><span class="lg2">Map →</span></a>
-      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Barcelona+Sants+station" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Barcelona Sants</span><span class="ld2">Barcelona AVE terminal · metro L3/L5 into the city</span></span><span class="lg2">Map →</span></a>
+      <h3>Driving between the cities</h3>
+      <p class="gsub">You keep the Alamo car the whole trip and drive Madrid to Barcelona, about 6 h each way on the AP-2. Out on Aug 19, back on Aug 24, with an optional lunch stop in Zaragoza. There is no train leg.</p>
+      <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Barcelona+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Barcelona</span><span class="ld2">Aug 19 · ~6 h via the AP-2 · optional Zaragoza stop</span></span><span class="lg2">Route →</span></a>
+      <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+Spain&destination=Madrid+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Barcelona → Madrid</span><span class="ld2">Aug 24 · ~6 h back · leave in the morning</span></span><span class="lg2">Route →</span></a>
+      <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Zaragoza+Spain" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Zaragoza (halfway stop)</span><span class="ld2">Roughly the midpoint · a good spot to stretch and eat lunch</span></span><span class="lg2">Map →</span></a>
     </div>
 
     <div class="lgroup rv">
-      <h3>The car (Madrid only)</h3>
-      <p class="gsub">Alamo, picked up and returned at Madrid-Barajas. It is for the Madrid-area day trips only; there is no driving between Madrid and Barcelona.</p>
+      <h3>The rental car</h3>
+      <p class="gsub">Alamo, picked up and returned at Madrid-Barajas. You keep it the whole trip: the Madrid-area day trips, the drives to Barcelona and back, and Montserrat.</p>
       <a class="litem" href="https://www.alamo.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Alamo · round trip in Madrid</span><span class="ld2">Pick up Aug 15 at Barajas · return same airport Aug 25</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Toledo+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Toledo</span><span class="ld2">Day trip, ~45 min drive</span></span><span class="lg2">Route →</span></a>
       <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Segovia</span><span class="ld2">Day trip, ~1 h drive</span></span><span class="lg2">Route →</span></a>
@@ -646,12 +647,12 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     </div>
     <h2 class="title rv" style="font-size:1.5rem;margin-top:2.4rem">Day trips from Barcelona</h2>
     <div class="rule rv"></div>
-    <p class="lead rv">All reachable car-free by train. Chosen: <strong style="color:var(--ink)">Montserrat</strong> on the R5 line. The rest are easy swaps.</p>
+    <p class="lead rv">All easy with the car you keep the whole trip. Chosen: <strong style="color:var(--ink)">Montserrat</strong>, about 1 h 20 by car. The rest are easy swaps.</p>
     <div class="compare rv">
-      <div class="opt pick"><div class="flag">Chosen</div><h4>Montserrat</h4><div class="m">~1 h · R5 train</div><p>A jagged holy mountain: the Benedictine abbey, the Black Madonna, and a rack railway or cable car up. Take the R5 from Plaça Espanya, no car needed.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Montserrat+Monastery" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Montserrat+Monastery" target="_blank" rel="noopener">Apple</a></span></div>
-      <div class="opt"><h4>Sitges</h4><div class="m">~40 min · Rodalies</div><p>A pretty beach town down the coast with calm swimming and a seafront promenade. Easy half day when everyone wants sand and gelato.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sitges+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sitges+Spain" target="_blank" rel="noopener">Apple</a></span></div>
-      <div class="opt"><h4>Girona</h4><div class="m">~40 min · high-speed</div><p>Medieval walls you can walk, a colourful riverfront, and the cathedral steps from Game of Thrones. Fast train from Sants.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Girona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Girona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
-      <div class="opt"><h4>Tarragona</h4><div class="m">~1 h · Rodalies</div><p>A Roman amphitheatre right by the sea, plus ruins scattered through town. History with a beach payoff for the kids.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Tarragona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Tarragona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt pick"><div class="flag">Chosen</div><h4>Montserrat</h4><div class="m">~1 h 20 · by car</div><p>A jagged holy mountain: the Benedictine abbey, the Black Madonna, and a rack railway or cable car up. Drive out and park at the base.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Montserrat+Monastery" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Montserrat+Monastery" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Sitges</h4><div class="m">~45 min · by car</div><p>A pretty beach town down the coast with calm swimming and a seafront promenade. Easy half day when everyone wants sand and gelato.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Sitges+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Sitges+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Girona</h4><div class="m">~1 h 15 · by car</div><p>Medieval walls you can walk, a colourful riverfront, and the cathedral steps from Game of Thrones. An easy drive up the AP-7.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Girona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Girona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
+      <div class="opt"><h4>Tarragona</h4><div class="m">~1 h 15 · by car</div><p>A Roman amphitheatre right by the sea, plus ruins scattered through town. History with a beach payoff for the kids.</p><span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Tarragona+Spain" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Tarragona+Spain" target="_blank" rel="noopener">Apple</a></span></div>
     </div>
   </section>
 
@@ -767,9 +768,25 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   /* theme */
   var root=document.documentElement;
   root.setAttribute('data-theme',get('spain_theme','dark'));
+  /* Installed-PWA shell chrome: on an iOS home-screen app the notch and home-indicator
+     safe-area bands are painted from theme-color and the launch viewport metadata, none of
+     which is in this build's document head. Guarantee them here, and keep theme-color locked
+     to --bg for the active theme so no empty top/bottom band can ever show. */
+  function pwaChrome(){
+    var head=document.head;if(!head)return;
+    var bg=root.getAttribute('data-theme')==='light'?'#F4F3EF':'#0D0D0F';
+    function meta(name){var m=head.querySelector('meta[name="'+name+'"]');if(!m){m=document.createElement('meta');m.setAttribute('name',name);head.appendChild(m);}return m;}
+    var vp=meta('viewport'),vc=(vp.getAttribute('content')||'').trim();
+    if(vc.indexOf('viewport-fit')<0){vp.setAttribute('content',(vc||'width=device-width, initial-scale=1')+', viewport-fit=cover');}
+    meta('apple-mobile-web-app-capable').setAttribute('content','yes');
+    meta('mobile-web-app-capable').setAttribute('content','yes');
+    meta('theme-color').setAttribute('content',bg);
+  }
+  pwaChrome();
   document.getElementById('themeBtn').addEventListener('click',function(){
     var next=root.getAttribute('data-theme')==='light'?'dark':'light';
     root.setAttribute('data-theme',next);set('spain_theme',next);
+    pwaChrome();
     try{COL=accCol();}catch(e){}
   });
 
@@ -876,7 +893,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     function pos(i){var row=i<per?0:1;var x=(row===0)?xf(i,per):(W-xf(i-per,n-per));return {x:x,y:topY+row*rowGap,row:row};}
     var H=topY+rowGap+38;
     function pathFor(a,b){var d='';for(var i=a;i<=b;i++){var p=pos(i);if(i===a){d='M'+p.x.toFixed(1)+' '+p.y;continue;}var pr=pos(i-1);if(p.row===pr.row){d+=' L'+p.x.toFixed(1)+' '+p.y;}else{var r=((p.y-pr.y)/2).toFixed(1),sw=(pr.x>W/2)?1:0;d+=' A '+r+' '+r+' 0 0 '+sw+' '+p.x.toFixed(1)+' '+p.y;}}return d;}
-    var s='<svg class="tl" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 11 to 19">';
+    var s='<svg class="tl" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 15 to 25">';
     s+='<path class="tl-track bcn" pathLength="1" d="'+pathFor(0,per-1)+'"/>';
     s+='<path class="tl-track mad" pathLength="1" style="animation-delay:.45s" d="'+pathFor(per-1,n-1)+'"/>';
     TL.forEach(function(nn,i){
@@ -922,7 +939,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Tip',label:'Go early',desc:'Beat the heat and the coach tours; back in Madrid for the evening.'}
     ]},
     {d:19,lab:'To BCN',title:'Madrid to Barcelona',opts:[
-      {ty:'Tip',label:'AVE high-speed train (best option)',desc:'About 2 h 30, city centre to city centre. Book ahead; far easier than the 6 h drive.',q:'Madrid Puerta de Atocha station'},
+      {ty:'Tip',label:'The drive to Barcelona',desc:'About 6 h on the AP-2 in the Alamo car, with an optional lunch stop in Zaragoza. Leave after breakfast to arrive mid-afternoon.',q:'Zaragoza Spain'},
       {ty:'See',label:'Barri Gòtic + Cathedral',desc:'Settle in, then medieval lanes, the cathedral cloister with its geese, Plaça Reial.',q:'Barcelona Cathedral'},
       {ty:'Gem',label:'El Bosc de les Fades',desc:'A tucked-away fairy-forest café off La Rambla, trees and grottoes inside. The kids will love it.',q:'El Bosc de les Fades Barcelona'},
       {ty:'Eat',label:'Hot chocolate on Carrer Petritxol',desc:'A narrow lane famous for thick xocolata and churros at Dulcinea.',q:'Carrer de Petritxol Barcelona'}
@@ -942,7 +959,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Gem',label:'Carrer de Blai pintxos street',desc:'Poble Sec lane of one-euro pintxos bars: cheap, fun, pick-as-you-go family dinner.',q:'Carrer de Blai Barcelona'}
     ]},
     {d:22,lab:'Montserrat',title:'Montserrat day trip',opts:[
-      {ty:'See',label:'Montserrat monastery + rack railway',desc:'A serrated mountain an hour out: the Benedictine abbey, the Black Madonna, and the Cremallera rack train up.',q:'Montserrat Monastery'},
+      {ty:'See',label:'Montserrat monastery + rack railway',desc:'A serrated mountain about 1 h 20 by car: the Benedictine abbey, the Black Madonna, and the Cremallera rack railway up from the base.',q:'Montserrat Monastery'},
       {ty:'Do',label:'Sant Joan funicular + ridge walk',desc:'Ride up and walk the easy trails for jaw-dropping views over Catalonia.',q:'Funicular de Sant Joan Montserrat'},
       {ty:'Gem',label:'Local honey and mel i mató',desc:'Little stalls by the monastery sell Catalan honey and fresh cheese with honey.',q:'Montserrat monastery market'},
       {ty:'Tip',label:'Alternative: Girona + Costa Brava',desc:'Prefer the sea or Game of Thrones streets? Girona and Tossa de Mar make an easy day instead.',q:'Girona Spain'}
@@ -954,7 +971,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Eat',label:'Vermut before the game',desc:'A Barcelona Sunday ritual: vermouth and olives at a bodega.',q:'Bodega 1900 Barcelona'}
     ]},
     {d:24,lab:'To Madrid',title:'Back to Madrid',opts:[
-      {ty:'Tip',label:'Morning AVE to Madrid',desc:'About 2 h 30 back to Madrid, leaving the afternoon and evening free.',q:'Barcelona Sants station'},
+      {ty:'Tip',label:'Morning drive to Madrid',desc:'About 6 h back to Madrid, leaving the evening free. An optional Zaragoza stop breaks it up.',q:'Zaragoza Spain'},
       {ty:'Do',label:'Bernabéu stadium tour + museum',desc:'Want more than match night? Pitch-side, the trophy room, the panoramic. Book ahead.',q:'Santiago Bernabeu Madrid'},
       {ty:'See',label:'Gran Vía + last shopping',desc:'Madrid’s grand avenue for a final stroll and souvenirs.',q:'Gran Via Madrid'},
       {ty:'Eat',label:'Farewell dinner at Mercado de San Miguel',desc:'A last proper Madrid meal by Plaza Mayor.',q:'Mercado de San Miguel Madrid'}
@@ -1007,15 +1024,15 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     {w:'urgent',t:'Buy Real Madrid vs Real Sociedad tickets',n:'Matchday 1 at the Bernabéu, home game around Aug 16. Create your realmadrid.com account and grab seats for the family the moment sales open; La Liga confirms the exact Sat 16 vs Sun 17 kickoff in early August.'},
     {w:'urgent',t:'Chase Espanyol vs Real Madrid away tickets',n:'Matchday 2 at RCDE Stadium in Cornellà near Barcelona, around Aug 23. Real Madrid are the visitors, so seats come from a limited away allocation that may not open to the public. Uncertain: line up a backup plan.'},
     {w:'urgent',t:'Book both hotels on refundable rates',n:'Madrid for Aug 15-18 and again Aug 24-25, plus Barcelona for Aug 19-23. Lock the Madrid opening weekend first, it is the tightest.'},
-    {w:'urgent',t:'Book both AVE train tickets',n:'Madrid to Barcelona on Aug 19 and Barcelona back to Madrid on Aug 24. Renfe releases seats about 60 days out; reserve early for the best fares and seats together.'},
+    {w:'soon',t:'Plan the Madrid to Barcelona drives',n:'About 6 h each way in the Alamo car, on Aug 19 out and Aug 24 back, with an optional lunch stop in Zaragoza. Save the route offline and note the AP-2 tolls.'},
     {w:'soon',t:'Sagrada Família timed tickets',n:'Pick a slot during the Barcelona stay (Aug 19-23). They genuinely sell out in August.'},
     {w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, about $35 each. Required alongside your licence for the Alamo rental in Spain.'},
-    {w:'soon',t:'Book hotel parking in Madrid',n:'For the Alamo car on your Madrid days. Central Madrid is a camera-enforced low-emission zone.'},
+    {w:'soon',t:'Book hotel parking, both cities',n:'For the Alamo car in Madrid and Barcelona. Central Madrid is a camera-enforced low-emission zone, so park at the hotel and ride the metro.'},
     {w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 17.'},
     {w:'later',t:'Park Güell timed entry',n:'The monumental zone requires a reservation.'},
     {w:'later',t:'Set up the phone eSIMs',n:'Airalo/Holafly: activate before you leave.'},
     {w:'later',t:'Flights booked (Air Transat, conf A014813813)',n:'Done: round-trip YUL to Madrid, out Aug 14 evening, home from Madrid Aug 25. Reconfirm seats and do online check-in 24h before.'},
-    {w:'later',t:'Rental car booked (Alamo, Madrid)',n:'Done: picked up and returned in Madrid for the Toledo and Segovia day trips. No car needed between cities, the AVE covers Madrid to Barcelona.'},
+    {w:'later',t:'Rental car booked (Alamo, Madrid)',n:'Done: picked up and returned in Madrid, kept the whole trip for the day trips and the drives to Barcelona and back.'},
     {w:'later',t:'Travel insurance in place',n:'Done: confirm it covers all four of you for the full Aug 14-25 window.'}
   ];
   var wOrder={urgent:0,soon:1,later:2},wLabel={urgent:'This week',soon:'Soon',later:'Closer'};
@@ -1030,7 +1047,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     ]},
     {city:'Barcelona',items:[
       {id:'bcn-batllo',label:'Casa Batlló or La Pedrera',desc:'Gaudí houses, immersive audio-guided visit.',q:'Casa Batllo Barcelona',book:{t:'Casa Batlló / La Pedrera tickets',n:'Timed, book online ahead.',w:'later'}},
-      {id:'bcn-montserrat',label:'Montserrat day trip (rack railway)',desc:'Serrated mountain an hour out: the Benedictine abbey and the Cremallera rack train up. Car-free on the R5 line from Plaça Espanya.',q:'Montserrat Monastery',book:{t:'Montserrat combined rail + rack railway ticket',n:'Buy the TransMontserrat / TotMontserrat combo online; start early.',w:'later'}},
+      {id:'bcn-montserrat',label:'Montserrat day trip',desc:'Serrated mountain about 1 h 20 by car: the Benedictine abbey, the Black Madonna, and the Cremallera rack railway or cable car up from the base.',q:'Montserrat Monastery',book:{t:'Montserrat rack railway or cable car tickets',n:'Drive out and park at the base, then buy the Cremallera or Aeri tickets up; start early.',w:'later'}},
       {id:'bcn-campnou',label:'Camp Nou tour (FC Barcelona)',desc:'The stadium and museum, the Catalan rivals’ side.',q:'Spotify Camp Nou Barcelona',book:{t:'Camp Nou tour tickets',n:'Book online, time slots.',w:'later'}},
       {id:'bcn-tibidabo',label:'Tibidabo amusement park',desc:'Old amusement park atop the mountain, city view. Walk-in.',q:'Tibidabo Barcelona',book:null},
       {id:'bcn-cosmo',label:'CosmoCaixa (science museum)',desc:'Big interactive museum with an indoor rainforest. Great in the heat. Walk-in.',q:'CosmoCaixa Barcelona',book:null},
@@ -1097,8 +1114,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   var BUDGET=[
     {id:'flights',item:'Flights',note:'Air Transat x4, round-trip YUL to Madrid (booked, conf A014813813)',est:'$4,000-5,200',lo:4000,hi:5200},
     {id:'lodging',item:'Lodging',note:'10 nights, family rooms in Madrid and Barcelona',est:'$1,900-2,600',lo:1900,hi:2600},
-    {id:'car',item:'Car rental',note:'Alamo, round-trip Madrid, ~4 days for the day trips, plus fuel and parking',est:'$350-500',lo:350,hi:500},
-    {id:'train',item:'AVE high-speed train',note:'Madrid to Barcelona and back, family of four, 2 legs',est:'$420-620',lo:420,hi:620},
+    {id:'car',item:'Car rental',note:'Alamo, round-trip Madrid, kept the whole trip for the day trips and the Barcelona drives, plus parking',est:'$700-950',lo:700,hi:950},
+    {id:'fuel',item:'Fuel & highway tolls',note:'The Madrid to Barcelona drives plus day-trip fuel and AP-2 tolls',est:'$300-450',lo:300,hi:450},
     {id:'tickets',item:'Match tickets',note:'2 matches, 2 seats each: Bernabéu opener + Espanyol away (limited allocation)',est:'$500-900',lo:500,hi:900},
     {id:'food',item:'Food',note:'~€120-150 per day for four',est:'$1,900-2,300',lo:1900,hi:2300},
     {id:'attractions',item:'Attractions and transit',note:'Sagrada Família, Bernabéu tour, Segovia/Toledo, Montserrat, metro and parking',est:'$600-850',lo:600,hi:850},
@@ -1332,7 +1349,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 12';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 13';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
