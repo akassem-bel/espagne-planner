@@ -1253,7 +1253,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     var pk=get('spain_pack',{}),pkeys=pKeys(),packTot=pkeys.length,packDone=pkeys.reduce(function(a,k){return a+(pk[k]?1:0);},0);
     var box=document.getElementById('home-chips');if(!box)return;
     function chip(k,done,tot,view){var pct=tot?Math.round(done/tot*100):0;
-      return '<button class="lx-chip" data-v="'+view+'"><span class="lx-ring" style="--p:'+pct+'"><i>'+done+'/'+tot+'</i></span><span class="lx-ct"><span class="lx-ck">'+k+'</span><span class="lx-cv">'+(!tot?'—':done>=tot?'All set':(tot-done)+' left')+'</span></span></button>';}
+      return '<button class="lx-chip" data-v="'+view+'"><span class="lx-ring" style="--p:'+pct+'"><i>'+done+'/'+tot+'</i></span><span class="lx-ct"><span class="lx-ck">'+k+'</span><span class="lx-cv">'+(!tot?'-':done>=tot?'All set':(tot-done)+' left')+'</span></span></button>';}
     box.innerHTML=chip('To book',bookDone,bookTot,'alist')+chip('Packing',packDone,packTot,'bagages');
     box.querySelectorAll('.lx-chip').forEach(function(c){c.onclick=function(){show(c.getAttribute('data-v'));};});
   }
@@ -1301,7 +1301,7 @@ button:active,.tab:active,.navitem:active,.dchip:active,.fl-row2:active,.iconbtn
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 8';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 9';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
