@@ -212,10 +212,10 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 #expenses .exp-form{display:flex;flex-direction:column;gap:6px;align-items:stretch;}
 .chiprow{display:flex;gap:6px;}
 .chip-b{flex:1;border:1.5px solid transparent;background:color-mix(in srgb,var(--accent) 11%,transparent);color:var(--ink);font-family:var(--font-body);font-weight:600;font-size:.86rem;padding:.5rem .2rem;border-radius:11px;cursor:pointer;transition:background .15s,border-color .15s;}
-.chip-b.active{background:color-mix(in srgb,var(--accent) 20%,transparent);border-color:var(--accent);color:var(--ink);}
-.emojirow{display:flex;gap:6px;}
-.emo{flex:1;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:color-mix(in srgb,var(--accent) 11%,transparent);border:1.5px solid transparent;border-radius:12px;cursor:pointer;transition:background .15s,border-color .15s;-webkit-appearance:none;appearance:none;}
-.emo.active{background:color-mix(in srgb,var(--accent) 20%,transparent);border-color:var(--accent);}
+.chip-b.active{border-color:var(--accent);}
+.emojirow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+.emo{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;background:color-mix(in srgb,var(--accent) 11%,transparent);border:1.5px solid transparent;border-radius:12px;cursor:pointer;transition:background .15s,border-color .15s;-webkit-appearance:none;appearance:none;padding:0;}
+.emo.active{border-color:var(--accent);}
 .exp-catlabel{text-align:center;font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:-3px;}
 .fl-row{padding:.65rem 0;border-top:1px solid var(--line-soft);}
 .fl-row:first-of-type{border-top:none;}
@@ -1459,7 +1459,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 31';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 32';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
