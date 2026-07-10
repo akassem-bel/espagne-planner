@@ -518,9 +518,10 @@ header.top{background:color-mix(in srgb,var(--bg) 72%,transparent);}
 #tabbar{background:color-mix(in srgb,var(--bg) 72%,transparent);}
 .view>h2.title,.view>.rule,.view>p.lead{display:none;}
 .card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);}
-/* unified press feedback: one transition rule + one :active scale for every interactive element */
-button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row{transition:transform .12s var(--ease),background .2s,border-color .2s,color .18s;}
-button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active{transform:scale(.97);}
+/* unified press feedback: smooth ease-out scale, GPU-composited so text doesn't re-rasterize (no iOS jitter) */
+button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row{transition:transform .19s cubic-bezier(.22,.61,.36,1),background .2s,border-color .2s,color .18s;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);}
+button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active{transform:scale(.98) translateZ(0);}
+@media (prefers-reduced-motion:reduce){button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active{transform:translateZ(0);}}
 /* ===== LUX home concept ===== */
 .lx-hero{padding:0;}
 .lx-kick{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-tx);font-weight:600;}
@@ -1707,7 +1708,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 57';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 58';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
