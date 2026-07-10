@@ -320,6 +320,13 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .opt-est{display:inline-block;margin-top:.4rem;font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:999px;padding:.14rem .6rem;}
 .opt-est-free{color:#3ddc84;background:color-mix(in srgb,#3ddc84 14%,transparent);border-color:color-mix(in srgb,#3ddc84 35%,transparent);}
 .opt-empty{color:var(--dim);font-size:.9rem;padding:1.2rem 0;}
+.retcalc{margin-top:1.1rem;background:linear-gradient(160deg,var(--wash),var(--panel));border:1px solid var(--line-soft);border-radius:var(--r-md);padding:.9rem 1rem;box-shadow:0 14px 34px -28px rgba(0,0,0,.75);}
+.rc-h{font-family:var(--font-head);font-size:1.05rem;margin-bottom:.55rem;}
+.rc-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.55rem;font-size:.9rem;color:var(--muted);}
+.rc-row input{width:5rem;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:.4rem .5rem;color:var(--ink);font-size:16px;text-align:center;font-variant-numeric:tabular-nums;}
+.rc-out{font-size:1rem;color:var(--muted);}
+.rc-out b{font-family:var(--font-head);font-size:1.6rem;color:var(--accent);font-variant-numeric:tabular-nums;}
+.rc-note{font-size:.72rem;color:var(--dim);margin-top:.4rem;line-height:1.4;}
 .pp-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-top:1px solid var(--line-soft);flex-wrap:wrap;}
 .pp-n{flex:1 1 40%;font-weight:600;font-size:.88rem;}
 .pp-d{flex:0 0 auto;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:.4rem .5rem;color:var(--ink);font-family:var(--font-body);font-size:.85rem;}
@@ -602,7 +609,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <summary><span class="num">1</span><span class="lt">Madrid</span><span class="ld">Aug 18&ndash;21<br>3 nights</span><span class="chev">&rsaquo;</span></summary>
       <div class="body">
         <p class="why">Land, pick up the car, and settle into the capital before the football. The Prado, the Retiro, the royal city, and a few easy days to find your feet on Madrid time.</p>
-        <div class="day"><div class="when">Mon 17<small>overnight</small></div><div><p>Evening Air Transat flight TS384 from Montréal (YUL), 23:40.</p></div></div>
+        <div class="day"><div class="when">Mon 17<small>overnight</small></div><div><p>Evening Air Transat flight TS384 from Montréal (YUL), 23:40. Online check-in opens 24 h before; be through YUL security by about 20:40.</p></div></div>
         <div class="day"><div class="when">Tue 18</div><div><p>Arrive Madrid around midday (12:40). Pick up the Enterprise car at the airport, drop bags at the hotel. Easy first evening at Plaza Mayor and the San Miguel market. Jet-lag day, keep it light.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Plaza+Mayor+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
         <div class="day"><div class="when">Wed 19</div><div><p><strong>Royal Madrid</strong>: the Prado (free under 18), Retiro Park rowboats, the Royal Palace, and churros at San Ginés.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Parque+del+Retiro+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Parque+del+Retiro+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
         <div class="day"><div class="when">Thu 20</div><div><p><span class="tag kids">Kids</span>Art and avenues: Reina Sofía for Guernica, a Gran Vía stroll, and the CaixaForum hanging garden. Warm up for match week with an optional Bernabéu stadium tour.<span class="maps"><a href="https://www.google.com/maps/search/?api=1&query=Museo+Reina+Sofia+Madrid" target="_blank" rel="noopener">Google</a><a href="https://maps.apple.com/?q=Museo+Reina+Sofia+Madrid" target="_blank" rel="noopener">Apple</a></span></p></div></div>
@@ -1196,6 +1203,16 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       row.querySelector('.ol').textContent=o.label;row.querySelector('.od').textContent=o.desc;
       box.appendChild(row);
     });
+    if(day.d===29){
+      var rc=document.createElement('div');rc.className='retcalc rv';
+      var drv=parseInt(get('spain_drive',30),10)||30;
+      rc.innerHTML='<div class="rc-h">Departure-day timing</div><div class="rc-row"><span>Hotel to Barajas (min)</span><input id="rc-drive" type="number" inputmode="numeric" min="5" max="180" value="'+drv+'"></div><div class="rc-out">Leave the hotel by <b id="rc-leave">--</b></div><div class="rc-note">Return the car by 11:00 &middot; check-in ~11:10 &middot; TS385 departs 14:10. Includes a 15-min fuel stop.</div>';
+      box.appendChild(rc);
+      var di=rc.querySelector('#rc-drive');
+      function rcCalc(){var dd=parseInt(di.value,10)||30;var mins=660-dd-15;if(mins<0)mins=0;var hh=Math.floor(mins/60),mm=mins%60;rc.querySelector('#rc-leave').textContent=(hh<10?'0'+hh:hh)+':'+(mm<10?'0'+mm:mm);}
+      di.addEventListener('input',function(){set('spain_drive',parseInt(di.value,10)||30);rcCalc();});
+      rcCalc();
+    }
   }
   (function(){var fb=document.getElementById('day-filter');if(!fb)return;fb.addEventListener('click',function(e){var b=e.target.closest('.df-b');if(!b)return;dayFilter=b.getAttribute('data-f');var ch=fb.querySelectorAll('.df-b');for(var i=0;i<ch.length;i++)ch[i].classList.toggle('active',ch[i]===b);renderDay(curDay);if(navigator.vibrate)navigator.vibrate(8);});})();
   (function(){var seg=document.getElementById('around-seg');if(!seg)return;var panels=document.querySelectorAll('#around .ar-panel');seg.addEventListener('click',function(e){var b=e.target.closest('.seg-b');if(!b)return;var t=b.getAttribute('data-arseg');var ch=seg.querySelectorAll('.seg-b');for(var i=0;i<ch.length;i++)ch[i].classList.toggle('active',ch[i]===b);for(var j=0;j<panels.length;j++)panels[j].hidden=panels[j].getAttribute('data-arpanel')!==t;if(navigator.vibrate)navigator.vibrate(8);});})();
@@ -1579,7 +1596,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 52';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 53';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
