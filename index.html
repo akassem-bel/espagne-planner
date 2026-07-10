@@ -483,8 +483,9 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 .lx-pr{text-align:right;flex:0 0 auto;}
 .lx-p{font-family:var(--font-head);font-size:1.18rem;line-height:1;font-variant-numeric:tabular-nums;display:block;}
 /* lux cohesion across screens */
-.day,.opt,.litem,.citem,.hint,.lgroup{border-radius:var(--r-md);}
-.day,.opt,.hint{background:var(--panel);border:1px solid var(--line-soft);box-shadow:0 14px 34px -28px rgba(0,0,0,.75);}
+.opt,.litem,.citem,.hint,.lgroup{border-radius:var(--r-md);}
+.opt,.hint{background:var(--panel);border:1px solid var(--line-soft);box-shadow:0 14px 34px -28px rgba(0,0,0,.75);}
+.day{border-radius:0;background:none;box-shadow:none;}
 .lx-p.deal{color:#3AD6A0;} .lx-p.near{color:#F2B33D;}
 .lx-pill{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 7px;border-radius:var(--r-pill);margin-top:5px;}
 .lx-pill.over{background:var(--line);color:var(--muted);}
@@ -859,7 +860,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
   var drawerEl=document.getElementById('drawer'),scrimEl=document.getElementById('scrim');
   var headerEl=document.querySelector('header.top'),tabbarEl=document.getElementById('tabbar');
-  function fitChrome(){try{var m=document.querySelector('main');if(!m)return;if(headerEl&&headerEl.offsetHeight)m.style.paddingTop=headerEl.offsetHeight+'px';if(tabbarEl&&tabbarEl.offsetHeight)m.style.paddingBottom=(tabbarEl.offsetHeight+8)+'px';}catch(e){}}
+  function fitChrome(){try{var m=document.querySelector('main');if(!m)return;if(headerEl&&headerEl.offsetHeight)m.style.paddingTop=(headerEl.offsetHeight+14)+'px';if(tabbarEl&&tabbarEl.offsetHeight)m.style.paddingBottom=(tabbarEl.offsetHeight+14)+'px';}catch(e){}}
   fitChrome();window.addEventListener('load',fitChrome);window.addEventListener('resize',fitChrome);window.addEventListener('orientationchange',function(){setTimeout(fitChrome,150);});
   var backEl=document.getElementById('backover'),boInner=backEl?backEl.querySelector('.bo-inner'):null;
   var dgx=0,dgy=0,dgw=300,dgActive=false,dgPx=0,dgMode='',boPrev=null,boVW=0;
@@ -1395,7 +1396,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 23';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 24';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
