@@ -352,10 +352,12 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .tag.kids{border:1px solid var(--line);color:var(--muted);}
 
 /* map pills */
-.maps{display:inline-flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap;}
-.maps a{font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--accent);border:1px solid var(--line);padding:.16rem .5rem;border-radius:var(--r-pill);}
+.maps{display:flex;gap:.4rem;margin-top:.55rem;flex-wrap:wrap;}
+.maps a{flex:1 1 0;justify-content:center;text-align:center;font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--accent);border:1px solid var(--line);padding:.16rem .5rem;border-radius:var(--r-pill);}
 .maps a:hover{border-color:var(--accent);text-decoration:none;}
 .maps a::before{content:"◍ ";}
+.maps .mest{flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;min-height:38px;font-size:.68rem;font-weight:700;letter-spacing:.02em;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 42%,var(--line));background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:var(--r-pill);padding:.16rem .5rem;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.maps .mest.free{color:#3ddc84;border-color:color-mix(in srgb,#3ddc84 42%,var(--line));background:color-mix(in srgb,#3ddc84 12%,transparent);}
 
 .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:1rem;}
 .opt{background:var(--panel);padding:1.3rem 1.25rem;position:relative;}
@@ -830,7 +832,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     'Santiago Bernabeu Madrid':'https://www.realmadrid.com/en-US/tickets','Círculo de Bellas Artes Madrid':'https://www.circulobellasartes.com/','Aqueduct of Segovia':'https://turismodesegovia.com/en/','Alcázar of Segovia':'https://www.alcazardesegovia.com/en/',
     'Palacio Real de La Granja de San Ildefonso':'https://www.patrimonionacional.es/en/real-sitio/palacio-real-de-la-granja-de-san-ildefonso','Mesón de Cándido Segovia':'https://www.mesondecandido.es/en/','Museo del Prado Madrid':'https://www.museodelprado.es/en','Chocolatería San Ginés Madrid':'https://chocolateriasangines.com/'
   };
-  function pills(q,w){w=w||WSITES[q];if(!q&&!w)return '';var s='<span class="maps">';if(q){s+='<a href="'+gmap(q)+'" target="_blank" rel="noopener">Map</a><a href="'+amap(q)+'" target="_blank" rel="noopener">Apple</a>';}if(w){s+='<a href="'+w+'" target="_blank" rel="noopener">Site</a>';}return s+'</span>';}
+  function pills(q,w,est){w=w||WSITES[q];if(!q&&!w&&!est)return '';var s='<span class="maps">';if(est){s+='<span class="mest'+(est==='Free'?' free':'')+'">'+est+'</span>';}if(q){s+='<a href="'+gmap(q)+'" target="_blank" rel="noopener">Map</a><a href="'+amap(q)+'" target="_blank" rel="noopener">Apple</a>';}if(w){s+='<a href="'+w+'" target="_blank" rel="noopener">Site</a>';}return s+'</span>';}
 
   /* theme */
   var root=document.documentElement;
@@ -988,7 +990,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     ]},
     {d:19,lab:'Madrid',title:'Prado, Retiro and royal Madrid',opts:[
       {ty:'See',label:'Museo del Prado',desc:'Velázquez, Goya, Bosch. Free for under-18s; ~€15 per adult.',est:'~€30',q:'Museo del Prado Madrid'},
-      {ty:'See',label:'Retiro Park + Crystal Palace',desc:'Row the lake, then the glass Palacio de Cristal. Green and shady.',est:'Free (boat ~€25)',q:'Palacio de Cristal Retiro Madrid'},
+      {ty:'See',label:'Retiro Park + Crystal Palace',desc:'Row the lake, then the glass Palacio de Cristal. Green and shady.',est:'Free',q:'Palacio de Cristal Retiro Madrid'},
       {ty:'See',label:'Royal Palace + Almudena',desc:'Europe’s largest royal palace by floor area, cathedral next door.',est:'~€40',q:'Palacio Real de Madrid'},
       {ty:'Eat',label:'Churros con chocolate, San Ginés',desc:'The 1894 institution, open late. Non-negotiable with kids.',est:'~€20',q:'Chocolateria San Gines Madrid'}
     ]},
@@ -999,7 +1001,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Do',label:'Bernabéu stadium tour',desc:'Pitch-side, trophy room, panoramic. A warm-up for match week.',est:'~€100',q:'Santiago Bernabeu Madrid'}
     ]},
     {d:21,lab:'Drive',title:'Madrid to Barcelona',opts:[
-      {ty:'Tip',label:'The drive to Barcelona',desc:'~6 h on the AP-2 in the Enterprise car, coffee stop in Zaragoza. Leave after breakfast.',est:'~€60 fuel + tolls',q:'Zaragoza Spain'},
+      {ty:'Tip',label:'The drive to Barcelona',desc:'~6 h on the AP-2 in the Enterprise car, coffee stop in Zaragoza. Leave after breakfast.',est:'~€50',q:'Zaragoza Spain'},
       {ty:'See',label:'Barri Gòtic + Cathedral',desc:'Medieval lanes, the cathedral cloister with its geese, Plaça Reial.',est:'~€20',q:'Barcelona Cathedral'},
       {ty:'Gem',label:'El Bosc de les Fades',desc:'A fairy-forest café off La Rambla, trees and grottoes inside. Kids love it.',est:'~€25',q:'El Bosc de les Fades Barcelona'},
       {ty:'Eat',label:'Hot chocolate on Carrer Petritxol',desc:'A narrow lane famous for thick xocolata and churros at Dulcinea.',est:'~€25',q:'Carrer de Petritxol Barcelona'}
@@ -1012,7 +1014,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Eat',label:'Tapas around Plaça del Sol, Gràcia',desc:'Leafy squares full of local terraces, relaxed for kids in the evening.',est:'~€70',q:'Placa del Sol Barcelona'}
     ]},
     {d:23,lab:'Match',title:'Match day: Espanyol vs Real Madrid',star:true,opts:[
-      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE Stadium)',desc:'La Liga MD2, Real Madrid away in Cornellà. Visitor tickets limited, watch the alerts.',est:'~€300 (4 seats)',q:'RCDE Stadium Cornella'},
+      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE Stadium)',desc:'La Liga MD2, Real Madrid away in Cornellà. Visitor tickets limited, watch the alerts.',est:'~€300',q:'RCDE Stadium Cornella'},
       {ty:'Tip',label:'Getting to Cornellà',desc:'FGC from Plaça Espanya to Cornellà-Riera, ~20 min, then a short walk.',est:'~€15',q:'Cornella-Riera station'},
       {ty:'See',label:'Day: beach or Montjuïc',desc:'Keep the day light before kickoff: a lazy Bogatell beach morning or Montjuïc gardens.',est:'Free',q:'Bogatell Beach Barcelona'},
       {ty:'Eat',label:'Post-match pintxos on Carrer de Blai',desc:'Poble Sec lane of one-euro pintxos bars to wind down after the whistle.',est:'~€40',q:'Carrer de Blai Barcelona'}
@@ -1021,15 +1023,15 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'See',label:'Montserrat monastery + rack railway',desc:'A serrated mountain ~1 h 20 by car: the abbey, the Black Madonna, the Cremallera up.',est:'~€55',q:'Montserrat Monastery'},
       {ty:'Do',label:'Sant Joan funicular + ridge walk',desc:'Ride up and walk the easy trails for jaw-dropping views over Catalonia.',est:'~€50',q:'Funicular de Sant Joan Montserrat'},
       {ty:'Gem',label:'Local honey and mel i mató',desc:'Stalls by the monastery sell Catalan honey and fresh cheese with honey.',est:'~€15',q:'Montserrat monastery market'},
-      {ty:'Tip',label:'Alternative: beach + Montjuïc',desc:'Prefer to stay in town? Bogatell beach, La Boqueria lunch, the Montjuïc cable car.',est:'Free (cable car ~€50)',q:'Montjuic Barcelona'}
+      {ty:'Tip',label:'Alternative: beach + Montjuïc',desc:'Prefer to stay in town? Bogatell beach, La Boqueria lunch, the Montjuïc cable car.',est:'Free',q:'Montjuic Barcelona'}
     ]},
     {d:25,lab:'Drive',title:'Back to Madrid',opts:[
-      {ty:'Tip',label:'Morning drive to Madrid',desc:'~6 h back on the AP-2, evening free. An optional Zaragoza stop breaks it up.',est:'~€60 fuel + tolls',q:'Zaragoza Spain'},
+      {ty:'Tip',label:'Morning drive to Madrid',desc:'~6 h back on the AP-2, evening free. An optional Zaragoza stop breaks it up.',est:'~€50',q:'Zaragoza Spain'},
       {ty:'See',label:'Gran Vía evening stroll',desc:'Madrid’s grand avenue for a first-night-back walk once you have checked in.',est:'Free',q:'Gran Via Madrid'},
       {ty:'Eat',label:'Dinner at Mercado de San Miguel',desc:'A proper Madrid meal by Plaza Mayor to settle back in.',est:'~€65',q:'Mercado de San Miguel Madrid'}
     ]},
     {d:26,lab:'Match',title:'Match day: Real Madrid vs Real Sociedad',star:true,opts:[
-      {ty:'Do',label:'Real Madrid vs Real Sociedad (Bernabéu)',desc:'The La Liga opener, postponed to this midweek. Metro L10; arrive early for the buildup.',est:'~€360 (4 seats)',q:'Santiago Bernabeu Madrid'},
+      {ty:'Do',label:'Real Madrid vs Real Sociedad (Bernabéu)',desc:'The La Liga opener, postponed to this midweek. Metro L10; arrive early for the buildup.',est:'~€360',q:'Santiago Bernabeu Madrid'},
       {ty:'Gem',label:'Rooftop at Círculo de Bellas Artes',desc:'The best rooftop view over the city for a pre or post-match drink.',est:'~€20',q:'Circulo de Bellas Artes Madrid'},
       {ty:'Eat',label:'Tapas crawl on Cava Baja',desc:'The classic La Latina tapas street: a few bars before or after the game.',est:'~€70',q:'Calle Cava Baja Madrid'},
       {ty:'Tip',label:'Get there early',desc:'The Bernabéu fills fast on a matchday; take the metro, not the car.',q:'Santiago Bernabeu Madrid'}
@@ -1086,9 +1088,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     if(!opts.length){var em=document.createElement('div');em.className='opt-empty';em.textContent='Nothing tagged "'+dayFilter+'" on this day.';box.appendChild(em);return;}
     opts.forEach(function(o){
       var row=document.createElement('div');row.className='opt-row';
-      var maps=pills(o.q,o.w);
-      var est=o.est?'<span class="opt-est'+(o.est==='Free'?' opt-est-free':'')+'">'+o.est+'</span>':'';
-      row.innerHTML='<span class="opt-ty ty-'+o.ty.toLowerCase()+(o.ty==='Gem'?' gem':'')+'">'+(o.ty==='Gem'?'Hidden gem':o.ty)+'</span><span class="opt-b"><span class="ol"></span><span class="od"></span>'+est+maps+'</span>';
+      var maps=pills(o.q,o.w,o.est);
+      row.innerHTML='<span class="opt-ty ty-'+o.ty.toLowerCase()+(o.ty==='Gem'?' gem':'')+'">'+(o.ty==='Gem'?'Hidden gem':o.ty)+'</span><span class="opt-b"><span class="ol"></span><span class="od"></span>'+maps+'</span>';
       row.querySelector('.ol').textContent=o.label;row.querySelector('.od').textContent=o.desc;
       box.appendChild(row);
     });
@@ -1458,7 +1459,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 28';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 29';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
