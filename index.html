@@ -136,14 +136,14 @@ body.drawer-open #drawer{transform:none;}
 
 /* expenses */
 .exp-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.3rem;}
-.exp-form input,.exp-form select{font-family:var(--font-body);font-size:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:.65rem .6rem;color:var(--ink);width:100%;}
+.exp-form input,.exp-form select{font-family:var(--font-body);font-size:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem;color:var(--ink);width:100%;}
 .exp-form .full{grid-column:1 / -1;}
 .exp-form button{grid-column:1 / -1;font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;background:var(--accent);color:#fff;border:none;border-radius:var(--r-sm);padding:.8rem;cursor:pointer;}
 .exp-form button:active{background:var(--accent-deep);}
-.exp-tot{display:flex;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-bottom:1.2rem;flex-wrap:wrap;}
-.exp-tot .et{flex:1;min-width:100px;background:var(--panel);padding:.85rem 1rem;}
-.exp-tot .et .k{text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;color:var(--dim);}
-.exp-tot .et .v{font-family:var(--font-head);font-size:1.5rem;font-variant-numeric:tabular-nums;margin-top:.1rem;}
+.exp-tot{display:flex;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-bottom:1.2rem;flex-wrap:nowrap;}
+.exp-tot .et{flex:1;min-width:0;background:var(--panel);padding:.5rem .55rem;text-align:center;}
+.exp-tot .et .k{text-transform:uppercase;letter-spacing:.1em;font-size:.58rem;color:var(--dim);}
+.exp-tot .et .v{font-family:var(--font-head);font-size:1.15rem;font-variant-numeric:tabular-nums;margin-top:.05rem;}
 .exp-item{display:flex;align-items:center;gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line-soft);}
 .exp-item .ei-cat{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);flex:0 0 4.4rem;line-height:1.3;}
 .exp-item .ei-n{flex:1;font-size:.92rem;min-width:0;}
@@ -209,14 +209,14 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .seg-b{flex:1;border:none;background:none;color:var(--muted);font-family:var(--font-body);font-weight:600;font-size:.92rem;padding:.55rem 0;border-radius:9px;cursor:pointer;transition:background .2s,color .2s;}
 .seg-b.active{background:var(--accent);color:#fff;}
 .exp-panel[hidden]{display:none;}
-#expenses .exp-form{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
+#expenses .exp-form{display:flex;flex-direction:column;gap:8px;align-items:stretch;}
 .chiprow{display:flex;gap:6px;}
 .chip-b{flex:1;border:1px solid var(--line-soft);background:var(--bg);color:var(--muted);font-family:var(--font-body);font-weight:600;font-size:.86rem;padding:.55rem .2rem;border-radius:10px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
-.chip-b.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.cat-b{display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid var(--line-soft);background:var(--bg);color:var(--muted);font-family:var(--font-body);font-size:.64rem;font-weight:600;padding:.5rem .1rem;border-radius:10px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
-.cat-b span{font-size:1.15rem;line-height:1;}
-.cat-b.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.chip-b.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 5px 16px -7px var(--accent);}
+.emojirow{display:flex;gap:6px;}
+.emo{flex:1;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:var(--bg);border:1px solid var(--line-soft);border-radius:14px;cursor:pointer;opacity:.5;filter:grayscale(.55);transition:transform .14s var(--ease),background .18s,border-color .18s,opacity .18s,filter .18s;-webkit-appearance:none;appearance:none;}
+.emo.active{opacity:1;filter:none;background:color-mix(in srgb,var(--accent) 18%,var(--bg));border-color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent);transform:translateY(-2px);}
+.exp-catlabel{text-align:center;font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:-3px;}
 .fl-row{padding:.65rem 0;border-top:1px solid var(--line-soft);}
 .fl-row:first-of-type{border-top:none;}
 .fl-top{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;}
@@ -258,10 +258,10 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .fact{background:var(--panel);padding:1rem 1.05rem;}
 .fact .k{text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--dim);}
 .fact .v{font-family:var(--font-head);font-size:1.5rem;margin-top:.2rem;font-variant-numeric:tabular-nums;}
-.exp-grand{text-align:center;border:1px solid var(--line-soft);border-radius:10px;background:linear-gradient(160deg,var(--wash),var(--panel));padding:.85rem;margin:0 0 .6rem;}
-.exp-grand .k{text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;color:var(--muted);}
-.exp-grand .v{font-family:var(--font-head);font-size:2.2rem;line-height:1;color:var(--accent);margin-top:.15rem;font-variant-numeric:tabular-nums;}
-.exp-tot{margin-bottom:1rem;}
+.exp-grand{text-align:center;border:1px solid var(--line-soft);border-radius:12px;background:linear-gradient(160deg,var(--wash),var(--panel));padding:.55rem;margin:0 0 .5rem;}
+.exp-grand .k{text-transform:uppercase;letter-spacing:.12em;font-size:.6rem;color:var(--muted);}
+.exp-grand .v{font-family:var(--font-head);font-size:1.7rem;line-height:1;color:var(--accent);margin-top:.1rem;font-variant-numeric:tabular-nums;}
+.exp-tot{margin-bottom:.6rem;border-radius:12px;}
 .exp-form{margin-bottom:1.2rem;}
 
 /* timeline */
@@ -745,15 +745,16 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
           <button class="chip-b" data-v="Debit" type="button">Debit</button>
           <button class="chip-b" data-v="Cash" type="button">Cash</button>
         </div>
-        <div class="catgrid" id="exp-cat-row" data-val="Food">
-          <button class="cat-b active" data-v="Food" type="button"><span>🍽️</span>Food</button>
-          <button class="cat-b" data-v="Lodging" type="button"><span>🛏️</span>Stay</button>
-          <button class="cat-b" data-v="Transport" type="button"><span>🚗</span>Transport</button>
-          <button class="cat-b" data-v="Tickets" type="button"><span>🎟️</span>Tickets</button>
-          <button class="cat-b" data-v="Activities" type="button"><span>🎡</span>Fun</button>
-          <button class="cat-b" data-v="Shopping" type="button"><span>🛍️</span>Shop</button>
-          <button class="cat-b" data-v="Other" type="button"><span>➕</span>Other</button>
+        <div class="emojirow" id="exp-cat-row" data-val="Food">
+          <button class="emo active" data-v="Food" type="button" title="Food">🍽️</button>
+          <button class="emo" data-v="Lodging" type="button" title="Stay">🛏️</button>
+          <button class="emo" data-v="Transport" type="button" title="Transport">🚗</button>
+          <button class="emo" data-v="Tickets" type="button" title="Tickets">🎟️</button>
+          <button class="emo" data-v="Activities" type="button" title="Fun">🎡</button>
+          <button class="emo" data-v="Shopping" type="button" title="Shopping">🛍️</button>
+          <button class="emo" data-v="Other" type="button" title="Other">➕</button>
         </div>
+        <div class="exp-catlabel" id="exp-cat-label">Food</div>
         <input id="exp-note" class="full" placeholder="What was it? (e.g. lunch at La Boqueria)" aria-label="Note">
         <button id="exp-add">Add expense</button>
       </div>
@@ -1343,7 +1344,9 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   });
   (function(){
     function wire(rowId,sel){var row=document.getElementById(rowId);if(!row)return;row.addEventListener('click',function(e){var b=e.target.closest(sel);if(!b||!row.contains(b))return;var ch=row.querySelectorAll(sel);for(var i=0;i<ch.length;i++)ch[i].classList.remove('active');b.classList.add('active');row.setAttribute('data-val',b.getAttribute('data-v'));if(navigator.vibrate)navigator.vibrate(8);});}
-    wire('exp-cur-row','.chip-b');wire('exp-pay-row','.chip-b');wire('exp-cat-row','.cat-b');
+    wire('exp-cur-row','.chip-b');wire('exp-pay-row','.chip-b');wire('exp-cat-row','.emo');
+    var catRow=document.getElementById('exp-cat-row'),catLbl=document.getElementById('exp-cat-label');
+    if(catRow&&catLbl)catRow.addEventListener('click',function(e){var b=e.target.closest('.emo');if(b&&b.getAttribute('title'))catLbl.textContent=b.getAttribute('title');});
     var seg=document.getElementById('exp-seg'),pl=document.getElementById('exp-panel-log'),pg=document.getElementById('exp-panel-graphs');
     function showTab(g){if(seg)seg.querySelectorAll('.seg-b').forEach(function(x){x.classList.toggle('active',x.getAttribute('data-exp')===(g?'graphs':'log'));});if(pl)pl.hidden=g;if(pg)pg.hidden=!g;}
     if(seg){seg.addEventListener('click',function(e){var b=e.target.closest('.seg-b');if(!b)return;var g=b.getAttribute('data-exp')==='graphs';showTab(g);set('spain_exptab',g?'graphs':'log');if(g&&typeof renderExpenses==='function')renderExpenses();if(navigator.vibrate)navigator.vibrate(8);});var ini=get('spain_exptab','log')==='graphs';showTab(ini);if(ini&&typeof renderExpenses==='function')renderExpenses();}
@@ -1435,7 +1438,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 26';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 27';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
