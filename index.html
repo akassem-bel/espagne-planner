@@ -326,6 +326,10 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .pp-s{flex:1 1 100%;font-size:.74rem;}
 .pp-ok{color:#3ddc84;font-weight:600;}
 .pp-bad{color:var(--accent);font-weight:700;}
+.topbar{position:sticky;top:0;z-index:40;padding:.55rem .9rem;font-size:.78rem;}
+.topbar.off{background:#f0a03b;color:#1a1a1a;font-weight:700;text-align:center;margin:0 0 .5rem;border-radius:0 0 10px 10px;}
+.topbar.ins{display:flex;align-items:center;gap:.6rem;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;color:var(--muted);margin:0 0 .7rem;line-height:1.35;}
+.topbar.ins button{margin-left:auto;flex:0 0 auto;background:none;border:none;color:var(--dim);font-size:1.3rem;line-height:1;cursor:pointer;padding:0 .2rem;}
 .dayhead{font-family:var(--font-head);font-size:var(--fs-4);margin:.2rem 0 1rem;}
 .opt-row{display:flex;gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line-soft);}
 .opt-row:last-child{border-bottom:none;}
@@ -573,6 +577,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 </aside>
 
 <main>
+  <div id="offbar" class="topbar off" hidden>Offline. Showing your saved plan.</div>
+  <div id="installhint" class="topbar ins" hidden><span>Add to your Home Screen: tap Share, then &ldquo;Add to Home Screen&rdquo; for the full-screen app.</span><button id="ins-x" type="button" aria-label="Dismiss">&times;</button></div>
   <!-- OVERVIEW -->
   <section class="view active" id="apercu">
     <div id="doc-banner"></div>
@@ -972,6 +978,9 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   document.querySelectorAll('#tabbar .tab[data-view]').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-view'));});});
   document.getElementById('tabMore').addEventListener('click',function(){document.body.classList.toggle('drawer-open');});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+  (function(){function updateOff(){var b=document.getElementById('offbar');if(b)b.hidden=!!navigator.onLine;}window.addEventListener('online',updateOff);window.addEventListener('offline',updateOff);updateOff();
+    var h=document.getElementById('installhint');if(h){var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent),sa=(window.navigator.standalone===true)||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches);if(isIOS&&!sa&&!get('spain_inshint',false))h.hidden=false;var x=document.getElementById('ins-x');if(x)x.addEventListener('click',function(){h.hidden=true;set('spain_inshint',true);});}
+  })();
   var drawerEl=document.getElementById('drawer'),scrimEl=document.getElementById('scrim');
   var headerEl=document.querySelector('header.top'),tabbarEl=document.getElementById('tabbar');
   /* bars are flex children (header / scrollable main / tabbar) so the tab bar is always flush to the bottom edge; no JS padding needed. */
@@ -1576,7 +1585,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 50';
+  (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 51';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
