@@ -222,6 +222,8 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .rf-chip{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.22rem .55rem;border-radius:999px;white-space:nowrap;}
 .rf-chip.req{color:#f0a03b;background:color-mix(in srgb,#f0a03b 15%,transparent);border:1px solid color-mix(in srgb,#f0a03b 40%,transparent);}
 .rf-chip.dis{color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);}
+.rf-chip.rec{color:#3ddc84;background:color-mix(in srgb,#3ddc84 15%,transparent);border:1px solid color-mix(in srgb,#3ddc84 40%,transparent);}
+.rf-chip.prog{color:#f0a03b;background:color-mix(in srgb,#f0a03b 15%,transparent);border:1px solid color-mix(in srgb,#f0a03b 40%,transparent);}
 .rf-note{font-size:.72rem;color:var(--muted);margin-top:.4rem;padding-top:.5rem;border-top:1px solid var(--line-soft);}
 .exp-panel[hidden]{display:none;}
 #expenses .exp-form{display:flex;flex-direction:column;gap:9px;align-items:stretch;margin-bottom:.4rem;}
@@ -718,6 +720,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <div class="lgroup rv">
         <h3>Documents</h3>
         <a class="litem" href="https://www.airtransat.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Flight confirmation</span><span class="ld2">Air Transat D9XRSM &middot; do online check-in 24h before</span></span><span class="lg2">Open →</span></a>
+        <a class="litem" href="https://mail.google.com/mail/u/0/#all/19f47e6871a9b65a" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Flight receipt (PDF)</span><span class="ld2">Air Transat receipt #D9XRSM &middot; Jul 9</span></span><span class="lg2">Open →</span></a>
         <a class="litem" href="https://www.doyouspain.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Car voucher (print it)</span><span class="ld2">Enterprise DYS-215395750 &middot; bring paper + licence + passport + card with PIN</span></span><span class="lg2">Open →</span></a>
       </div>
       <div class="lgroup rv">
@@ -771,11 +774,11 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     <div class="rule rv"></div>
     <p class="lead rv">Family of four, in Canadian dollars. Enter real prices as you go; totals sync across phones.</p>
     <div class="refunds rv">
-      <div class="rf-head"><span>Money coming back</span><span class="rf-tot">&asymp; $5,614 + C$644</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 6MFSCR</span><span class="rf-s">$2,872.84 &middot; cancelled Jul 9</span></span><span class="rf-chip req">Requested</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 7OK217</span><span class="rf-s">$2,741.72 &middot; cancelled Jul 9</span></span><span class="rf-chip req">Requested</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">DoYouSpain PRE-215337132</span><span class="rf-s">C$644.40 &middot; support ticket 7266993</span></span><span class="rf-chip dis">Disputed</span></div>
-      <div class="rf-note">If DoYouSpain has not replied by Jul 16, send a follow-up on ticket 7266993.</div>
+      <div class="rf-head"><span>Money coming back</span><span class="rf-tot">$5,614 back &middot; C$644 pending</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 6MFSCR</span><span class="rf-s">$2,872.84 &middot; refunded</span></span><span class="rf-chip rec">Received</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 7OK217</span><span class="rf-s">$2,741.72 &middot; refunded</span></span><span class="rf-chip rec">Received</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">DoYouSpain DYS-215337132</span><span class="rf-s">C$644.40 &middot; cancelled Jul 9, refund to Visa in 3-4 days</span></span><span class="rf-chip prog">In progress</span></div>
+      <div class="rf-note">If the C$644.40 is not on your Visa by Jul 15, reopen ticket 7266993.</div>
     </div>
     <div class="bmeta rv">
       <div class="bm"><div class="k">Estimated total</div><div class="v" id="estTotal">&mdash;</div></div>
@@ -1535,7 +1538,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 48';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 49';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
