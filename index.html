@@ -226,11 +226,15 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .exp-panel[hidden]{display:none;}
 #expenses .exp-form{display:flex;flex-direction:column;gap:6px;align-items:stretch;}
 .chiprow{display:flex;gap:6px;}
-.chip-b{flex:1;border:1.5px solid transparent;background:color-mix(in srgb,var(--accent) 11%,transparent);color:var(--ink);font-family:var(--font-body);font-weight:600;font-size:.86rem;padding:.5rem .2rem;border-radius:11px;cursor:pointer;transition:background .15s,border-color .15s;}
-.chip-b.active{border-color:var(--accent);}
+.chip-b{flex:1;border:1.5px solid var(--line-soft);background:var(--panel);color:var(--muted);font-family:var(--font-body);font-weight:600;font-size:.86rem;padding:.5rem .2rem;border-radius:11px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
+.chip-b.active{background:color-mix(in srgb,var(--accent) 15%,transparent);border-color:var(--accent);color:var(--ink);}
+.ef-top{display:flex;gap:8px;align-items:stretch;}
+.ef-top #exp-amt{flex:1;min-width:0;}
+.curseg{flex:0 0 auto;gap:5px;}
+.curseg .chip-b{flex:0 0 auto;min-width:2.7rem;padding:.5rem .45rem;font-size:.82rem;}
 .emojirow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
-.emo{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;background:color-mix(in srgb,var(--accent) 11%,transparent);border:1.5px solid transparent;border-radius:12px;cursor:pointer;transition:background .15s,border-color .15s;-webkit-appearance:none;appearance:none;padding:0;}
-.emo.active{border-color:var(--accent);}
+.emo{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;background:var(--panel);border:1.5px solid var(--line-soft);border-radius:12px;cursor:pointer;transition:background .15s,border-color .15s;-webkit-appearance:none;appearance:none;padding:0;}
+.emo.active{background:color-mix(in srgb,var(--accent) 15%,transparent);border-color:var(--accent);}
 .exp-catlabel{text-align:center;font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:-3px;}
 .fl-row{padding:.65rem 0;border-top:1px solid var(--line-soft);}
 .fl-row:first-of-type{border-top:none;}
@@ -784,11 +788,13 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
         <div class="et"><div class="k">Debit</div><div class="v" id="exp-debit">$0</div></div>
       </div>
       <div class="exp-form rv">
-        <input id="exp-amt" inputmode="decimal" placeholder="Amount" aria-label="Amount">
-        <div class="chiprow" id="exp-cur-row" data-val="EUR">
-          <button class="chip-b active" data-v="EUR" type="button">&euro; EUR</button>
-          <button class="chip-b" data-v="CAD" type="button">$ CAD</button>
-          <button class="chip-b" data-v="USD" type="button">$ USD</button>
+        <div class="ef-top">
+          <input id="exp-amt" inputmode="decimal" placeholder="Amount" aria-label="Amount">
+          <div class="chiprow curseg" id="exp-cur-row" data-val="EUR">
+            <button class="chip-b active" data-v="EUR" type="button">&euro;</button>
+            <button class="chip-b" data-v="CAD" type="button">CAD</button>
+            <button class="chip-b" data-v="USD" type="button">USD</button>
+          </div>
         </div>
         <div class="chiprow" id="exp-pay-row" data-val="Credit">
           <button class="chip-b active" data-v="Credit" type="button">Credit</button>
@@ -804,7 +810,6 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
           <button class="emo" data-v="Shopping" type="button" title="Shopping">🛍️</button>
           <button class="emo" data-v="Other" type="button" title="Other">➕</button>
         </div>
-        <div class="exp-catlabel" id="exp-cat-label">Food</div>
         <input id="exp-note" class="full" placeholder="What was it? (e.g. lunch at La Boqueria)" aria-label="Note">
         <button id="exp-add">Add expense</button>
       </div>
@@ -1493,7 +1498,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 34';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 35';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
