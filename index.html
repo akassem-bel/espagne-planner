@@ -75,7 +75,7 @@ body{
   font-family:var(--font-body);font-weight:400;line-height:1.6;
   -webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
-  position:fixed;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;overflow:hidden;touch-action:manipulation;
+  position:fixed;top:0;right:0;left:0;height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;touch-action:manipulation;
 }
 #dotsbg{position:fixed;inset:0;z-index:-1;opacity:var(--bg-op);pointer-events:none;transition:opacity .4s;}
 a{color:var(--ink);text-decoration:none;}
@@ -1435,7 +1435,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 25';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 26';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
