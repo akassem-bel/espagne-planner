@@ -284,6 +284,8 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 h1.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-1);line-height:1.16;margin:.5rem 0 0;letter-spacing:.004em;padding-bottom:.08em;}
 h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line-height:1.18;margin:.35rem 0 0;padding-bottom:.08em;}
 h1.title,h2.title,.match h3,.card h3,.opt h4{text-wrap:balance;}
+/* monospace display refinement: tighten tracking so large mono type reads intentional */
+h1.title,h2.title,.match h3,.card h3,.opt h4,.sect,.dayhead,.lx-num,.dash-num,.exp-tot .v,.et .v{letter-spacing:-.02em;}
 .lead,.card p,.match p,.opt p{text-wrap:pretty;}
 .rule{width:52px;height:2px;background:var(--accent);margin:1.1rem 0 1.4rem;}
 .lead{color:var(--muted);max-width:60ch;font-size:1.02rem;margin:0 0 1.6rem;}
@@ -1723,7 +1725,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 62';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 63';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
