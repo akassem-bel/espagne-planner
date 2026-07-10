@@ -208,6 +208,10 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .seg{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:4px;margin:0 0 14px;}
 .seg-b{flex:1;border:none;background:none;color:var(--muted);font-family:var(--font-body);font-weight:600;font-size:.92rem;padding:.55rem 0;border-radius:9px;cursor:pointer;transition:background .2s,color .2s;}
 .seg-b.active{background:var(--accent);color:#fff;}
+.arseg{overflow-x:auto;scrollbar-width:none;}
+.arseg::-webkit-scrollbar{display:none;}
+.arseg .seg-b{font-size:.8rem;flex:1 0 auto;padding-left:.6rem;padding-right:.6rem;white-space:nowrap;}
+.ar-panel[hidden]{display:none;}
 .exp-panel[hidden]{display:none;}
 #expenses .exp-form{display:flex;flex-direction:column;gap:6px;align-items:stretch;}
 .chiprow{display:flex;gap:6px;}
@@ -625,15 +629,22 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   <section class="view" id="around">
     <h2 class="title rv">Getting around</h2>
     <div class="rule rv"></div>
-    <p class="lead rv">The moving parts, with one-tap navigation. Map links open in Google or Apple Maps.</p>
-
+    <div class="seg arseg rv" id="around-seg" role="tablist">
+      <button class="seg-b active" data-arseg="flights" type="button">Flights</button>
+      <button class="seg-b" data-arseg="drive" type="button">Drive</button>
+      <button class="seg-b" data-arseg="car" type="button">Car</button>
+      <button class="seg-b" data-arseg="match" type="button">Match</button>
+      <button class="seg-b" data-arseg="info" type="button">Info</button>
+    </div>
+    <div class="ar-panel" data-arpanel="flights">
     <div class="lgroup rv">
       <h3>Getting there</h3>
       <p class="gsub">Round-trip flights into and out of Madrid. No open-jaw, no Barcelona airport.</p>
       <a class="litem" href="https://www.airtransat.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Air Transat · round trip</span><span class="ld2">YUL to Madrid (TS384, dep Aug 17 pm, arr Aug 18) · Madrid to YUL Aug 29 (TS385) · conf D9XRSM</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Adolfo+Suarez+Madrid+Barajas+Airport" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid-Barajas (MAD)</span><span class="ld2">Arrival and departure airport · metro L8 or Cercanías to the centre</span></span><span class="lg2">Map →</span></a>
     </div>
-
+    </div>
+    <div class="ar-panel" data-arpanel="drive" hidden>
     <div class="lgroup rv">
       <h3>Driving between the cities</h3>
       <p class="gsub">You keep the Enterprise car the whole trip and drive Madrid to Barcelona, about 6 h each way on the AP-2. Over to Barcelona on Aug 21, back to Madrid on Aug 25, with an optional lunch stop in Zaragoza. There is no train leg.</p>
@@ -641,7 +652,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Barcelona+Spain&destination=Madrid+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Barcelona → Madrid</span><span class="ld2">Aug 25 · ~6 h back · leave in the morning</span></span><span class="lg2">Route →</span></a>
       <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Zaragoza+Spain" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Zaragoza (halfway stop)</span><span class="ld2">Roughly the midpoint · a good spot to stretch and eat lunch</span></span><span class="lg2">Map →</span></a>
     </div>
-
+    </div>
+    <div class="ar-panel" data-arpanel="car" hidden>
     <div class="lgroup rv">
       <h3>The rental car</h3>
       <p class="gsub">Enterprise, picked up and returned at Madrid-Barajas (Terminal 1 arrivals). You keep the Toyota RAV4 the whole trip: the drives to Barcelona and back, plus Montserrat. Comprehensive insurance is included in the booking.</p>
@@ -650,7 +662,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <a class="litem" href="https://www.google.com/maps/dir/?api=1&origin=Madrid+Spain&destination=Segovia+Spain&travelmode=driving" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Madrid → Segovia</span><span class="ld2">Day trip, ~1 h drive</span></span><span class="lg2">Route →</span></a>
       <a class="litem" href="https://www.caaquebec.com/en/on-the-road/services/international-driving-permit/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">CAA · International Driving Permit</span><span class="ld2">Carry with your licence to drive in Spain · ~$35 each, both drivers</span></span><span class="lg2">Open →</span></a>
     </div>
-
+    </div>
+    <div class="ar-panel" data-arpanel="match" hidden>
     <div class="lgroup rv">
       <h3>Match-day transport</h3>
       <a class="litem" href="https://www.google.com/maps/search/?api=1&query=Santiago+Bernabeu+Stadium+Madrid" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Santiago Bernabéu (Madrid)</span><span class="ld2">Real Madrid vs Real Sociedad (Wed Aug 26) · metro L10 to Santiago Bernabéu</span></span><span class="lg2">Map →</span></a>
@@ -665,7 +678,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <a class="litem" href="https://parkguell.barcelona/en" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Park Güell</span><span class="ld2">Timed entry, monumental zone</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://www.airalo.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Airalo eSIM</span><span class="ld2">Phone data · set up before you leave</span></span><span class="lg2">Open →</span></a>
     </div>
-
+    </div>
+    <div class="ar-panel" data-arpanel="info" hidden>
     <div class="lgroup rv">
       <h3>Good to know</h3>
       <a class="litem" href="tel:112"><span class="lm"><span class="lt2">Emergencies: 112</span><span class="ld2">One number for police, ambulance and fire. Tap to call.</span></span><span class="lg2">Call →</span></a>
@@ -673,6 +687,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <div class="litem"><span class="lm"><span class="lt2">Watch for pickpockets</span><span class="ld2">Barcelona metro and La Rambla mainly. Bag in front, one card kept separate.</span></span></div>
       <div class="litem"><span class="lm"><span class="lt2">Low-emission zones</span><span class="ld2">Madrid has a central low-emission zone (ZBE). Keep the car for day trips; park at the hotel and ride metro L10.</span></span></div>
       <div class="litem"><span class="lm"><span class="lt2">Money &amp; water</span><span class="ld2">Tap water is safe. Tipping is modest: round up, 5–10% for good service.</span></span></div>
+    </div>
     </div>
   </section>
 
@@ -1095,6 +1110,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     });
   }
   (function(){var fb=document.getElementById('day-filter');if(!fb)return;fb.addEventListener('click',function(e){var b=e.target.closest('.df-b');if(!b)return;dayFilter=b.getAttribute('data-f');var ch=fb.querySelectorAll('.df-b');for(var i=0;i<ch.length;i++)ch[i].classList.toggle('active',ch[i]===b);renderDay(curDay);if(navigator.vibrate)navigator.vibrate(8);});})();
+  (function(){var seg=document.getElementById('around-seg');if(!seg)return;var panels=document.querySelectorAll('#around .ar-panel');seg.addEventListener('click',function(e){var b=e.target.closest('.seg-b');if(!b)return;var t=b.getAttribute('data-arseg');var ch=seg.querySelectorAll('.seg-b');for(var i=0;i<ch.length;i++)ch[i].classList.toggle('active',ch[i]===b);for(var j=0;j<panels.length;j++)panels[j].hidden=panels[j].getAttribute('data-arpanel')!==t;if(navigator.vibrate)navigator.vibrate(8);});})();
 
   /* checklist */
   var CHECK=[
@@ -1459,7 +1475,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 32';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 33';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
