@@ -792,12 +792,12 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       </div>
       <div class="exp-form rv">
         <div class="ef-top">
-          <input id="exp-amt" inputmode="decimal" placeholder="Amount" aria-label="Amount">
           <div class="chiprow curseg" id="exp-cur-row" data-val="EUR">
             <button class="chip-b active" data-v="EUR" type="button">&euro;</button>
             <button class="chip-b" data-v="CAD" type="button">CAD</button>
             <button class="chip-b" data-v="USD" type="button">USD</button>
           </div>
+          <input id="exp-amt" inputmode="decimal" placeholder="Amount" aria-label="Amount">
         </div>
         <div class="chiprow" id="exp-pay-row" data-val="Credit">
           <button class="chip-b active" data-v="Credit" type="button">Credit</button>
@@ -1501,7 +1501,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 46';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 47';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
