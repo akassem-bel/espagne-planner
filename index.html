@@ -779,13 +779,6 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     <h2 class="title rv">Budget</h2>
     <div class="rule rv"></div>
     <p class="lead rv">Family of four, in Canadian dollars. Enter real prices as you go; totals sync across phones.</p>
-    <div class="refunds rv">
-      <div class="rf-head"><span>Money coming back</span><span class="rf-tot">$5,614 back &middot; C$644 pending</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 6MFSCR</span><span class="rf-s">$2,872.84 &middot; refunded</span></span><span class="rf-chip rec">Received</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 7OK217</span><span class="rf-s">$2,741.72 &middot; refunded</span></span><span class="rf-chip rec">Received</span></div>
-      <div class="rf-row"><span class="rf-b"><span class="rf-t">DoYouSpain DYS-215337132</span><span class="rf-s">C$644.40 &middot; cancelled Jul 9, refund to Visa in 3-4 days</span></span><span class="rf-chip prog">In progress</span></div>
-      <div class="rf-note">If the C$644.40 is not on your Visa by Jul 15, reopen ticket 7266993.</div>
-    </div>
     <div class="bmeta rv">
       <div class="bm"><div class="k">Estimated total</div><div class="v" id="estTotal">&mdash;</div></div>
       <div class="bm"><div class="k">Your actuals</div><div class="v" id="actTotal">$0</div></div>
@@ -1586,7 +1579,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 51';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 52';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
