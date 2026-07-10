@@ -212,6 +212,17 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .arseg::-webkit-scrollbar{display:none;}
 .arseg .seg-b{font-size:.8rem;flex:1 0 auto;padding-left:.6rem;padding-right:.6rem;white-space:nowrap;}
 .ar-panel[hidden]{display:none;}
+.refunds{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);padding:.85rem 1rem;margin:0 0 1rem;}
+.rf-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-head);font-size:1.15rem;margin-bottom:.4rem;}
+.rf-tot{font-family:var(--font-body);font-size:.8rem;font-weight:700;color:#3ddc84;font-variant-numeric:tabular-nums;}
+.rf-row{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-top:1px solid var(--line-soft);}
+.rf-b{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1rem;}
+.rf-t{font-weight:600;font-size:.88rem;}
+.rf-s{font-size:.73rem;color:var(--dim);}
+.rf-chip{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.22rem .55rem;border-radius:999px;white-space:nowrap;}
+.rf-chip.req{color:#f0a03b;background:color-mix(in srgb,#f0a03b 15%,transparent);border:1px solid color-mix(in srgb,#f0a03b 40%,transparent);}
+.rf-chip.dis{color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);}
+.rf-note{font-size:.72rem;color:var(--muted);margin-top:.4rem;padding-top:.5rem;border-top:1px solid var(--line-soft);}
 .exp-panel[hidden]{display:none;}
 #expenses .exp-form{display:flex;flex-direction:column;gap:6px;align-items:stretch;}
 .chiprow{display:flex;gap:6px;}
@@ -733,6 +744,13 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     <h2 class="title rv">Budget</h2>
     <div class="rule rv"></div>
     <p class="lead rv">Family of four, in Canadian dollars. Enter real prices as you go; totals sync across phones.</p>
+    <div class="refunds rv">
+      <div class="rf-head"><span>Money coming back</span><span class="rf-tot">&asymp; $5,614 + C$644</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 6MFSCR</span><span class="rf-s">$2,872.84 &middot; cancelled Jul 9</span></span><span class="rf-chip req">Requested</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">Air Transat 7OK217</span><span class="rf-s">$2,741.72 &middot; cancelled Jul 9</span></span><span class="rf-chip req">Requested</span></div>
+      <div class="rf-row"><span class="rf-b"><span class="rf-t">DoYouSpain PRE-215337132</span><span class="rf-s">C$644.40 &middot; support ticket 7266993</span></span><span class="rf-chip dis">Disputed</span></div>
+      <div class="rf-note">If DoYouSpain has not replied by Jul 16, send a follow-up on ticket 7266993.</div>
+    </div>
     <div class="bmeta rv">
       <div class="bm"><div class="k">Estimated total</div><div class="v" id="estTotal">&mdash;</div></div>
       <div class="bm"><div class="k">Your actuals</div><div class="v" id="actTotal">$0</div></div>
@@ -1475,7 +1493,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 33';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 34';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
