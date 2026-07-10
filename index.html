@@ -156,6 +156,10 @@ body.drawer-open #drawer{transform:none;}
 .exp-item .ei-nt{display:block;overflow-wrap:anywhere;}
 .exp-item .ei-pm{display:block;color:var(--dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;}
 #exp-chart{margin:0 0 1.3rem;}
+.exp-bylegs{margin-top:1.1rem;display:flex;flex-direction:column;gap:.4rem;}
+.ebl-h{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem;}
+.ebl-row{display:flex;justify-content:space-between;align-items:center;font-size:.92rem;padding:.6rem .8rem;border-radius:13px;background:var(--panel);}
+.ebl-row b{font-variant-numeric:tabular-nums;font-weight:600;}
 .exp-leg{display:flex;gap:1.3rem;font-size:.72rem;color:var(--muted);margin-top:.55rem;}
 .exp-leg i{display:inline-block;width:16px;vertical-align:middle;margin-right:.35rem;}
 .exp-leg i.dot{border-top:3px solid var(--accent);}
@@ -827,15 +831,15 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <div class="exp-form rv">
         <div class="ef-top">
           <div class="chiprow curseg" id="exp-cur-row" data-val="EUR">
-            <button class="chip-b active" data-v="EUR" type="button">&euro;</button>
             <button class="chip-b" data-v="CAD" type="button">CAD</button>
             <button class="chip-b" data-v="USD" type="button">USD</button>
+            <button class="chip-b active" data-v="EUR" type="button">&euro;</button>
           </div>
           <input id="exp-amt" inputmode="decimal" placeholder="Amount" aria-label="Amount">
         </div>
         <div class="chiprow" id="exp-pay-row" data-val="Credit">
-          <button class="chip-b active" data-v="Credit" type="button">Credit</button>
           <button class="chip-b" data-v="Debit" type="button">Debit</button>
+          <button class="chip-b active" data-v="Credit" type="button">Credit</button>
           <button class="chip-b" data-v="Cash" type="button">Cash</button>
         </div>
         <div class="emojirow" id="exp-cat-row" data-val="Food">
@@ -1490,6 +1494,9 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   /* expenses */
   var EUR_CAD=1.48,USD_CAD=1.36;
   function toCad(x){var r=x.c==='CAD'?1:(x.c==='USD'?USD_CAD:EUR_CAD);return (+x.a||0)*r;}
+  function expLegKey(x){var d=new Date(x.ts||x.id);if(d.getFullYear()!==2026||d.getMonth()!==7)return '';var day=d.getDate();if(day<17||day>29)return '';if(day<21)return 'mad1';if(day<25)return 'bcn';return 'mad2';}
+  var LEG_CITY={mad1:'Madrid',bcn:'Barcelona',mad2:'Madrid'};
+  var LEG_FULL=[['mad1','Madrid · arrival'],['bcn','Barcelona'],['mad2','Madrid · return']];
   function renderExpChart(){
     var host=document.getElementById('exp-chart');if(!host)return;
     var list=get('spain_expenses',[]);
@@ -1544,7 +1551,12 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     });
     if(!n){s+='<text class="exp-bl" x="'+(W/2)+'" y="'+(y0-8)+'" text-anchor="middle">Log expenses to see daily bars</text>';}
     s+='</svg>';
-    host.innerHTML='<div class="chart-x">'+s+'</div><div class="exp-leg"><span><i class="bar"></i>Daily spend (CAD)</span><span><i class="dash"></i>Daily target</span></div>';
+    var legs={mad1:0,bcn:0,mad2:0};list.forEach(function(x){var k=expLegKey(x);if(legs[k]!=null)legs[k]+=toCad(x);});
+    var legHtml='';
+    if(legs.mad1+legs.bcn+legs.mad2>0){
+      legHtml='<div class="exp-bylegs"><div class="ebl-h">By leg</div>'+LEG_FULL.map(function(p){return '<div class="ebl-row"><span>'+p[1]+'</span><b>'+money0(legs[p[0]])+'</b></div>';}).join('')+'</div>';
+    }
+    host.innerHTML='<div class="chart-x">'+s+'</div><div class="exp-leg"><span><i class="bar"></i>Daily spend (CAD)</span><span><i class="dash"></i>Daily target</span></div>'+legHtml;
   }
   function renderExpenses(){
     var box=document.getElementById('exp-list');if(!box)return;
@@ -1564,7 +1576,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       row.innerHTML='<span class="ei-cat"></span><span class="ei-n"><span class="ei-nt"></span><small class="ei-pm"></small></span><span class="ei-a"></span><button class="ei-x" aria-label="Delete">&times;</button>';
       row.querySelector('.ei-cat').textContent=x.cat||'Other';
       row.querySelector('.ei-nt').textContent=x.note||'(no note)';
-      row.querySelector('.ei-pm').textContent=x.pay||'';
+      var _lk=expLegKey(x);
+      row.querySelector('.ei-pm').textContent=(x.pay||'')+(_lk?' · '+LEG_CITY[_lk]:'');
       row.querySelector('.ei-a').textContent=sym+(Math.round((+x.a||0)*100)/100).toLocaleString('en-CA');
       row.querySelector('.ei-x').addEventListener('click',function(){set('spain_expenses',get('spain_expenses',[]).filter(function(e){return e.id!==x.id;}));renderExpenses();});
       box.appendChild(row);
@@ -1694,7 +1707,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 55';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 56';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
