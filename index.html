@@ -140,7 +140,7 @@ body.drawer-open #drawer{transform:none;}
 .exp-form input,.exp-form select{font-family:var(--font-body);font-size:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem;color:var(--ink);width:100%;}
 .exp-form .full{grid-column:1 / -1;}
 #exp-add{width:100%;font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;background:var(--accent);color:#fff;border:none;border-radius:var(--r-sm);padding:.8rem;cursor:pointer;}
-.exp-form button:active{background:var(--accent-deep);}
+#exp-add:active{background:var(--accent-deep);}
 .exp-tot{display:flex;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-bottom:1.2rem;flex-wrap:nowrap;}
 .exp-tot .et{flex:1;min-width:0;background:var(--panel);padding:.7rem .5rem;text-align:center;}
 .exp-tot .et .k{text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;color:var(--dim);}
@@ -1707,7 +1707,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 56';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 57';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
