@@ -318,6 +318,12 @@ h2.title{font-family:var(--font-head);font-weight:400;font-size:var(--fs-2);line
 .opt-est{display:inline-block;margin-top:.4rem;font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:999px;padding:.14rem .6rem;}
 .opt-est-free{color:#3ddc84;background:color-mix(in srgb,#3ddc84 14%,transparent);border-color:color-mix(in srgb,#3ddc84 35%,transparent);}
 .opt-empty{color:var(--dim);font-size:.9rem;padding:1.2rem 0;}
+.pp-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-top:1px solid var(--line-soft);flex-wrap:wrap;}
+.pp-n{flex:1 1 40%;font-weight:600;font-size:.88rem;}
+.pp-d{flex:0 0 auto;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:.4rem .5rem;color:var(--ink);font-family:var(--font-body);font-size:.85rem;}
+.pp-s{flex:1 1 100%;font-size:.74rem;}
+.pp-ok{color:#3ddc84;font-weight:600;}
+.pp-bad{color:var(--accent);font-weight:700;}
 .dayhead{font-family:var(--font-head);font-size:var(--fs-4);margin:.2rem 0 1rem;}
 .opt-row{display:flex;gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line-soft);}
 .opt-row:last-child{border-bottom:none;}
@@ -653,6 +659,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <button class="seg-b" data-arseg="car" type="button">Car</button>
       <button class="seg-b" data-arseg="match" type="button">Match</button>
       <button class="seg-b" data-arseg="info" type="button">Info</button>
+      <button class="seg-b" data-arseg="docs" type="button">Docs</button>
     </div>
     <div class="ar-panel" data-arpanel="flights">
     <div class="lgroup rv">
@@ -706,6 +713,18 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       <div class="litem"><span class="lm"><span class="lt2">Low-emission zones</span><span class="ld2">Madrid has a central low-emission zone (ZBE). Keep the car for day trips; park at the hotel and ride metro L10.</span></span></div>
       <div class="litem"><span class="lm"><span class="lt2">Money &amp; water</span><span class="ld2">Tap water is safe. Tipping is modest: round up, 5–10% for good service.</span></span></div>
     </div>
+    </div>
+    <div class="ar-panel" data-arpanel="docs" hidden>
+      <div class="lgroup rv">
+        <h3>Documents</h3>
+        <a class="litem" href="https://www.airtransat.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Flight confirmation</span><span class="ld2">Air Transat D9XRSM &middot; do online check-in 24h before</span></span><span class="lg2">Open →</span></a>
+        <a class="litem" href="https://www.doyouspain.com/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Car voucher (print it)</span><span class="ld2">Enterprise DYS-215395750 &middot; bring paper + licence + passport + card with PIN</span></span><span class="lg2">Open →</span></a>
+      </div>
+      <div class="lgroup rv">
+        <h3>Passports</h3>
+        <p class="gsub">Schengen rule: each passport must stay valid at least 3 months past your return (Aug 29), so through late November 2026. Enter expiry dates to check:</p>
+        <div id="pp-list"></div>
+      </div>
     </div>
   </section>
 
@@ -1437,6 +1456,21 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   function flEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function flMoney(n){return '$'+Number(Math.round(n)).toLocaleString('en-CA');}
   function flAgo(iso){var t=Date.parse(iso);if(isNaN(t))return '';var m=Math.max(0,Math.round((Date.now()-t)/60000));if(m<60)return m+'m ago';var h=Math.round(m/60);if(h<24)return h+'h ago';return Math.round(h/24)+'d ago';}
+  var PPL=[{k:'alaa',n:'Alaa Kassem'},{k:'jana',n:'Jana Hamdan'},{k:'youssef',n:'Youssef Kassem'},{k:'julia',n:'Julia Kassem'}];
+  var PP_MIN=new Date(2026,10,29);
+  function renderPassports(){
+    var box=document.getElementById('pp-list');if(!box)return;
+    var d=get('spain_docs',{}),pp=d.pp||{};
+    box.innerHTML='';
+    PPL.forEach(function(t){
+      var row=document.createElement('div');row.className='pp-row';
+      var val=pp[t.k]||'',status='';
+      if(val){var dt=new Date(val);status=(!isNaN(dt.getTime())&&dt>=PP_MIN)?'<span class="pp-ok">Valid for Schengen</span>':'<span class="pp-bad">Renew - expires too soon</span>';}
+      row.innerHTML='<span class="pp-n">'+t.n+'</span><input type="date" class="pp-d" data-k="'+t.k+'" value="'+val+'"><span class="pp-s">'+status+'</span>';
+      box.appendChild(row);
+    });
+    box.querySelectorAll('.pp-d').forEach(function(inp){inp.addEventListener('change',function(){var x=get('spain_docs',{});x.pp=x.pp||{};x.pp[inp.getAttribute('data-k')]=inp.value;set('spain_docs',x);renderPassports();});});
+  }
   function renderDocBanner(){
     var box=document.getElementById('doc-banner');if(!box)return;
     var d=get('spain_docs',{});
@@ -1444,7 +1478,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     box.innerHTML='<div class="docwarn rv"><div class="dw-h"><span class="dw-ico">!</span>Check the child ticket</div>'
       +'<p>Ticket <b>D9XRSM</b> lists the 9-year-old as <b>&ldquo;Alaa Kassem, 9 yrs&rdquo;</b>. If the traveller is <b>Julia Kassem</b>, the name is wrong and can stop boarding. Get it corrected with Air Transat.</p>'
       +'<div class="dw-act"><a class="dw-call" href="tel:+18778726728">Call 1-877-872-6728</a><button class="dw-ok" type="button">Mark resolved</button></div></div>';
-    var ok=box.querySelector('.dw-ok');if(ok)ok.onclick=function(){var x=get('spain_docs',{});x.childNameOK=true;set('spain_docs',x);renderDocBanner();toast('Marked resolved');};
+    var ok=box.querySelector('.dw-ok');if(ok)ok.onclick=function(){var x=get('spain_docs',{});x.childNameOK=true;set('spain_docs',x);renderDocBanner();renderPassports();toast('Marked resolved');};
   }
   function mtFooter(){
     var M=window.__matchTickets;
@@ -1500,8 +1534,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     else{num.textContent='¡Olé!';lab.textContent='trip complete';}
     setPhaseTab(days);
   }
-  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 47';
+  renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 48';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1522,8 +1556,8 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
           Object.keys(SYNC).forEach(function(k){if(d[SYNC[k]]!=null)LS.setItem(k,JSON.stringify(d[SYNC[k]]));});
           applyingRemote=false;
           var ae=document.activeElement,typing=!!(ae&&((ae.classList&&ae.classList.contains('actual'))||ae.id==='exp-amt'||ae.id==='exp-note'));
-          if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();}
-          else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();},{once:true});}
+          if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();}
+          else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();},{once:true});}
         }
         window.__bookings=d.bookings||null;window.__matchTickets=d.matchTickets||null;renderBookings();
         if(first){var s=document.getElementById('synced');if(s)s.textContent=' · live sync';toast('Live sync on');first=false;}
