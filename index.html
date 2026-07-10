@@ -1046,76 +1046,114 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   /* each-day options */
   var DAYS=[
     {d:18,lab:'Arrive',title:'Arrival in Madrid, keep it easy',opts:[
-      {ty:'Tip',label:'Beat the jet lag',desc:'Land ~12:40, grab the Enterprise car, drop bags, take it slow. Early tapas, everyone down early.',q:'Adolfo Suarez Madrid Barajas Airport'},
-      {ty:'See',label:'Puerta del Sol + Plaza Mayor',desc:'The arcaded heart of old Madrid and the Km 0 plaque. A gentle first walk.',est:'Free',q:'Plaza Mayor Madrid'},
+      {ty:'Tip',label:'Beat the jet lag',desc:'Land ~12:40, grab the Enterprise car, drop bags, go slow. Early tapas, everyone down early.',q:'Adolfo Suarez Madrid Barajas Airport'},
+      {ty:'Tip',label:'Stay central the first night',desc:'A hotel near Plaza Mayor keeps the first evening walkable; do not overschedule day one.',q:'Plaza Mayor Madrid'},
+      {ty:'See',label:'Puerta del Sol + Plaza Mayor',desc:'The arcaded heart of old Madrid and the Km 0 plaque.',est:'Free',q:'Plaza Mayor Madrid'},
+      {ty:'See',label:'Templo de Debod at sunset',desc:'An ancient Egyptian temple mirrored in its pool at golden hour.',est:'Free',q:'Templo de Debod Madrid'},
       {ty:'Eat',label:'Mercado de San Miguel',desc:'A first Madrid bite by Plaza Mayor: a few plates and a vermut.',est:'~€60',q:'Mercado de San Miguel Madrid'},
-      {ty:'Gem',label:'Templo de Debod at sunset',desc:'An ancient Egyptian temple mirrored in its pool at sunset.',est:'Free',q:'Templo de Debod Madrid'}
+      {ty:'Eat',label:'Churros at San Gines',desc:'The 1894 chocolateria, open late. Non-negotiable with kids.',est:'~€20',q:'Chocolateria San Gines Madrid'},
+      {ty:'Gem',label:'Mercado de San Fernando, Lavapies',desc:'A local market where Madrilenos actually eat and drink.',est:'~€40',q:'Mercado de San Fernando Madrid'},
+      {ty:'Gem',label:'Rooftop, Circulo de Bellas Artes',desc:'The best rooftop view over the city for a first-night drink.',est:'~€25',q:'Circulo de Bellas Artes Madrid'}
     ]},
     {d:19,lab:'Madrid',title:'Prado, Retiro and royal Madrid',opts:[
-      {ty:'See',label:'Museo del Prado',desc:'Velázquez, Goya, Bosch. Free for under-18s; ~€15 per adult.',est:'~€30',q:'Museo del Prado Madrid'},
+      {ty:'See',label:'Museo del Prado',desc:'Velazquez, Goya, Bosch. Free for under-18s; ~€15 per adult.',est:'~€30',q:'Museo del Prado Madrid'},
+      {ty:'See',label:'Royal Palace + Almudena',desc:'Europe largest royal palace by floor area, with the cathedral next door.',est:'~€40',q:'Palacio Real de Madrid'},
       {ty:'See',label:'Retiro Park + Crystal Palace',desc:'Row the lake, then the glass Palacio de Cristal. Green and shady.',est:'Free',q:'Palacio de Cristal Retiro Madrid'},
-      {ty:'See',label:'Royal Palace + Almudena',desc:'Europe’s largest royal palace by floor area, cathedral next door.',est:'~€40',q:'Palacio Real de Madrid'},
-      {ty:'Eat',label:'Churros con chocolate, San Ginés',desc:'The 1894 institution, open late. Non-negotiable with kids.',est:'~€20',q:'Chocolateria San Gines Madrid'}
+      {ty:'Eat',label:'Tapas on Cava Baja',desc:'The classic La Latina tapas street: hop a few bars.',est:'~€70',q:'Calle Cava Baja Madrid'},
+      {ty:'Eat',label:'Mercado de la Cebada, La Latina',desc:'A working neighbourhood market, cheaper and less touristy.',est:'~€45',q:'Mercado de la Cebada Madrid'},
+      {ty:'Gem',label:'Ermita de San Antonio (Goya)',desc:'Goya painted the ceiling here and is buried beneath it. Tiny, free, empty.',est:'Free',q:'Ermita de San Antonio de la Florida Madrid'},
+      {ty:'Gem',label:'Jardines de Sabatini',desc:'Shady royal gardens with the best view of the palace facade.',est:'Free',q:'Jardines de Sabatini Madrid'},
+      {ty:'Do',label:'Bernabeu stadium tour',desc:'Pitch-side, the trophy room, the panoramic. Warm-up for match week.',est:'~€100',q:'Santiago Bernabeu Madrid'},
+      {ty:'Tip',label:'Prado free evenings',desc:'Free the last two hours (Mon-Sat 6-8pm); go early otherwise.',q:'Museo del Prado Madrid'}
     ]},
     {d:20,lab:'Madrid',title:'Art and grand avenues',opts:[
-      {ty:'See',label:'Museo Reina Sofía',desc:'Picasso’s Guernica, plus Dalí and Miró. Under-18 free; free late afternoons.',est:'~€24',q:'Museo Reina Sofia Madrid'},
-      {ty:'See',label:'Gran Vía + Metrópolis',desc:'Madrid’s grand avenue: the winged-Victory dome, cinemas, rooftops.',est:'Free',q:'Gran Via Madrid'},
-      {ty:'Gem',label:'CaixaForum vertical garden',desc:'A hanging garden of living plants; art shows inside, across from the Prado.',est:'~€12',q:'CaixaForum Madrid'},
-      {ty:'Do',label:'Bernabéu stadium tour',desc:'Pitch-side, trophy room, panoramic. A warm-up for match week.',est:'~€100',q:'Santiago Bernabeu Madrid'}
+      {ty:'See',label:'Museo Reina Sofia (Guernica)',desc:'Picasso Guernica in the flesh, plus Dali and Miro. Under-18 free.',est:'~€24',q:'Museo Reina Sofia Madrid'},
+      {ty:'See',label:'Gran Via + Metropolis',desc:'The winged-Victory dome, cinemas and rooftops. A grand daytime walk.',est:'Free',q:'Gran Via Madrid'},
+      {ty:'Gem',label:'CaixaForum vertical garden',desc:'A hanging garden of living plants, art shows inside, across from the Prado.',est:'~€12',q:'CaixaForum Madrid'},
+      {ty:'Gem',label:'Faro de Moncloa viewpoint',desc:'A glass lift up a 92 m tower for a full city-and-sierra panorama.',est:'~€12',q:'Faro de Moncloa Madrid'},
+      {ty:'Eat',label:'Mercado de San Anton, Chueca',desc:'A market with a rooftop terrace, good for a relaxed lunch.',est:'~€55',q:'Mercado de San Anton Madrid'},
+      {ty:'Eat',label:'Casa Labra: cod fritters',desc:'An 1860 tavern by Sol famous for tajadas de bacalao. Order at the bar.',est:'~€25',q:'Casa Labra Madrid'},
+      {ty:'Tip',label:'Reina Sofia free window',desc:'Free 7-9pm most evenings (closed Tue); go straight to Guernica.',q:'Museo Reina Sofia Madrid'},
+      {ty:'Tip',label:'Beat the afternoon heat',desc:'Museums midday, terraces after 7pm; siesta-smart pacing.',q:'Gran Via Madrid'}
     ]},
     {d:21,lab:'Drive',title:'Madrid to Barcelona',opts:[
-      {ty:'Tip',label:'The drive to Barcelona',desc:'~6 h on the AP-2 in the Enterprise car, coffee stop in Zaragoza. Leave after breakfast.',est:'~€50',q:'Zaragoza Spain'},
-      {ty:'See',label:'Barri Gòtic + Cathedral',desc:'Medieval lanes, the cathedral cloister with its geese, Plaça Reial.',est:'~€20',q:'Barcelona Cathedral'},
-      {ty:'Gem',label:'El Bosc de les Fades',desc:'A fairy-forest café off La Rambla, trees and grottoes inside. Kids love it.',est:'~€25',q:'El Bosc de les Fades Barcelona'},
-      {ty:'Eat',label:'Hot chocolate on Carrer Petritxol',desc:'A narrow lane famous for thick xocolata and churros at Dulcinea.',est:'~€25',q:'Carrer de Petritxol Barcelona'}
+      {ty:'Tip',label:'The drive to Barcelona',desc:'~6 h on the AP-2 in the hybrid, coffee stop in Zaragoza. Leave after breakfast.',est:'~€50',q:'Zaragoza Spain'},
+      {ty:'Tip',label:'Plan B: sleep in Zaragoza',desc:'If the red-eye caught up, break the drive halfway and arrive Barcelona fresh.',q:'Zaragoza Spain'},
+      {ty:'See',label:'Barri Gotic + Cathedral',desc:'Medieval lanes, the cathedral cloister with its geese, Placa Reial.',est:'~€20',q:'Barcelona Cathedral'},
+      {ty:'See',label:'La Rambla + Placa Reial',desc:'A first-evening stroll down to the harbour and the palm-lined square.',est:'Free',q:'Placa Reial Barcelona'},
+      {ty:'Eat',label:'Hot chocolate, Carrer Petritxol',desc:'A narrow lane famous for thick xocolata and churros at Dulcinea.',est:'~€25',q:'Carrer de Petritxol Barcelona'},
+      {ty:'Eat',label:'Tapas in El Born',desc:'Buzzy lanes of wine bars and small plates near Santa Maria del Mar.',est:'~€65',q:'El Born Barcelona'},
+      {ty:'Gem',label:'El Bosc de les Fades',desc:'A fairy-forest cafe off La Rambla, trees and grottoes inside. Kids love it.',est:'~€25',q:'El Bosc de les Fades Barcelona'}
     ]},
-    {d:22,lab:'Gaudí',title:'Gaudí day',opts:[
-      {ty:'See',label:'Sagrada Família',desc:'Timed ticket booked ahead; the mid-morning light is the moment. ~€26 adult.',est:'~€100',q:'Sagrada Familia Barcelona'},
-      {ty:'See',label:'Park Güell',desc:'Late afternoon: the mosaic terrace and city view. ~€10 adult.',est:'~€35',q:'Park Guell Barcelona'},
+    {d:22,lab:'Gaudi',title:'Gaudi day',opts:[
+      {ty:'See',label:'Sagrada Familia',desc:'Go at opening with a timed ticket; the mid-morning light is the moment.',est:'~€100',q:'Sagrada Familia Barcelona'},
+      {ty:'See',label:'Park Guell',desc:'Late afternoon when the heat drops: the mosaic terrace and city view.',est:'~€35',q:'Park Guell Barcelona'},
       {ty:'Gem',label:'Hospital de Sant Pau',desc:'A modernista complex of mosaic pavilions, 10 min from the Sagrada, uncrowded.',est:'~€35',q:'Hospital de Sant Pau Barcelona'},
-      {ty:'Gem',label:'Bunkers del Carmel',desc:'Old Civil War hilltop bunkers: the best free 360° sunset in the city.',est:'Free',q:'Bunkers del Carmel Barcelona'},
-      {ty:'Eat',label:'Tapas around Plaça del Sol, Gràcia',desc:'Leafy squares full of local terraces, relaxed for kids in the evening.',est:'~€70',q:'Placa del Sol Barcelona'}
+      {ty:'Gem',label:'Bunkers del Carmel',desc:'Old Civil War hilltop bunkers: the best free 360 sunset in the city.',est:'Free',q:'Bunkers del Carmel Barcelona'},
+      {ty:'Eat',label:'Tapas in Gracia (Placa del Sol)',desc:'Leafy squares full of local terraces, relaxed for kids in the evening.',est:'~€70',q:'Placa del Sol Barcelona'},
+      {ty:'Eat',label:'La Boqueria market stalls',desc:'Stools at Bar Pinotxo or El Quim for fresh plates. Go before 1pm.',est:'~€45',q:'Mercat de la Boqueria Barcelona'},
+      {ty:'Tip',label:'Book Gaudi tickets ahead',desc:'Sagrada Familia and Park Guell timed entries genuinely sell out in August.',q:'Sagrada Familia Barcelona'},
+      {ty:'Do',label:'Casa Vicens',desc:'Gaudi very first house, a tiled Mudejar jewel in Gracia and far quieter.',est:'~€50',q:'Casa Vicens Barcelona'}
     ]},
     {d:23,lab:'Match',title:'Match day: Espanyol vs Real Madrid',star:true,opts:[
-      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE Stadium)',desc:'La Liga MD2, Real Madrid away in Cornellà. Visitor tickets limited, watch the alerts.',est:'~€300',q:'RCDE Stadium Cornella'},
-      {ty:'Tip',label:'Getting to Cornellà',desc:'FGC from Plaça Espanya to Cornellà-Riera, ~20 min, then a short walk.',est:'~€15',q:'Cornella-Riera station'},
-      {ty:'See',label:'Day: beach or Montjuïc',desc:'Keep the day light before kickoff: a lazy Bogatell beach morning or Montjuïc gardens.',est:'Free',q:'Bogatell Beach Barcelona'},
-      {ty:'Eat',label:'Post-match pintxos on Carrer de Blai',desc:'Poble Sec lane of one-euro pintxos bars to wind down after the whistle.',est:'~€40',q:'Carrer de Blai Barcelona'}
+      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE)',desc:'La Liga MD2, Real Madrid away in Cornella. Visitor tickets limited, watch the alerts.',est:'~€300',q:'RCDE Stadium Cornella'},
+      {ty:'Do',label:'Beach morning at Bogatell',desc:'A calmer beach than Barceloneta; wind down before kickoff.',est:'Free',q:'Bogatell Beach Barcelona'},
+      {ty:'Tip',label:'Getting to Cornella',desc:'FGC from Placa Espanya to Cornella-Riera, ~20 min, then a short walk.',est:'~€15',q:'Cornella-Riera station'},
+      {ty:'Tip',label:'Grab away tickets early',desc:'Visitor allocation is small and may not open to the public; have a backup.',q:'RCDE Stadium Cornella'},
+      {ty:'See',label:'Montjuic gardens + castle',desc:'Cable car up for the view and the hilltop castle if the day is free.',est:'~€50',q:'Montjuic Barcelona'},
+      {ty:'Eat',label:'Pintxos on Carrer de Blai',desc:'Poble Sec lane of one-euro pintxos bars: cheap, fun family dinner.',est:'~€40',q:'Carrer de Blai Barcelona'},
+      {ty:'Eat',label:'Vermut before the game',desc:'A Barcelona ritual: vermouth and olives at a bodega.',est:'~€30',q:'Bodega 1900 Barcelona'}
     ]},
     {d:24,lab:'Montse',title:'Montserrat day trip',opts:[
-      {ty:'See',label:'Montserrat monastery + rack railway',desc:'A serrated mountain ~1 h 20 by car: the abbey, the Black Madonna, the Cremallera up.',est:'~€55',q:'Montserrat Monastery'},
+      {ty:'See',label:'Montserrat monastery + rack railway',desc:'A serrated mountain ~1 h 20 by car: the abbey and the Cremallera up.',est:'~€55',q:'Montserrat Monastery'},
+      {ty:'See',label:'The Black Madonna (La Moreneta)',desc:'The 12th-century statue in the basilica; short queue to touch the orb.',est:'Free',q:'Montserrat Monastery'},
       {ty:'Do',label:'Sant Joan funicular + ridge walk',desc:'Ride up and walk the easy trails for jaw-dropping views over Catalonia.',est:'~€50',q:'Funicular de Sant Joan Montserrat'},
-      {ty:'Gem',label:'Local honey and mel i mató',desc:'Stalls by the monastery sell Catalan honey and fresh cheese with honey.',est:'~€15',q:'Montserrat monastery market'},
-      {ty:'Tip',label:'Alternative: beach + Montjuïc',desc:'Prefer to stay in town? Bogatell beach, La Boqueria lunch, the Montjuïc cable car.',est:'Free',q:'Montjuic Barcelona'}
+      {ty:'Gem',label:'Honey and mel i mato',desc:'Stalls by the monastery sell Catalan honey and fresh cheese with honey.',est:'~€15',q:'Montserrat monastery market'},
+      {ty:'Eat',label:'Lunch at the monastery / picnic',desc:'Cafeteria and a small market up top, or pack a picnic for the ridge.',est:'~€55',q:'Montserrat Monastery'},
+      {ty:'Tip',label:'Go early',desc:'Parking and the rack railway fill by late morning in August.',q:'Montserrat Monastery'},
+      {ty:'Tip',label:'Alternative: beach + Montjuic',desc:'Prefer to stay in town? Bogatell beach, La Boqueria lunch, Magic Fountain at night.',est:'Free',q:'Montjuic Barcelona'}
     ]},
     {d:25,lab:'Drive',title:'Back to Madrid',opts:[
       {ty:'Tip',label:'Morning drive to Madrid',desc:'~6 h back on the AP-2, evening free. An optional Zaragoza stop breaks it up.',est:'~€50',q:'Zaragoza Spain'},
-      {ty:'See',label:'Gran Vía evening stroll',desc:'Madrid’s grand avenue for a first-night-back walk once you have checked in.',est:'Free',q:'Gran Via Madrid'},
-      {ty:'Eat',label:'Dinner at Mercado de San Miguel',desc:'A proper Madrid meal by Plaza Mayor to settle back in.',est:'~€65',q:'Mercado de San Miguel Madrid'}
+      {ty:'Tip',label:'Zaragoza lunch stop',desc:'Stretch at the Basilica del Pilar and grab lunch roughly at the midpoint.',q:'Basilica del Pilar Zaragoza'},
+      {ty:'See',label:'Gran Via evening stroll',desc:'Madrid grand avenue for a first-night-back walk once you have checked in.',est:'Free',q:'Gran Via Madrid'},
+      {ty:'See',label:'Plaza Mayor by night',desc:'The arcades lit up, quieter after dinner. An easy loop.',est:'Free',q:'Plaza Mayor Madrid'},
+      {ty:'Eat',label:'Dinner at Mercado de San Miguel',desc:'A proper Madrid meal by Plaza Mayor to settle back in.',est:'~€65',q:'Mercado de San Miguel Madrid'},
+      {ty:'Eat',label:'Bocadillo de calamares',desc:'The Madrid classic: a fried-squid sandwich from a bar off Plaza Mayor.',est:'~€25',q:'Plaza Mayor Madrid'}
     ]},
     {d:26,lab:'Match',title:'Match day: Real Madrid vs Real Sociedad',star:true,opts:[
-      {ty:'Do',label:'Real Madrid vs Real Sociedad (Bernabéu)',desc:'The La Liga opener, postponed to this midweek. Metro L10; arrive early for the buildup.',est:'~€360',q:'Santiago Bernabeu Madrid'},
-      {ty:'Gem',label:'Rooftop at Círculo de Bellas Artes',desc:'The best rooftop view over the city for a pre or post-match drink.',est:'~€20',q:'Circulo de Bellas Artes Madrid'},
-      {ty:'Eat',label:'Tapas crawl on Cava Baja',desc:'The classic La Latina tapas street: a few bars before or after the game.',est:'~€70',q:'Calle Cava Baja Madrid'},
-      {ty:'Tip',label:'Get there early',desc:'The Bernabéu fills fast on a matchday; take the metro, not the car.',q:'Santiago Bernabeu Madrid'}
+      {ty:'Do',label:'Real Madrid vs Real Sociedad (Bernabeu)',desc:'The La Liga opener, this midweek. Metro L10; arrive early for the buildup.',est:'~€360',q:'Santiago Bernabeu Madrid'},
+      {ty:'Do',label:'Bernabeu museum before kickoff',desc:'Trophies and the walk out to the pitch if you go in early.',est:'~€40',q:'Santiago Bernabeu Madrid'},
+      {ty:'Tip',label:'Get there early, take the metro',desc:'The Bernabeu fills fast on a matchday; leave the car at the hotel.',q:'Santiago Bernabeu Madrid'},
+      {ty:'Tip',label:'Stadium bag policy',desc:'Only small bags allowed; travel light to speed through the gates.',q:'Santiago Bernabeu Madrid'},
+      {ty:'Gem',label:'Rooftop, Circulo de Bellas Artes',desc:'A pre or post-match drink with the best skyline view (soft drinks for kids).',est:'~€25',q:'Circulo de Bellas Artes Madrid'},
+      {ty:'Eat',label:'Tapas crawl on Cava Baja',desc:'The classic La Latina tapas street before or after the game.',est:'~€70',q:'Calle Cava Baja Madrid'},
+      {ty:'Eat',label:'Post-match churros, San Gines',desc:'Open late; the perfect end to match night.',est:'~€20',q:'Chocolateria San Gines Madrid'}
     ]},
     {d:27,lab:'Toledo',title:'Toledo or Segovia (with the car)',opts:[
-      {ty:'See',label:'Toledo old city',desc:'A walled hilltop of cathedrals, alcázar and synagogues, ~1 h south.',est:'~€30',q:'Toledo Spain'},
-      {ty:'See',label:'Segovia: Roman Aqueduct + Alcázar',desc:'~1 h north: the 2,000-year-old aqueduct and the ship-prow castle that inspired Disney.',est:'~€30',q:'Aqueduct of Segovia'},
-      {ty:'Gem',label:'La Granja de San Ildefonso',desc:'A mini-Versailles near Segovia: royal palace and baroque fountain gardens.',est:'~€30',q:'Palacio Real de La Granja de San Ildefonso'},
-      {ty:'Eat',label:'Cochinillo in Segovia',desc:'Roast suckling pig at Mesón de Cándido, or marzipan sweets in Toledo.',est:'~€120',q:'Meson de Candido Segovia'},
-      {ty:'Tip',label:'Go early',desc:'Beat the heat and the coach tours; back in Madrid for the evening.'}
+      {ty:'See',label:'Toledo old city',desc:'A walled hilltop of cathedrals, alcazar and synagogues, ~1 h south.',est:'~€30',q:'Toledo Spain'},
+      {ty:'See',label:'Segovia: Aqueduct + Alcazar',desc:'~1 h north: the 2,000-year-old aqueduct and the ship-prow castle.',est:'~€30',q:'Aqueduct of Segovia'},
+      {ty:'Gem',label:'La Granja de San Ildefonso',desc:'A mini-Versailles near Segovia: palace and baroque fountain gardens.',est:'~€30',q:'Palacio Real de La Granja de San Ildefonso'},
+      {ty:'Gem',label:'Toledo cathedral + viewpoint',desc:'The Primate cathedral, then the Mirador del Valle for the postcard view.',est:'~€25',q:'Toledo Cathedral'},
+      {ty:'Eat',label:'Cochinillo, Meson de Candido',desc:'Roast suckling pig under the Segovia aqueduct, carved with a plate.',est:'~€120',q:'Meson de Candido Segovia'},
+      {ty:'Eat',label:'Mazapan in Toledo',desc:'Marzipan sweets from Santo Tome; a cheap, easy treat to take home.',est:'~€15',q:'Toledo Spain'},
+      {ty:'Tip',label:'Go early',desc:'Beat the heat and the coach tours; back in Madrid for the evening.',q:'Toledo Spain'}
     ]},
     {d:28,lab:'Madrid',title:'Old Madrid and a farewell',opts:[
-      {ty:'See',label:'Puerta del Sol + Plaza Mayor',desc:'One last turn through the arcaded heart of old Madrid for photos and souvenirs.',est:'Free',q:'Plaza Mayor Madrid'},
-      {ty:'Eat',label:'Mercado de San Fernando, Lavapiés',desc:'A Lavapiés market where locals actually eat and drink.',est:'~€50',q:'Mercado de San Fernando Madrid'},
-      {ty:'See',label:'Gran Vía last shopping',desc:'Madrid’s grand avenue for a final stroll and any last gifts.',est:'Varies',q:'Gran Via Madrid'},
-      {ty:'Gem',label:'El Retiro at golden hour',desc:'A last easy evening rowing the lake or wandering the rose garden.',est:'Free',q:'Parque del Retiro Madrid'}
+      {ty:'See',label:'Puerta del Sol + Plaza Mayor',desc:'One last turn through the arcaded heart for photos and souvenirs.',est:'Free',q:'Plaza Mayor Madrid'},
+      {ty:'See',label:'El Retiro at golden hour',desc:'Row the lake or wander the rose garden on a last easy evening.',est:'Free',q:'Parque del Retiro Madrid'},
+      {ty:'Gem',label:'Templo de Debod sunset',desc:'Back for the best free sunset in the city on your final night.',est:'Free',q:'Templo de Debod Madrid'},
+      {ty:'Gem',label:'El Rastro (if Sunday)',desc:'Madrid huge open-air Sunday flea market in La Latina.',est:'Free',q:'El Rastro Madrid'},
+      {ty:'Eat',label:'Mercado de San Fernando, Lavapies',desc:'A Lavapies market where locals actually eat and drink.',est:'~€50',q:'Mercado de San Fernando Madrid'},
+      {ty:'Eat',label:'Farewell dinner, Mercado de San Miguel',desc:'A last proper Madrid meal by Plaza Mayor.',est:'~€70',q:'Mercado de San Miguel Madrid'},
+      {ty:'Tip',label:'Last shopping on Gran Via',desc:'Madrid grand avenue for any final gifts.',q:'Gran Via Madrid'}
     ]},
     {d:29,lab:'Home',title:'Departure from Madrid',opts:[
-      {ty:'Gem',label:'El Capricho park (beside the airport)',desc:'Madrid’s most beautiful and least-known park, a short hop from Barajas.',est:'Free',q:'Parque El Capricho Madrid'},
-      {ty:'Eat',label:'One last churros or a market breakfast',desc:'Somewhere near your hotel before you check out.',est:'~€30',q:'Chocolateria San Gines Madrid'},
-      {ty:'Tip',label:'Airport buffer',desc:'TS385 leaves 14:10. Allow time to return the Enterprise car and fuel up near Barajas.',q:'Adolfo Suarez Madrid Barajas Airport'}
+      {ty:'Tip',label:'Airport buffer',desc:'TS385 leaves 14:10. Return the Enterprise car by 11:00 and fuel up near Barajas.',q:'Adolfo Suarez Madrid Barajas Airport'},
+      {ty:'Tip',label:'Fuel before drop-off',desc:'Top up close to the airport; the fare is fuel like-for-like.',q:'Adolfo Suarez Madrid Barajas Airport'},
+      {ty:'Gem',label:'El Capricho park (near airport)',desc:'Madrid most beautiful and least-known park, a short hop from Barajas.',est:'Free',q:'Parque El Capricho Madrid'},
+      {ty:'See',label:'Barajas T4 if you are early',desc:'The wavy bamboo-ceilinged terminal is a sight in itself.',est:'Free',q:'Adolfo Suarez Madrid Barajas Airport'},
+      {ty:'Eat',label:'One last churros or a market breakfast',desc:'Somewhere near your hotel before you check out.',est:'~€30',q:'Chocolateria San Gines Madrid'}
     ]}
   ];
   var curDay=parseInt(get('spain_day',18),10);if(!DAYS.some(function(x){return x.d===curDay;}))curDay=18;
@@ -1538,7 +1576,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     setPhaseTab(days);
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 49';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 50';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
