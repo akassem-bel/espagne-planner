@@ -1057,7 +1057,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     function pos(i){var row=i<per?0:1;var x=(row===0)?xf(i,per):(W-xf(i-per,n-per));return {x:x,y:topY+row*rowGap,row:row};}
     var H=topY+rowGap+30;
     function pathFor(a,b){var d='';for(var i=a;i<=b;i++){var p=pos(i);if(i===a){d='M'+p.x.toFixed(1)+' '+p.y;continue;}var pr=pos(i-1);if(p.row===pr.row){d+=' L'+p.x.toFixed(1)+' '+p.y;}else{var r=((p.y-pr.y)/2).toFixed(1),sw=(pr.x>W/2)?1:0;d+=' A '+r+' '+r+' 0 0 '+sw+' '+p.x.toFixed(1)+' '+p.y;}}return d;}
-    var s='<svg class="tl" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 18 to 29">';
+    var s='<svg class="tl" viewBox="-24 -10 '+(W+48)+' '+(H+20)+'" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Trip timeline August 18 to 29">';
     s+='<path class="tl-track bcn" pathLength="1" d="'+pathFor(0,per-1)+'"/>';
     s+='<path class="tl-track mad" pathLength="1" style="animation-delay:.45s" d="'+pathFor(per-1,n-1)+'"/>';
     TL.forEach(function(nn,i){
@@ -1723,7 +1723,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 61';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 62';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
