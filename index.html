@@ -199,13 +199,6 @@ main .card,main .match,main .leg,main .compare,main .lgroup,main .facts,main .tl
 .fl-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-head);font-size:1.2rem;margin-bottom:.4rem;}
 .fl-when{font-family:var(--font-body);font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
 .fl-note{color:var(--dim);font-size:.72rem;margin:-.15rem 0 .5rem;}
-.mt-line{display:flex;align-items:center;gap:.55rem;padding:.5rem 0 .1rem;margin-top:.25rem;border-top:1px solid var(--line-soft);text-decoration:none;color:var(--ink);}
-.mt-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:0 0 auto;}
-.mt-main{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15;}
-.mt-k{font-size:.6rem;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);}
-.mt-v{font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.mt-line.hot .mt-dot{background:var(--pos);box-shadow:0 0 0 3px rgba(61,220,132,.18);}
-.mt-line.hot .mt-v{color:var(--pos);}
 .docwarn{background:rgba(240,69,76,.12);border:1px solid rgba(240,69,76,.5);border-radius:var(--r-md);padding:12px 14px;margin:0 0 14px;}
 .dw-h{display:flex;align-items:center;gap:8px;font-family:var(--font-head);font-size:1.05rem;color:var(--alert);}
 .dw-ico{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#f0454c;color:#fff;font-weight:700;font-size:.8rem;flex:0 0 auto;}
@@ -529,9 +522,9 @@ header.top{background:color-mix(in srgb,var(--bg) 72%,transparent);}
 .view>h2.title,.view>.rule,.view>p.lead{display:none;}
 .card,.fl-card,.match,.acc,.leg,.bmeta,.facts,.tips,.compare,.tablebox{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);}
 /* unified press feedback: smooth ease-out scale, GPU-composited so text doesn't re-rasterize (no iOS jitter) */
-button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row,summary,.maps a,.fl-open,.mt-line,.dw-call,.fs-cta,.chip-b,.emo,.seg-b,.df-b{transition:transform .19s cubic-bezier(.22,.61,.36,1),background .2s,border-color .2s,color .18s;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);}
-button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active,summary:active,.maps a:active,.fl-open:active,.mt-line:active,.dw-call:active,.fs-cta:active,.chip-b:active,.emo:active,.seg-b:active,.df-b:active{transform:scale(.98) translateZ(0);}
-@media (prefers-reduced-motion:reduce){button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active,summary:active,.maps a:active,.fl-open:active,.mt-line:active,.dw-call:active,.fs-cta:active,.chip-b:active,.emo:active,.seg-b:active,.df-b:active{transform:translateZ(0);}}
+button,.tab,.navitem,.daychip,.fl-row2,.iconbtn,.go,.opt,.citem,.litem,.day,.lx-chip,.lx-row,summary,.maps a,.fl-open,.dw-call,.fs-cta,.chip-b,.emo,.seg-b,.df-b{transition:transform .19s cubic-bezier(.22,.61,.36,1),background .2s,border-color .2s,color .18s;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);}
+button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active,summary:active,.maps a:active,.fl-open:active,.dw-call:active,.fs-cta:active,.chip-b:active,.emo:active,.seg-b:active,.df-b:active{transform:scale(.98) translateZ(0);}
+@media (prefers-reduced-motion:reduce){button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconbtn:active,.go:active,.opt:active,.citem:active,.litem:active,.day:active,.lx-chip:active,.lx-row:active,summary:active,.maps a:active,.fl-open:active,.dw-call:active,.fs-cta:active,.chip-b:active,.emo:active,.seg-b:active,.df-b:active{transform:translateZ(0);}}
 /* ===== LUX home concept ===== */
 .lx-hero{padding:0;}
 .lx-kick{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-tx);font-weight:600;}
@@ -732,7 +725,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
 
     <div class="lgroup rv">
       <h3>Tickets &amp; passes</h3>
-      <a class="litem" href="https://www.realmadrid.com/en-US/tickets" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Real Madrid tickets</span><span class="ld2">Matchday 1 vs Real Sociedad · buy when sales open</span></span><span class="lg2">Open →</span></a>
+      <a class="litem" href="https://www.realmadrid.com/en-US/tickets" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Real Madrid tickets</span><span class="ld2">Booked · manage / download your mobile tickets</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://www.realmadrid.com/en-US/tour-bernabeu/individual" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Bernabéu stadium tour</span><span class="ld2">Book for Aug 18 (non-match day)</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://sagradafamilia.org/en/" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Sagrada Família</span><span class="ld2">Timed tickets, book weeks ahead</span></span><span class="lg2">Open →</span></a>
       <a class="litem" href="https://parkguell.barcelona/en" target="_blank" rel="noopener"><span class="lm"><span class="lt2">Park Güell</span><span class="ld2">Timed entry, monumental zone</span></span><span class="lg2">Open →</span></a>
@@ -1161,7 +1154,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Tip',label:'Metro + walking',desc:'Barcelona is walkable; the metro links the far sights.'}
     ]},
     {d:23,lab:'Match',title:'Match day: Espanyol vs Real Madrid',star:true,opts:[
-      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE)',desc:'La Liga MD2, Real Madrid away in Cornella. Visitor tickets limited.',est:'~€300',q:'RCDE Stadium Cornella'},
+      {ty:'Do',label:'Espanyol vs Real Madrid (RCDE)',desc:'La Liga MD2, Real Madrid away in Cornella. Tickets booked.',est:'~€300',q:'RCDE Stadium Cornella'},
       {ty:'Do',label:'Beach morning at Bogatell',desc:'A calm beach north of Barceloneta before kickoff.',est:'Free',q:'Bogatell Beach Barcelona'},
       {ty:'Do',label:'Montjuic cable car',desc:'Ride up for the view and the castle if the day is free.',est:'~€50',q:'Montjuic Cable Car Barcelona'},
       {ty:'See',label:'Montjuic castle + gardens',desc:'Hilltop fortress and terraced gardens over the port.',est:'~€12',q:'Montjuic Castle Barcelona'},
@@ -1174,7 +1167,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Gem',label:'Poble Espanyol',desc:'An open-air village of Spanish architecture and artisans.',est:'~€40',q:'Poble Espanyol Barcelona'},
       {ty:'Gem',label:'Bunkers del Carmel',desc:'Free hilltop sunset if the match is early.',est:'Free',q:'Bunkers del Carmel Barcelona'},
       {ty:'Tip',label:'Getting to Cornella',desc:'FGC from Placa Espanya to Cornella-Riera, ~20 min, then a walk.',est:'~€15',q:'Cornella-Riera station'},
-      {ty:'Tip',label:'Grab away tickets fast',desc:'Visitor allocation is small; have a backup plan.',q:'RCDE Stadium Cornella'},
+      {ty:'Tip',label:'Tickets ready offline',desc:'Load the mobile tickets + screenshots before heading to Cornella.',q:'RCDE Stadium Cornella'},
       {ty:'Tip',label:'Keep the day light',desc:'A lazy morning before kickoff beats an exhausting one.'}
     ]},
     {d:24,lab:'Montse',title:'Montserrat day trip',opts:[
@@ -1226,7 +1219,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       {ty:'Gem',label:'Calle Ponzano bar street',desc:'Where Madrilenos go out; a livelier post-match option.',est:'~€50',q:'Calle Ponzano Madrid'},
       {ty:'Tip',label:'Get there early, take the metro',desc:'The Bernabeu fills fast; leave the car at the hotel.',q:'Santiago Bernabeu Madrid'},
       {ty:'Tip',label:'Small bags only',desc:'Stadium bag policy is strict; travel light to the gates.',q:'Santiago Bernabeu Madrid'},
-      {ty:'Tip',label:'Buy tickets the moment sales open',desc:'Create the realmadrid.com account now.'}
+      {ty:'Tip',label:'Tickets ready offline',desc:'Mobile tickets + screenshots saved before leaving the hotel.'}
     ]},
     {d:27,lab:'Toledo',title:'Toledo or Segovia (with the car)',opts:[
       {ty:'Do',label:'Day trip to Toledo',desc:'A walled hilltop city ~1 h south; the whole town is a monument.',est:'~€30',q:'Toledo Spain'},
@@ -1335,21 +1328,22 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   (function(){var seg=document.getElementById('around-seg');if(!seg)return;var panels=document.querySelectorAll('#around .ar-panel');seg.addEventListener('click',function(e){var b=e.target.closest('.seg-b');if(!b)return;var t=b.getAttribute('data-arseg');var ch=seg.querySelectorAll('.seg-b');for(var i=0;i<ch.length;i++)ch[i].classList.toggle('active',ch[i]===b);for(var j=0;j<panels.length;j++)panels[j].hidden=panels[j].getAttribute('data-arpanel')!==t;if(navigator.vibrate)navigator.vibrate(8);});})();
 
   /* checklist */
+  /* keys are frozen to their historical values (checked state is synced under them):
+     never renumber; give any NEW item a fresh unused key (c14, c15, ...) */
   var CHECK=[
-    {w:'urgent',t:'Buy Real Madrid vs Real Sociedad tickets',n:'The Bernabéu opener, now on Wed Aug 26 (postponed off the first weekend so World Cup players could rest). Create your realmadrid.com account and grab seats for the family the moment sales open.'},
-    {w:'urgent',t:'Chase Espanyol vs Real Madrid away tickets',n:'Matchday 2 at RCDE Stadium in Cornellà near Barcelona, on Sun Aug 23. Real Madrid are the visitors, so seats come from a limited away allocation that may not open to the public. Uncertain: line up a backup plan.'},
-    {w:'urgent',t:'Book both hotels on refundable rates',n:'Madrid for Aug 18-21 and again Aug 25-29, plus Barcelona for Aug 21-25. Lock the two match nights (around Aug 23 and 26) first, they are the tightest.'},
-    {w:'soon',t:'Plan the Madrid to Barcelona drives',n:'About 6 h each way in the Enterprise car, on Aug 21 out and Aug 25 back, with an optional lunch stop in Zaragoza. Save the route offline and note the AP-2 tolls.'},
-    {w:'soon',t:'Sagrada Família timed tickets',n:'Pick a slot during the Barcelona stay (Aug 21-25). They genuinely sell out in August.'},
-    {w:'soon',t:'Prepay checked bags (Jana, Youssef, Julia)',n:'On D9XRSM only Alaa has a checked bag; Eco Budget is carry-on + 1 personal item for everyone else. Decide who needs a checked bag and prepay online via Air Transat Manage Booking (cheaper than at the airport).'},
-    {w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, about $35 each. Required alongside your licence for the Enterprise rental in Spain.'},
-    {w:'soon',t:'Book hotel parking, both cities',n:'For the Enterprise car in Madrid and Barcelona. Central Madrid is a camera-enforced low-emission zone, so park at the hotel and ride the metro.'},
-    {w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 20.'},
-    {w:'later',t:'Park Güell timed entry',n:'The monumental zone requires a reservation.'},
-    {w:'later',t:'Set up the phone eSIMs',n:'Airalo/Holafly: activate before you leave.'},
-    {w:'later',t:'Flights booked (Air Transat, conf D9XRSM)',n:'Done: round-trip YUL to Madrid, out Aug 17 evening (TS384, 23:40), home Aug 29 (TS385, 14:10). Eco Budget: carry-on + personal item; 1 checked bag is prepaid for the main traveller each way, everyone else carry-on only. Do online check-in 24h before.'},
-    {w:'later',t:'Rental car booked (Enterprise, Madrid airport)',n:'Done: Toyota RAV4 hybrid, pick up Aug 18 14:00, return Aug 29 11:00, voucher DYS-215395750, comprehensive insurance included. Bring the printed voucher, driver licence, passport and the main-driver credit card (with PIN).'},
-    {w:'urgent',t:'Buy trip + medical insurance',n:'Important: the Air Transat fare is non-refundable with NO trip protection, and only the rental car carries (its own) coverage. Get family travel + medical insurance for the Aug 17-29 window before you leave.'}
+    {key:'c2',w:'urgent',t:'Book both hotels on refundable rates',n:'Madrid for Aug 18-21 and again Aug 25-29, plus Barcelona for Aug 21-25. Lock the two match nights (around Aug 23 and 26) first, they are the tightest.'},
+    {key:'c4',w:'soon',t:'Plan the Madrid to Barcelona drives',n:'About 6 h each way in the Enterprise car, on Aug 21 out and Aug 25 back, with an optional lunch stop in Zaragoza. Save the route offline and note the AP-2 tolls.'},
+    {key:'c5',w:'soon',t:'Sagrada Família timed tickets',n:'Pick a slot during the Barcelona stay (Aug 21-25). They genuinely sell out in August.'},
+    {key:'c6',w:'soon',t:'Prepay checked bags (Jana, Youssef, Julia)',n:'On D9XRSM only Alaa has a checked bag; Eco Budget is carry-on + 1 personal item for everyone else. Decide who needs a checked bag and prepay online via Air Transat Manage Booking (cheaper than at the airport).'},
+    {key:'c7',w:'soon',t:'International Driving Permits (both drivers)',n:'CAA, about $35 each. Required alongside your licence for the Enterprise rental in Spain.'},
+    {key:'c8',w:'soon',t:'Book hotel parking, both cities',n:'For the Enterprise car in Madrid and Barcelona. Central Madrid is a camera-enforced low-emission zone, so park at the hotel and ride the metro.'},
+    {key:'c9',w:'later',t:'Bernabéu stadium tour (optional)',n:'Separate from the match. Book a non-match Madrid day such as Aug 20.'},
+    {key:'c10',w:'later',t:'Park Güell timed entry',n:'The monumental zone requires a reservation.'},
+    {key:'c11',w:'later',t:'Set up the phone eSIMs',n:'Airalo/Holafly: activate before you leave.'},
+    {key:'c12',w:'later',t:'Flights booked (Air Transat, conf D9XRSM)',n:'Done: round-trip YUL to Madrid, out Aug 17 evening (TS384, 23:40), home Aug 29 (TS385, 14:10). Eco Budget: carry-on + personal item; 1 checked bag is prepaid for the main traveller each way, everyone else carry-on only. Do online check-in 24h before.'},
+    {key:'c13',w:'later',t:'Rental car booked (Enterprise, Madrid airport)',n:'Done: Toyota RAV4 hybrid, pick up Aug 18 14:00, return Aug 29 11:00, voucher DYS-215395750, comprehensive insurance included. Bring the printed voucher, driver licence, passport and the main-driver credit card (with PIN).'},
+    {key:'c14',w:'later',t:'Match tickets booked (both games)',n:'Done: Espanyol vs Real Madrid at RCDE (Sun Aug 23) and Real Madrid vs Real Sociedad at the Bernabéu (Wed Aug 26), Alaa + Youssef. Keep the mobile tickets handy with screenshot backups.'},
+    {key:'c3',w:'urgent',t:'Buy trip + medical insurance',n:'Important: the Air Transat fare is non-refundable with NO trip protection, and only the rental car carries (its own) coverage. Get family travel + medical insurance for the Aug 17-29 window before you leave.'}
   ];
   var wOrder={urgent:0,soon:1,later:2},wLabel={urgent:'This week',soon:'Soon',later:'Closer'};
   CHECK.sort(function(a,b){return wOrder[a.w]-wOrder[b.w];});
@@ -1372,7 +1366,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   ];
 
   function buildCheckList(){
-    var list=CHECK.map(function(it,i){return{key:'c'+i,w:it.w,t:it.t,n:it.n,act:false};});
+    var list=CHECK.map(function(it){return{key:it.key,w:it.w,t:it.t,n:it.n,act:false};});
     var chosen=get('spain_act',{});
     ACTIVITIES.forEach(function(g){g.items.forEach(function(a){
       if(chosen[a.id]&&a.book){list.push({key:'a-'+a.id,w:a.book.w,t:a.book.t,n:a.book.n+' ('+g.city+' · picked activity)',act:true});}
@@ -1432,7 +1426,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
     {id:'lodging',item:'Lodging',note:'11 nights, family rooms in Madrid and Barcelona',est:'$2,100-2,900',lo:2100,hi:2900},
     {id:'car',item:'Car rental',note:'Enterprise Toyota RAV4 hybrid, MAD airport Aug 18-29 (C$726 booked, insurance incl.), plus city parking',est:'$726-950',lo:726,hi:950},
     {id:'fuel',item:'Fuel & highway tolls',note:'The Madrid to Barcelona drives plus day-trip fuel and AP-2 tolls',est:'$300-450',lo:300,hi:450},
-    {id:'tickets',item:'Match tickets',note:'2 matches: Espanyol away (Aug 23) + Bernabéu opener vs Real Sociedad (Aug 26, limited away allocation for the first)',est:'$500-900',lo:500,hi:900},
+    {id:'tickets',item:'Match tickets',note:'Booked: Espanyol away (Aug 23) + Bernabéu opener vs Real Sociedad (Aug 26). Enter what you actually paid.',est:'$500-900',lo:500,hi:900},
     {id:'food',item:'Food',note:'~€120-150 per day for four',est:'$1,900-2,300',lo:1900,hi:2300},
     {id:'attractions',item:'Attractions and transit',note:'Sagrada Família, Bernabéu tour, Segovia/Toledo, Montserrat, metro and parking',est:'$600-850',lo:600,hi:850},
     {id:'buffer',item:'Buffer',note:'Souvenirs, surprises, one special dinner',est:'$500',lo:500,hi:500}
@@ -1666,25 +1660,11 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
       +'<div class="dw-act"><a class="dw-call" href="tel:+18778726728">Call 1-877-872-6728</a><button class="dw-ok" type="button">Mark resolved</button></div></div>';
     var ok=box.querySelector('.dw-ok');if(ok)ok.onclick=function(){var x=get('spain_docs',{});x.childNameOK=true;set('spain_docs',x);renderDocBanner();renderPassports();toast('Marked resolved');};
   }
-  function mtFooter(){
-    var M=window.__matchTickets;
-    var hot=!!(M&&M.onSale&&M.hot&&M.hot.length);
-    var head=(hot&&M.hot[0]&&M.hot[0].title)?String(M.hot[0].title).slice(0,52):'';
-    var txt=hot?('Possible on-sale'+(head?': '+head:'')):'Watching for on-sale';
-    var link=hot?((M.hot[0]&&M.hot[0].link)||'https://www.realmadrid.com/en/tickets')
-                :((M&&M.news&&M.news[0]&&M.news[0].link)||'https://www.realmadrid.com/en/tickets');
-    var when=(M&&M.updated)?flAgo(M.updated):'';
-    return '<a class="mt-line'+(hot?' hot':'')+'" href="'+flEsc(link)+'" target="_blank" rel="noopener">'
-      +'<span class="mt-dot"></span>'
-      +'<span class="mt-main"><span class="mt-k">Match tickets</span><span class="mt-v">'+flEsc(txt)+'</span></span>'
-      +(when?'<span class="fl-when">'+when+'</span>':'')
-      +'<span class="fl-arr">&rsaquo;</span></a>';
-  }
   function renderBookings(){
     var box=document.getElementById('home-flights');if(!box)return;
     var B=window.__bookings;
     if(!B||!B.items||!B.items.length){
-      box.innerHTML='<div class="fl-card lx-fcard"><div class="fl-head"><span>Bookings</span></div><div class="fl-note">Flights, hotels, car and match tickets appear here automatically once the Gmail import runs.</div>'+mtFooter()+'</div>';
+      box.innerHTML='<div class="fl-card lx-fcard"><div class="fl-head"><span>Bookings</span></div><div class="fl-note">Flights, hotels and car bookings appear here automatically once the Gmail import runs.</div></div>';
       return;
     }
     var order={flight:0,hotel:1,car:2,tickets:3};
@@ -1697,7 +1677,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
         +'<span class="lx-main"><span class="lx-lbl">'+flEsc(x.title||'')+'</span>'+(meta?'<span class="lx-met">'+flEsc(meta)+'</span>':'')+'</span>'
         +'<span class="fl-arr">&rsaquo;</span></a>';
     });
-    h+=mtFooter()+'</div>';box.innerHTML=h;
+    h+='</div>';box.innerHTML=h;
   }
   function setPhaseTab(days){
     var b=document.getElementById('tabCtx');if(!b)return;
@@ -1722,7 +1702,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
   }
   renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();buildTimeline();renderDaySel();renderDay(curDay);updateCountdown();renderHome();renderBookings();
   (function(){var _lt=get('spain_tab','apercu');try{if(_lt&&_lt!=='apercu'&&document.getElementById(_lt))show(_lt,'plain');}catch(e){}})();
-  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 66';
+  var _bt=document.getElementById('buildTag');if(_bt)_bt.textContent='lux 67';
 
   /* ---- realtime sync (Firebase Realtime Database) ---- */
   function initSync(){
@@ -1746,7 +1726,7 @@ button:active,.tab:active,.navitem:active,.daychip:active,.fl-row2:active,.iconb
           if(!typing){renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();}
           else{ae.addEventListener('blur',function bf(){ae.removeEventListener('blur',bf);renderCheck();renderBudget();renderPack();renderActivities();renderExpenses();renderDocBanner();renderPassports();},{once:true});}
         }
-        window.__bookings=d.bookings||null;window.__matchTickets=d.matchTickets||null;renderBookings();
+        window.__bookings=d.bookings||null;renderBookings();
         if(first){var s=document.getElementById('synced');if(s)s.textContent=' · live sync';toast('Live sync on');first=false;}
       });
       }
